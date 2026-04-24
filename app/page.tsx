@@ -82,15 +82,65 @@ const PHOTOS = [
 ];
 
 const STAKEHOLDERS = [
-  { nombre: "Director / Directora", rol: "Toma de decisiones estratégicas", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca" },
-  { nombre: "Subdirector", rol: "Supervisión académica", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca" },
-  { nombre: "Área de TI", rol: "Implementación y soporte técnico", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca" },
-  { nombre: "Docentes", rol: "Uso del sistema y seguimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados" },
-  { nombre: "Coordinadores Académicos", rol: "Gestión del rendimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados" },
-  { nombre: "Psicólogo Escolar", rol: "Apoyo en casos de riesgo", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados" },
-  { nombre: "Padres de Familia", rol: "Seguimiento del desempeño de sus hijos", interes: "Alto", poder: "Bajo", estrategia: "Mantener satisfechos" },
-  { nombre: "Estudiantes", rol: "Beneficiarios directos del sistema", interes: "Alto", poder: "Bajo", estrategia: "Monitorear" },
-  { nombre: "Personal Administrativo", rol: "Gestión de datos institucionales", interes: "Medio", poder: "Bajo", estrategia: "Mantener informados" },
+  { nombre: "Director / Directora", cargo: "Directora General", contacto: "Oficina de Dirección — IE Peruano Francés", rol: "Toma de decisiones estratégicas", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca", estado: "Comprometida", estadoColor: "emerald" },
+  { nombre: "Subdirector", cargo: "Subdirector Académico", contacto: "Oficina de Dirección — reuniones académicas", rol: "Supervisión académica", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca", estado: "Identificado", estadoColor: "blue" },
+  { nombre: "Área de TI", cargo: "Encargado de Tecnología y Gestora Cubicol", contacto: "Laboratorio de cómputo — IE Peruano Francés", rol: "Implementación y soporte técnico", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca", estado: "Comprometida", estadoColor: "emerald" },
+  { nombre: "Docentes", cargo: "Docentes y Auxiliares (16 personas)", contacto: "Aulas y plataforma digital interna Cubicol", rol: "Uso del sistema y seguimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados", estado: "Identificados", estadoColor: "blue" },
+  { nombre: "Coordinadores Académicos", cargo: "Coordinadores por nivel educativo", contacto: "Oficina de coordinación académica", rol: "Gestión del rendimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados", estado: "Identificados", estadoColor: "blue" },
+  { nombre: "Psicólogo Escolar", cargo: "Psicólogo de la institución", contacto: "Área de psicología — IE Peruano Francés", rol: "Apoyo en casos de riesgo detectados", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados", estado: "Identificado", estadoColor: "blue" },
+  { nombre: "Padres de Familia", cargo: "Apoderados de los 200 alumnos", contacto: "WhatsApp institucional / Plataforma Cubicol", rol: "Seguimiento del desempeño de sus hijos", interes: "Alto", poder: "Bajo", estrategia: "Mantener satisfechos", estado: "Informados", estadoColor: "amber" },
+  { nombre: "Estudiantes", cargo: "Alumnos de Inicial, Primaria y Secundaria", contacto: "Aulas — Plataforma educativa Cubicol", rol: "Beneficiarios directos del sistema", interes: "Alto", poder: "Bajo", estrategia: "Monitorear", estado: "Monitoreados", estadoColor: "slate" },
+  { nombre: "Personal Administrativo", cargo: "Área administrativa del colegio", contacto: "Oficina administrativa — IE Peruano Francés", rol: "Gestión de datos institucionales", interes: "Medio", poder: "Bajo", estrategia: "Mantener informados", estado: "Informados", estadoColor: "slate" },
+];
+
+const MAPA_ACTORES = [
+  {
+    zona: "Zona de Gestión Directa",
+    color: "border-blue-600 bg-blue-50",
+    colorTexto: "text-blue-800",
+    colorBadge: "bg-blue-600 text-white",
+    descripcion: "Alta influencia y alto interés — decisores clave del proyecto",
+    actores: [
+      { nombre: "Directora General", icono: "👩‍💼", relacion: "Entrevistada · Comprometida" },
+      { nombre: "Área de TI", icono: "💻", relacion: "Entrevistada · Comprometida" },
+      { nombre: "Subdirector", icono: "👨‍💼", relacion: "Identificado · Por contactar" },
+    ],
+  },
+  {
+    zona: "Zona de Involucramiento Activo",
+    color: "border-indigo-500 bg-indigo-50",
+    colorTexto: "text-indigo-800",
+    colorBadge: "bg-indigo-500 text-white",
+    descripcion: "Usuarios directos del sistema — su adopción determina el éxito",
+    actores: [
+      { nombre: "Docentes y Auxiliares", icono: "👨‍🏫", relacion: "Identificados · Capacitación pendiente" },
+      { nombre: "Coordinadores Académicos", icono: "📋", relacion: "Identificados · Por involucrar" },
+      { nombre: "Psicólogo Escolar", icono: "🧠", relacion: "Identificado · Por contactar" },
+    ],
+  },
+  {
+    zona: "Zona de Seguimiento y Satisfacción",
+    color: "border-amber-500 bg-amber-50",
+    colorTexto: "text-amber-800",
+    colorBadge: "bg-amber-500 text-white",
+    descripcion: "Beneficiarios indirectos — deben ser informados y satisfechos",
+    actores: [
+      { nombre: "Padres de Familia", icono: "👨‍👩‍👧", relacion: "Informados vía Cubicol y WhatsApp" },
+      { nombre: "Estudiantes (200)", icono: "🎒", relacion: "Beneficiarios finales del sistema" },
+      { nombre: "Personal Administrativo", icono: "📁", relacion: "Informados periódicamente" },
+    ],
+  },
+];
+
+const MONITOREO = [
+  { nombre: "Directora General", estado: "Comprometida", nivel: 90, accion: "Entrevista realizada en Abril 2026. Ofrece acceso a datos institucionales. Próximo paso: presentación formal de la propuesta.", color: "bg-emerald-500" },
+  { nombre: "Encargada de Cubicol / TI", estado: "Comprometida", nivel: 85, accion: "Entrevistada junto con la directora. Receptiva a integración técnica. Próximo paso: análisis de API de Cubicol.", color: "bg-emerald-500" },
+  { nombre: "Subdirector", estado: "Identificado", nivel: 40, accion: "Identificado en la estructura organizacional. Pendiente de contacto formal para presentarle el proyecto.", color: "bg-blue-500" },
+  { nombre: "Docentes y Auxiliares", estado: "Identificados", nivel: 35, accion: "Identificados como usuarios primarios. Pendiente taller de sensibilización sobre el sistema y sus beneficios.", color: "bg-blue-500" },
+  { nombre: "Psicólogo Escolar", estado: "Identificado", nivel: 30, accion: "Identificado como actor clave para validar alertas críticas. Pendiente de reunión específica sobre casos de riesgo.", color: "bg-blue-500" },
+  { nombre: "Coordinadores Académicos", estado: "Identificados", nivel: 30, accion: "Identificados por nivel (inicial, primaria, secundaria). Pendiente de sesión de trabajo con el sistema de reportes.", color: "bg-blue-500" },
+  { nombre: "Padres de Familia", estado: "Informados", nivel: 20, accion: "Identificados como destinatarios de alertas. Se comunicará a través de Cubicol y WhatsApp institucional.", color: "bg-amber-500" },
+  { nombre: "Estudiantes", estado: "Monitoreados", nivel: 15, accion: "Beneficiarios finales. El sistema los monitoreará de forma automática sin requerir su participación activa.", color: "bg-slate-400" },
 ];
 
 const FACTORES_INTERNOS = [
@@ -479,8 +529,9 @@ export default function Home() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-slate-800 text-white">
-                  <th className="px-4 py-3 text-left font-semibold">Stakeholder</th>
-                  <th className="px-4 py-3 text-left font-semibold hidden sm:table-cell">Rol en el Proyecto</th>
+                  <th className="px-4 py-3 text-left font-semibold">Stakeholder / Cargo</th>
+                  <th className="px-4 py-3 text-left font-semibold hidden lg:table-cell">Contacto / Ubicación</th>
+                  <th className="px-4 py-3 text-left font-semibold hidden sm:table-cell">Rol</th>
                   <th className="px-4 py-3 text-center font-semibold">Interés</th>
                   <th className="px-4 py-3 text-center font-semibold">Poder</th>
                   <th className="px-4 py-3 text-center font-semibold hidden md:table-cell">Estrategia</th>
@@ -489,7 +540,11 @@ export default function Home() {
               <tbody>
                 {STAKEHOLDERS.map((s, i) => (
                   <tr key={s.nombre} className={i % 2 === 0 ? "bg-white" : "bg-slate-50"}>
-                    <td className="px-4 py-3 font-semibold text-slate-800 text-sm">{s.nombre}</td>
+                    <td className="px-4 py-3">
+                      <p className="font-semibold text-slate-800 text-sm">{s.nombre}</p>
+                      <p className="text-xs text-slate-400">{s.cargo}</p>
+                    </td>
+                    <td className="px-4 py-3 text-slate-500 text-xs hidden lg:table-cell">{s.contacto}</td>
                     <td className="px-4 py-3 text-slate-500 text-sm hidden sm:table-cell">{s.rol}</td>
                     <td className="px-4 py-3 text-center"><span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${getBadge(s.interes)}`}>{s.interes}</span></td>
                     <td className="px-4 py-3 text-center"><span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${getBadge(s.poder)}`}>{s.poder}</span></td>
@@ -500,8 +555,42 @@ export default function Home() {
             </table>
           </div>
 
+          {/* Mapa de Actores */}
           <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
             <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">2</span>
+            Mapa de Actores — Design Thinking
+          </h3>
+          <div className="mb-10">
+            <div className="relative flex flex-col items-center gap-4">
+              {/* Centro: el sistema */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col items-center justify-center w-24 h-24 rounded-full bg-slate-900 text-white text-center shadow-xl border-4 border-white">
+                <span className="text-2xl">🤖</span>
+                <span className="text-[9px] font-bold leading-tight mt-0.5">Sistema<br />ML</span>
+              </div>
+              {MAPA_ACTORES.map((zona) => (
+                <div key={zona.zona} className={`w-full border-2 rounded-2xl p-5 ${zona.color}`}>
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <span className={`text-xs font-black px-3 py-1 rounded-full ${zona.colorBadge}`}>{zona.zona}</span>
+                    <span className={`text-xs ${zona.colorTexto} opacity-70`}>{zona.descripcion}</span>
+                  </div>
+                  <div className="grid sm:grid-cols-3 gap-3">
+                    {zona.actores.map((a) => (
+                      <div key={a.nombre} className="bg-white/70 rounded-xl p-3 flex gap-3 items-center">
+                        <span className="text-2xl flex-shrink-0">{a.icono}</span>
+                        <div>
+                          <p className={`font-semibold text-xs ${zona.colorTexto}`}>{a.nombre}</p>
+                          <p className="text-slate-500 text-xs leading-tight">{a.relacion}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">3</span>
             Matriz de Poder e Interés
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
@@ -521,8 +610,31 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Seguimiento / Monitoreo */}
           <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
-            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">3</span>
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">4</span>
+            Seguimiento y Nivel de Involucramiento
+          </h3>
+          <div className="grid sm:grid-cols-2 gap-4 mb-10">
+            {MONITOREO.map((m) => (
+              <div key={m.nombre} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <p className="font-bold text-slate-800 text-sm">{m.nombre}</p>
+                    <span className={`inline-block mt-0.5 text-[10px] font-semibold px-2 py-0.5 rounded-full text-white ${m.color}`}>{m.estado}</span>
+                  </div>
+                  <span className="text-2xl font-black text-slate-700">{m.nivel}%</span>
+                </div>
+                <div className="h-2 bg-slate-100 rounded-full overflow-hidden mb-3">
+                  <div className={`h-full ${m.color} rounded-full transition-all`} style={{ width: `${m.nivel}%` }} />
+                </div>
+                <p className="text-xs text-slate-500 leading-relaxed">{m.accion}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">5</span>
             Análisis de Expectativas
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
@@ -542,7 +654,7 @@ export default function Home() {
           </div>
 
           <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
-            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">4</span>
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">6</span>
             Plan de Comunicación
           </h3>
           <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
