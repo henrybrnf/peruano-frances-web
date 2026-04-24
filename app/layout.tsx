@@ -5,6 +5,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000"
+  ),
   title: "Sistema ML - Detección de Riesgo de Deserción Escolar | IE Peruano Francés",
   description:
     "Formulación y evaluación de un sistema inteligente basado en ML para la detección del riesgo de deserción escolar en la IE Peruano Francés, Villa el Salvador.",
@@ -12,6 +17,11 @@ export const metadata: Metadata = {
     title: "Sistema ML - Deserción Escolar | IE Peruano Francés",
     description: "Proyecto universitario UNTELS - ISR0832",
     type: "website",
+    images: [{ url: "/logo.jpeg", width: 1080, height: 1080, alt: "Logo IE Peruano Francés" }],
+  },
+  icons: {
+    icon: "/logo.jpeg",
+    apple: "/logo.jpeg",
   },
 };
 

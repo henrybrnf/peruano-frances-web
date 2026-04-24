@@ -82,11 +82,11 @@ const PHOTOS = [
 ];
 
 const STAKEHOLDERS = [
-  { nombre: "Director / Directora", cargo: "Directora General", contacto: "Oficina de Dirección — IE Peruano Francés", rol: "Toma de decisiones estratégicas", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca", estado: "Comprometida", estadoColor: "emerald" },
+  { nombre: "Promotora Directora", cargo: "Promotora Directora — Directora General", contacto: "Oficina de Dirección — IE Peruano Francés", rol: "Toma de decisiones estratégicas", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca", estado: "Comprometida", estadoColor: "emerald" },
   { nombre: "Subdirector", cargo: "Subdirector Académico", contacto: "Oficina de Dirección — reuniones académicas", rol: "Supervisión académica", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca", estado: "Identificado", estadoColor: "blue" },
   { nombre: "Área de TI", cargo: "Encargado de Tecnología y Gestora Cubicol", contacto: "Laboratorio de cómputo — IE Peruano Francés", rol: "Implementación y soporte técnico", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca", estado: "Comprometida", estadoColor: "emerald" },
   { nombre: "Docentes", cargo: "Docentes y Auxiliares (16 personas)", contacto: "Aulas y plataforma digital interna Cubicol", rol: "Uso del sistema y seguimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados", estado: "Identificados", estadoColor: "blue" },
-  { nombre: "Coordinadores Académicos", cargo: "Coordinadores por nivel educativo", contacto: "Oficina de coordinación académica", rol: "Gestión del rendimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados", estado: "Identificados", estadoColor: "blue" },
+  { nombre: "Jefa de Normas y Coordinadores", cargo: "Jefa de Normas — Coordinadores de CC. y LL.", contacto: "Oficina académica — IE Peruano Francés", rol: "Gestión académica y coordinación curricular", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados", estado: "Identificados", estadoColor: "blue" },
   { nombre: "Psicólogo Escolar", cargo: "Psicólogo de la institución", contacto: "Área de psicología — IE Peruano Francés", rol: "Apoyo en casos de riesgo detectados", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados", estado: "Identificado", estadoColor: "blue" },
   { nombre: "Padres de Familia", cargo: "Apoderados de los 200 alumnos", contacto: "WhatsApp institucional / Plataforma Cubicol", rol: "Seguimiento del desempeño de sus hijos", interes: "Alto", poder: "Bajo", estrategia: "Mantener satisfechos", estado: "Informados", estadoColor: "amber" },
   { nombre: "Estudiantes", cargo: "Alumnos de Inicial, Primaria y Secundaria", contacto: "Aulas — Plataforma educativa Cubicol", rol: "Beneficiarios directos del sistema", interes: "Alto", poder: "Bajo", estrategia: "Monitorear", estado: "Monitoreados", estadoColor: "slate" },
@@ -101,7 +101,7 @@ const MAPA_ACTORES = [
     colorBadge: "bg-blue-600 text-white",
     descripcion: "Alta influencia y alto interés — decisores clave del proyecto",
     actores: [
-      { nombre: "Directora General", icono: "👩‍💼", relacion: "Entrevistada · Comprometida" },
+      { nombre: "Promotora Directora", icono: "👩‍💼", relacion: "Entrevistada · Comprometida" },
       { nombre: "Área de TI", icono: "💻", relacion: "Entrevistada · Comprometida" },
       { nombre: "Subdirector", icono: "👨‍💼", relacion: "Identificado · Por contactar" },
     ],
@@ -133,7 +133,7 @@ const MAPA_ACTORES = [
 ];
 
 const MONITOREO = [
-  { nombre: "Directora General", estado: "Comprometida", nivel: 90, accion: "Entrevista realizada en Abril 2026. Ofrece acceso a datos institucionales. Próximo paso: presentación formal de la propuesta.", color: "bg-emerald-500" },
+  { nombre: "Promotora Directora", estado: "Comprometida", nivel: 90, accion: "Entrevista realizada en Abril 2026. Ofrece acceso a datos institucionales. Próximo paso: presentación formal de la propuesta.", color: "bg-emerald-500" },
   { nombre: "Encargada de Cubicol / TI", estado: "Comprometida", nivel: 85, accion: "Entrevistada junto con la directora. Receptiva a integración técnica. Próximo paso: análisis de API de Cubicol.", color: "bg-emerald-500" },
   { nombre: "Subdirector", estado: "Identificado", nivel: 40, accion: "Identificado en la estructura organizacional. Pendiente de contacto formal para presentarle el proyecto.", color: "bg-blue-500" },
   { nombre: "Docentes y Auxiliares", estado: "Identificados", nivel: 35, accion: "Identificados como usuarios primarios. Pendiente taller de sensibilización sobre el sistema y sus beneficios.", color: "bg-blue-500" },
@@ -199,7 +199,9 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-700 to-red-600 flex items-center justify-center text-white font-bold text-xs">PF</div>
+            <div className="w-9 h-9 rounded-full overflow-hidden border border-slate-200 flex-shrink-0 bg-white shadow-sm">
+              <Image src="/logo.jpeg" alt="Logo IE Peruano Francés" width={36} height={36} className="w-full h-full object-contain" />
+            </div>
             <span className="font-bold text-slate-800 text-sm hidden sm:block">IE Peruano Francés</span>
           </div>
           <div className="hidden md:flex items-center gap-0.5">
@@ -345,6 +347,111 @@ export default function Home() {
           <div className="bg-white border border-blue-100 rounded-2xl p-6 text-center">
             <p className="text-slate-400 text-xs uppercase tracking-widest mb-1">Lema Institucional</p>
             <p className="text-slate-700 font-semibold text-xl italic">&ldquo;Formación en Valores Cristianos — Rumbo a la Universidad&rdquo;</p>
+          </div>
+
+          {/* ── ORGANIGRAMA ── */}
+          <div className="mt-10 pt-10 border-t border-slate-200">
+            <h3 className="font-bold text-slate-900 text-xl mb-1 flex items-center gap-2">
+              <span className="text-2xl">📊</span> Organigrama Estructural
+            </h3>
+            <p className="text-slate-500 text-sm mb-8">Estructura organizacional oficial de la I.E.P. Peruano Francés</p>
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
+
+              {/* Foto del documento real */}
+              <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+                <Image src="/organigrama.jpeg" alt="Organigrama Estructural I.E.P. Peruano Francés" width={800} height={1100} className="w-full h-auto" />
+                <p className="text-[10px] text-center text-slate-400 py-2 bg-slate-50">Documento institucional oficial</p>
+              </div>
+
+              {/* Diagrama */}
+              <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center mb-6">Diagrama de la Estructura</p>
+                <div className="flex flex-col items-center text-[11px] font-semibold select-none">
+
+                  {/* UGEL */}
+                  <div className="border-2 border-dashed border-slate-300 text-slate-500 bg-slate-50 rounded-xl px-5 py-2 text-center leading-snug">
+                    🏛️ Directora de la UGEL Nº 01
+                  </div>
+                  <div className="w-px h-4 bg-slate-300" />
+
+                  {/* Promotora Directora */}
+                  <div className="bg-blue-800 text-white rounded-xl px-6 py-2.5 text-center shadow-lg">
+                    👩‍💼 Promotora Directora
+                  </div>
+                  <div className="w-px h-4 bg-blue-300" />
+
+                  {/* Sub-Director + Personal Admin. (izquierda) */}
+                  <div className="grid grid-cols-3 w-full items-center">
+                    <div className="flex items-center justify-end">
+                      <div className="border border-slate-200 bg-slate-100 text-slate-600 rounded-xl px-2.5 py-2 text-center leading-snug text-[10px]">
+                        📁 Personal<br />Administrativo
+                      </div>
+                      <div className="w-4 h-px bg-slate-300 flex-shrink-0" />
+                    </div>
+                    <div className="flex justify-center">
+                      <div className="bg-blue-600 text-white rounded-xl px-4 py-2.5 text-center shadow-md">
+                        👨‍💼 Sub - Director
+                      </div>
+                    </div>
+                    <div />
+                  </div>
+                  <div className="w-px h-4 bg-blue-300" />
+
+                  {/* Jefa de Normas + Coordinadores (derecha) */}
+                  <div className="grid grid-cols-3 w-full items-center">
+                    <div />
+                    <div className="flex justify-center">
+                      <div className="bg-indigo-600 text-white rounded-xl px-4 py-2.5 text-center shadow-md">
+                        📋 Jefa de Normas
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-4 h-px bg-slate-300 flex-shrink-0" />
+                      <div className="border border-indigo-200 bg-indigo-50 text-indigo-700 rounded-xl px-2 py-2 text-center leading-snug text-[10px]">
+                        🔬 Coordinadores<br />CC. y LL.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-px h-4 bg-indigo-300" />
+
+                  {/* Profesores */}
+                  <div className="flex gap-2 w-full justify-center">
+                    {["Inicial", "Primaria", "Secundaria"].map((n) => (
+                      <div key={n} className="bg-teal-600 text-white rounded-xl px-3 py-2 text-center shadow-sm text-[10px] flex-1 max-w-[80px]">
+                        👨‍🏫<br />Prof. {n}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="w-px h-4 bg-teal-300" />
+
+                  {/* Alumnos + Padres */}
+                  <div className="flex gap-3 justify-center">
+                    <div className="bg-emerald-600 text-white rounded-xl px-4 py-2.5 text-center shadow-sm">
+                      🎒 Alumnos
+                    </div>
+                    <div className="bg-amber-500 text-white rounded-xl px-4 py-2.5 text-center shadow-sm text-[10px]">
+                      👨‍👩‍👧 Padres de<br />Familia
+                    </div>
+                  </div>
+
+                  {/* Leyenda */}
+                  <div className="mt-5 pt-4 border-t border-slate-100 w-full flex flex-wrap gap-2 justify-center">
+                    {[
+                      { c: "bg-blue-800", l: "Alta Dirección" },
+                      { c: "bg-blue-600", l: "Dirección Académica" },
+                      { c: "bg-indigo-600", l: "Gestión Académica" },
+                      { c: "bg-teal-600", l: "Cuerpo Docente" },
+                      { c: "bg-emerald-600", l: "Comunidad Educativa" },
+                    ].map((x) => (
+                      <div key={x.l} className="flex items-center gap-1">
+                        <div className={`w-2.5 h-2.5 rounded-full ${x.c}`} />
+                        <span className="text-[9px] text-slate-500">{x.l}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -595,8 +702,8 @@ export default function Home() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             {[
-              { zona: "Alto Poder · Alto Interés", bg: "bg-blue-700", est: "GESTIONAR DE CERCA", actores: ["Director / Directora", "Subdirector", "Área de TI"] },
-              { zona: "Alto Poder · Medio Interés", bg: "bg-indigo-600", est: "MANTENER INVOLUCRADOS", actores: ["Docentes", "Coordinadores Académicos", "Psicólogo Escolar"] },
+              { zona: "Alto Poder · Alto Interés", bg: "bg-blue-700", est: "GESTIONAR DE CERCA", actores: ["Promotora Directora", "Subdirector", "Área de TI"] },
+              { zona: "Alto Poder · Medio Interés", bg: "bg-indigo-600", est: "MANTENER INVOLUCRADOS", actores: ["Docentes", "Jefa de Normas y Coordinadores", "Psicólogo Escolar"] },
               { zona: "Bajo Poder · Alto Interés", bg: "bg-amber-600", est: "MANTENER SATISFECHOS", actores: ["Padres de Familia", "Estudiantes"] },
               { zona: "Bajo Poder · Bajo Interés", bg: "bg-slate-500", est: "MANTENER INFORMADOS", actores: ["Personal Administrativo"] },
             ].map((z) => (
@@ -639,7 +746,7 @@ export default function Home() {
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
             {[
-              { q: "Director / Directora", a: "Mejorar la toma de decisiones estratégicas y reducir la deserción escolar para mantener una matrícula estable." },
+              { q: "Promotora Directora", a: "Mejorar la toma de decisiones estratégicas y reducir la deserción escolar para mantener una matrícula estable." },
               { q: "Docentes", a: "Herramientas que faciliten el seguimiento de estudiantes sin incrementar su carga de trabajo diaria." },
               { q: "Psicólogo Escolar", a: "Identificar temprana y confiablemente a los estudiantes en riesgo para intervenir con efectividad." },
               { q: "Padres de Familia", a: "Recibir información oportuna y comprensible sobre el desempeño y asistencia de sus hijos." },
@@ -668,7 +775,7 @@ export default function Home() {
               </thead>
               <tbody>
                 {[
-                  ["Director / Directora", "Reuniones formales presenciales", "Mensual"],
+                  ["Promotora Directora", "Reuniones formales presenciales", "Mensual"],
                   ["Docentes", "Reuniones / Plataforma digital interna", "Semanal"],
                   ["Área de TI", "Reuniones técnicas y reportes", "Semanal"],
                   ["Padres de Familia", "Comunicados / Plataforma Cubicol", "Mensual"],
