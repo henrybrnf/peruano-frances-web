@@ -406,7 +406,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-900 to-blue-900 rounded-2xl p-7 text-white">
+          <div className="bg-gradient-to-r from-purple-900 to-blue-900 rounded-2xl p-7 text-white mb-8">
             <h3 className="font-bold text-lg mb-4">Conclusiones de la Entrevista</h3>
             <ul className="space-y-2.5">
               {[
@@ -422,6 +422,40 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Video de la entrevista */}
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-6">
+            <h3 className="font-bold text-slate-900 text-lg mb-2 flex items-center gap-2">
+              <span className="text-2xl">🎥</span> Video de la Entrevista
+            </h3>
+            <p className="text-slate-400 text-xs mb-4">Grabación de la sesión de entrevista con la directora de la I.E.P. Peruano Francés — Abril 2026</p>
+            <video
+              controls
+              className="w-full rounded-xl shadow border border-slate-100"
+              preload="metadata"
+            >
+              <source src="/entrevista.mp4" type="video/mp4" />
+              Tu navegador no soporta la reproducción de video.
+            </video>
+          </div>
+
+          {/* Enlace a Drive */}
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center gap-5">
+            <div className="text-4xl flex-shrink-0">📁</div>
+            <div className="flex-1 text-center sm:text-left">
+              <h3 className="font-bold text-slate-900 mb-1">Carpeta de Evidencias del Equipo</h3>
+              <p className="text-slate-500 text-sm">Accede a todos los documentos, fotografías, grabaciones y archivos del proyecto en Google Drive.</p>
+            </div>
+            <a
+              href="https://drive.google.com/drive/folders/1z33A6WEsA_c8dG4UWaxbnaLNTMgPQo2S?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-xl transition-all shadow hover:shadow-lg text-sm"
+            >
+              <span>Ver en Google Drive</span>
+              <span>↗</span>
+            </a>
           </div>
         </div>
       </section>
