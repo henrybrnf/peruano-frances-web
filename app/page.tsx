@@ -1,65 +1,674 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+
+const NAV_LINKS = [
+  { href: "#problema", label: "Problema" },
+  { href: "#institucion", label: "Institución" },
+  { href: "#visita", label: "Visita" },
+  { href: "#entrevista", label: "Entrevista" },
+  { href: "#stakeholders", label: "Stakeholders" },
+  { href: "#factores", label: "Factores" },
+  { href: "#solucion", label: "Solución" },
+  { href: "#equipo", label: "Equipo" },
+];
+
+const PHOTOS = [
+  { src: "/img6.jpeg", caption: "Fachada principal de la I.E.P. Peruano Francés, Villa el Salvador" },
+  { src: "/img7.jpeg", caption: "Vista frontal del edificio institucional (3 pisos)" },
+  { src: "/img1.jpeg", caption: "Equipo de investigación en la entrada del colegio" },
+  { src: "/img2.jpeg", caption: "Visita de campo al colegio — equipo UNTELS" },
+  { src: "/img3.jpeg", caption: "Con la directora del colegio en la entrada de la institución" },
+  { src: "/img5.jpeg", caption: "Reunión de entrevista con la directora en su oficina" },
+  { src: "/img4.jpeg", caption: "Reporte de Incidencia Escolar actual — proceso 100% físico/manual" },
+];
+
+const STAKEHOLDERS = [
+  { nombre: "Director / Directora", rol: "Toma de decisiones estratégicas", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca" },
+  { nombre: "Subdirector", rol: "Supervisión académica", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca" },
+  { nombre: "Área de TI", rol: "Implementación y soporte técnico", interes: "Alto", poder: "Alto", estrategia: "Gestionar de cerca" },
+  { nombre: "Docentes", rol: "Uso del sistema y seguimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados" },
+  { nombre: "Coordinadores Académicos", rol: "Gestión del rendimiento estudiantil", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados" },
+  { nombre: "Psicólogo Escolar", rol: "Apoyo en casos de riesgo", interes: "Alto", poder: "Medio", estrategia: "Mantener involucrados" },
+  { nombre: "Padres de Familia", rol: "Seguimiento del desempeño de sus hijos", interes: "Alto", poder: "Bajo", estrategia: "Mantener satisfechos" },
+  { nombre: "Estudiantes", rol: "Beneficiarios directos del sistema", interes: "Alto", poder: "Bajo", estrategia: "Monitorear" },
+  { nombre: "Personal Administrativo", rol: "Gestión de datos institucionales", interes: "Medio", poder: "Bajo", estrategia: "Mantener informados" },
+];
+
+const FACTORES_INTERNOS = [
+  { factor: "Cultura Organizacional", descripcion: "Valores de responsabilidad, disciplina, trabajo en equipo e innovación que favorecen la adopción de nuevas tecnologías." },
+  { factor: "Estructura Organizacional", descripcion: "Jerarquía clara: Directora, Subdirector, Coordinadores, Docentes, Psicólogo Escolar, Administrativos y Área TI." },
+  { factor: "Infraestructura Tecnológica", descripcion: "Internet WIN 1000 Mbps (fibra óptica), plataforma Cubicol activa, base de datos institucional, 1 técnico de laboratorio." },
+  { factor: "Experiencia en Proyectos TI", descripcion: "7 años usando Cubicol; implementaron matrícula digital y plataformas virtuales. Demuestran madurez tecnológica favorable." },
+  { factor: "Recursos Humanos", descripcion: "16 docentes/auxiliares, psicólogo, técnico de TI y gestora de Cubicol. Capital humano disponible para el proyecto." },
+  { factor: "Procesos Actuales", descripcion: "Asistencia física por cuadernos. Incidencias notificadas por WhatsApp/correo. Sin trazabilidad centralizada ni alertas automáticas." },
+];
+
+const FACTORES_EXTERNOS = [
+  { factor: "Regulaciones y Normas", descripcion: "Cumplimiento obligatorio: Ministerio de Educación, Ley General de Educación y Ley N° 29733 de Protección de Datos Personales." },
+  { factor: "Proveedores Tecnológicos", descripcion: "Dependencia de WIN (internet), Cubicol (plataforma educativa) y equipos informáticos. Condicionan disponibilidad del servicio." },
+  { factor: "Condiciones Económicas", descripcion: "Presupuesto limitado como colegio privado pequeño. Requiere soluciones de bajo costo con tecnología open-source y cloud." },
+  { factor: "Competencia Educativa", descripcion: "Otras instituciones en VES incorporan tecnología, generando presión para innovar y mantener la matrícula competitiva." },
+  { factor: "Avances Tecnológicos", descripcion: "IA y analítica de datos ofrecen oportunidad real para mejorar gestión educativa con herramientas accesibles y escalables." },
+];
+
+const ACTIVOS = [
+  { titulo: "Sistemas Existentes", items: ["Plataforma Cubicol (notas, matrícula)", "Base de datos institucional", "Control de asistencia", "Plataforma virtual educativa"] },
+  { titulo: "Documentación", items: ["Registro de estudiantes", "Historial académico", "Reportes de asistencia", "Formatos de incidencias físicos", "Manuales de procedimientos"] },
+  { titulo: "Experiencia Previa", items: ["7 años operando Cubicol", "Matrícula digital implementada", "Plataformas virtuales gestionadas", "Capacidad organizacional TI"] },
+  { titulo: "Capital Humano", items: ["1 técnico de laboratorio TI", "1 gestora de Cubicol", "Directora con apertura TI", "Docentes capacitados"] },
+];
+
+const MODULOS = [
+  { letra: "A", nombre: "Recolección de Datos", color: "bg-blue-700", descripcion: "Integra asistencia, notas e incidencias desde Cubicol y nuevos registros digitales." },
+  { letra: "B", nombre: "Procesamiento", color: "bg-indigo-700", descripcion: "Limpieza, normalización e integración de datos para el análisis." },
+  { letra: "C", nombre: "Analítica ML", color: "bg-purple-700", descripcion: "Modelos de Machine Learning calculan el riesgo de deserción de cada alumno." },
+  { letra: "D", nombre: "Alertas Tempranas", color: "bg-red-700", descripcion: "Notificaciones automáticas a docentes y directivos sobre estudiantes en riesgo crítico." },
+  { letra: "E", nombre: "Dashboard", color: "bg-emerald-700", descripcion: "Paneles visuales con reportes e indicadores clave para la toma de decisiones." },
+];
+
+function getBadge(nivel: string) {
+  if (nivel === "Alto") return "bg-red-100 text-red-700 border border-red-200";
+  if (nivel === "Medio") return "bg-yellow-100 text-yellow-700 border border-yellow-200";
+  return "bg-green-100 text-green-700 border border-green-200";
+}
+
+function getEst(est: string) {
+  if (est === "Gestionar de cerca") return "bg-blue-600 text-white";
+  if (est === "Mantener involucrados") return "bg-indigo-500 text-white";
+  if (est === "Mantener satisfechos") return "bg-amber-500 text-white";
+  return "bg-slate-400 text-white";
+}
 
 export default function Home() {
+  const [activePhoto, setActivePhoto] = useState<number | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-white text-slate-800">
+
+      {/* ── NAVBAR ── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-700 to-red-600 flex items-center justify-center text-white font-bold text-xs">PF</div>
+            <span className="font-bold text-slate-800 text-sm hidden sm:block">IE Peruano Francés</span>
+          </div>
+          <div className="hidden md:flex items-center gap-0.5">
+            {NAV_LINKS.map((l) => (
+              <a key={l.href} href={l.href}
+                className="px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-all">
+                {l.label}
+              </a>
+            ))}
+          </div>
+          <button className="md:hidden p-2 rounded-lg hover:bg-slate-100 flex flex-col gap-1.5" onClick={() => setMenuOpen(!menuOpen)}>
+            <span className="block w-5 h-0.5 bg-slate-600" />
+            <span className="block w-5 h-0.5 bg-slate-600" />
+            <span className="block w-5 h-0.5 bg-slate-600" />
+          </button>
+        </div>
+        {menuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-100 px-4 pb-4 pt-2 grid grid-cols-2 gap-1">
+            {NAV_LINKS.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
+                className="px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-all">
+                {l.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </nav>
+
+      {/* ── HERO ── */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+        style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #1d4ed8 100%)" }}>
+        <div className="absolute inset-0 opacity-[0.07]"
+          style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "36px 36px" }} />
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center py-20">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-2 text-white/80 text-sm font-medium mb-8">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            UNTELS · Ingeniería de Sistemas · ISR0832 · 2026
+          </div>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+            Sistema Inteligente{" "}
+            <span className="text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(90deg, #60a5fa, #a78bfa)" }}>
+              basado en ML
+            </span>
+            <br />para la Detección del Riesgo de{" "}
+            <span className="text-red-400">Deserción Escolar</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-blue-100 mb-3 max-w-3xl mx-auto leading-relaxed">
+            Aplicado al <strong className="text-white">Colegio Particular I.E.P. Peruano Francés</strong>
+            <br />Av. Pastor Sevilla · Villa el Salvador · Lima, Perú
           </p>
+          <p className="text-blue-300 text-sm mb-10">
+            Docente: <strong className="text-white">Arqque Pantigozo Antonio</strong> &nbsp;·&nbsp; Formulación y Evaluación de Proyectos TI
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center mb-12">
+            {[
+              { stat: "200", label: "Estudiantes" },
+              { stat: "16", label: "Docentes / Auxiliares" },
+              { stat: "25", label: "Años de trayectoria" },
+              { stat: "3", label: "Niveles educativos" },
+            ].map((s) => (
+              <div key={s.label} className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl px-5 py-4 min-w-[110px] text-center">
+                <div className="text-3xl font-black text-white">{s.stat}</div>
+                <div className="text-blue-200 text-xs mt-0.5 leading-tight">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a href="#problema"
+              className="bg-white text-blue-800 font-bold px-7 py-3 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all text-sm">
+              Explorar el Proyecto ↓
+            </a>
+            <a href="#visita"
+              className="bg-white/10 border border-white/30 text-white font-semibold px-7 py-3 rounded-full hover:bg-white/20 transition-all text-sm">
+              Ver Evidencias 📷
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/30 animate-bounce text-xl">↓</div>
+      </section>
+
+      {/* ── PROBLEMA ── */}
+      <section id="problema" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Planteamiento del Problema</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">La Deserción Escolar: Un Problema Urgente</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed text-sm">
+              En la IE Peruano Francés, la identificación de alumnos en riesgo de abandono se realiza de manera manual y reactiva, sin herramientas que permitan intervenir a tiempo.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 mb-10">
+            {[
+              { icon: "📋", titulo: "Registro 100% Manual", desc: "La asistencia se registra en papel por docentes y auxiliares. Las incidencias se reportan por WhatsApp o correo, sin trazabilidad centralizada." },
+              { icon: "⚠️", titulo: "Detección Tardía", desc: "La identificación de alumnos en riesgo depende exclusivamente de la observación individual del docente. No hay sistema de alertas tempranas." },
+              { icon: "📱", titulo: "40% de Padres sin Acceso", desc: "4 de cada 10 padres no puede ingresar a la plataforma Cubicol. Las notificaciones por WhatsApp no garantizan respuesta inmediata." },
+            ].map((c) => (
+              <div key={c.titulo} className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                <div className="text-4xl mb-3">{c.icon}</div>
+                <h3 className="font-bold text-slate-900 mb-2">{c.titulo}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-gradient-to-r from-slate-800 to-blue-900 rounded-2xl p-8 text-white">
+            <h3 className="text-xl font-bold mb-3">Objetivo General del Proyecto</h3>
+            <p className="text-blue-100 leading-relaxed">
+              Desarrollar un <strong className="text-white">sistema inteligente basado en Machine Learning</strong> que permita predecir el riesgo de deserción escolar en la IE Peruano Francés, facilitando la identificación temprana de estudiantes en situación de riesgo y mejorando la toma de decisiones de directivos y docentes mediante alertas automáticas y dashboards visuales.
+            </p>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* ── INSTITUCIÓN ── */}
+      <section id="institucion" className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">La Organización</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">I.E.P. Peruano Francés</h2>
+            <p className="text-slate-500 max-w-xl mx-auto text-sm">Datos verificados en visita de campo — Abril 2026</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            {[
+              { icon: "🏫", label: "Nombre", value: "I.E.P. Peruano Francés" },
+              { icon: "🔒", label: "Tipo", value: "Institución Educativa Privada" },
+              { icon: "📍", label: "Ubicación", value: "Av. Pastor Sevilla con Av. Juan Velazco Alvarado, VES, Lima" },
+              { icon: "📚", label: "Niveles Educativos", value: "Inicial · Primaria · Secundaria" },
+              { icon: "👨‍👩‍👧", label: "N° de Estudiantes", value: "Aproximadamente 200 alumnos" },
+              { icon: "👨‍🏫", label: "N° de Docentes", value: "Aprox. 16 docentes y auxiliares" },
+              { icon: "📅", label: "Años de Operación", value: "25 años de trayectoria" },
+              { icon: "💻", label: "Sistema Académico", value: "Cubicol — 7 años en uso" },
+              { icon: "🌐", label: "Conectividad", value: "WIN — Fibra Óptica 1000 Mbps" },
+            ].map((item) => (
+              <div key={item.label} className="bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex gap-3 items-start">
+                <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                <div>
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-0.5">{item.label}</p>
+                  <p className="text-slate-800 font-medium text-sm">{item.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="bg-white border border-blue-100 rounded-2xl p-6 text-center">
+            <p className="text-slate-400 text-xs uppercase tracking-widest mb-1">Lema Institucional</p>
+            <p className="text-slate-700 font-semibold text-xl italic">&ldquo;Formación en Valores Cristianos — Rumbo a la Universidad&rdquo;</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VISITA ── */}
+      <section id="visita" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Evidencia de Campo</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Visita al Colegio</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed">
+              El equipo realizó una visita presencial a la I.E.P. Peruano Francés en Abril de 2026. Se recorrieron las instalaciones, se aplicó el instrumento de entrevista y se recopiló evidencia fotográfica y audiovisual.
+            </p>
+          </div>
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            {PHOTOS.map((p, i) => (
+              <div key={i} className="break-inside-avoid cursor-pointer overflow-hidden rounded-xl shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all"
+                onClick={() => setActivePhoto(i)}>
+                <div className="overflow-hidden">
+                  <Image src={p.src} alt={p.caption} width={600} height={450} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300" />
+                </div>
+                <div className="p-3 bg-slate-50">
+                  <p className="text-xs text-slate-500 leading-snug">{p.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      {activePhoto !== null && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setActivePhoto(null)}>
+          <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
+            <Image src={PHOTOS[activePhoto].src} alt={PHOTOS[activePhoto].caption} width={1200} height={900} className="w-full h-auto rounded-xl shadow-2xl" />
+            <p className="text-white/70 text-center text-sm mt-3">{PHOTOS[activePhoto].caption}</p>
+            <button onClick={() => setActivePhoto(null)}
+              className="absolute -top-4 -right-4 bg-white text-slate-800 w-9 h-9 rounded-full flex items-center justify-center font-bold shadow-lg hover:bg-slate-100">✕</button>
+            <div className="flex justify-between mt-4">
+              <button onClick={() => setActivePhoto((activePhoto - 1 + PHOTOS.length) % PHOTOS.length)}
+                className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm transition-all">← Anterior</button>
+              <span className="text-white/50 text-sm self-center">{activePhoto + 1} / {PHOTOS.length}</span>
+              <button onClick={() => setActivePhoto((activePhoto + 1) % PHOTOS.length)}
+                className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm transition-all">Siguiente →</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── ENTREVISTA ── */}
+      <section id="entrevista" className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Recopilación de Datos</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Entrevista a la Institución</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed">
+              Instrumento semi-estructurado aplicado a la directora y personal de tecnología del colegio durante la visita de campo.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <h3 className="font-bold text-slate-900 mb-4">Ficha de la Entrevista</h3>
+              <dl className="space-y-3 text-sm">
+                {[
+                  ["Entrevistados", "Directora y encargada de plataforma Cubicol"],
+                  ["Fecha", "Abril de 2026"],
+                  ["Lugar", "Oficina de dirección — I.E.P. Peruano Francés"],
+                  ["Modalidad", "Presencial — entrevista semi-estructurada"],
+                  ["Bloques", "8 bloques temáticos / 12 preguntas"],
+                  ["Registro", "Video, audio y fotografías"],
+                ].map(([k, v]) => (
+                  <div key={k} className="flex gap-3">
+                    <dt className="font-semibold text-blue-700 min-w-[90px] flex-shrink-0">{k}</dt>
+                    <dd className="text-slate-600">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
+              <h3 className="font-bold text-slate-900 mb-4">Bloques del Instrumento</h3>
+              <ol className="space-y-2">
+                {["Datos generales de la institución", "Situación actual sobre deserción escolar", "Problemas identificados en el seguimiento", "Tecnología actual y sistemas en uso", "Necesidades del usuario (dirección/docentes)", "Factibilidad de implementar solución TI", "Preguntas específicas para docentes/tutores", "Preguntas para el director o coordinador"].map((b, i) => (
+                  <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
+                    <span className="w-5 h-5 rounded-full bg-purple-100 text-purple-700 text-xs font-bold flex items-center justify-center flex-shrink-0">{i + 1}</span>
+                    {b}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-6">
+            <h3 className="font-bold text-slate-900 text-lg mb-5">Hallazgos Clave — Resumen Ejecutivo</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { icon: "📄", t: "Asistencia 100% manual", d: "Registro físico en cuadernos por docentes y auxiliares, sin trazabilidad digital ni alertas automáticas." },
+                { icon: "📲", t: "Incidencias por WhatsApp", d: "Las incidencias se notifican a los padres por WhatsApp o correo. Sin registro centralizado ni respuesta garantizada." },
+                { icon: "🔴", t: "40% padres sin acceso", d: "El 40% de padres de familia tiene dificultades para ingresar a Cubicol, limitando la comunicación efectiva." },
+                { icon: "✅", t: "Apertura al QR", d: "La directora expresó total interés en el QR para control de asistencia y notificación puntual a los padres." },
+                { icon: "🤝", t: "Disposición institucional", d: "La directora ofrece acceso a los datos del colegio para formular y evaluar una solución tecnológica adecuada." },
+                { icon: "💡", t: "Necesidad prioritaria", d: "Control digitalizado de asistencia que permita visualizar el progreso del alumno durante todo el año escolar." },
+              ].map((h) => (
+                <div key={h.t} className="bg-slate-50 rounded-xl p-4">
+                  <div className="text-2xl mb-2">{h.icon}</div>
+                  <h4 className="font-semibold text-slate-900 text-sm mb-1">{h.t}</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">{h.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-purple-900 to-blue-900 rounded-2xl p-7 text-white">
+            <h3 className="font-bold text-lg mb-4">Conclusiones de la Entrevista</h3>
+            <ul className="space-y-2.5">
+              {[
+                "La institución opera con procesos manuales que generan inconsistencias y dificultan la detección temprana del riesgo de deserción.",
+                "Existe infraestructura tecnológica suficiente (internet 1000 Mbps, Cubicol, personal TI) para soportar una solución digital sin grandes inversiones.",
+                "La directora y el personal de tecnología tienen disposición activa y están abiertos a participar en el proyecto.",
+                "El sistema debe ser simple, accesible desde dispositivos móviles y compatible con la plataforma Cubicol ya instalada.",
+                "Las principales causas de deserción identificadas: factores económicos, cambio de vivienda y traslado a colegios estatales.",
+              ].map((c, i) => (
+                <li key={i} className="flex gap-2.5 text-sm text-purple-100">
+                  <span className="text-purple-400 flex-shrink-0 font-bold">→</span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ── STAKEHOLDERS ── */}
+      <section id="stakeholders" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Gestión de Interesados</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Análisis de Stakeholders</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed">
+              Identificación, análisis de poder/interés, expectativas, plan de involucramiento y plan de comunicación de todos los interesados del proyecto.
+            </p>
+          </div>
+
+          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">1</span>
+            Registro de Stakeholders
+          </h3>
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm mb-10">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-slate-800 text-white">
+                  <th className="px-4 py-3 text-left font-semibold">Stakeholder</th>
+                  <th className="px-4 py-3 text-left font-semibold hidden sm:table-cell">Rol en el Proyecto</th>
+                  <th className="px-4 py-3 text-center font-semibold">Interés</th>
+                  <th className="px-4 py-3 text-center font-semibold">Poder</th>
+                  <th className="px-4 py-3 text-center font-semibold hidden md:table-cell">Estrategia</th>
+                </tr>
+              </thead>
+              <tbody>
+                {STAKEHOLDERS.map((s, i) => (
+                  <tr key={s.nombre} className={i % 2 === 0 ? "bg-white" : "bg-slate-50"}>
+                    <td className="px-4 py-3 font-semibold text-slate-800 text-sm">{s.nombre}</td>
+                    <td className="px-4 py-3 text-slate-500 text-sm hidden sm:table-cell">{s.rol}</td>
+                    <td className="px-4 py-3 text-center"><span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${getBadge(s.interes)}`}>{s.interes}</span></td>
+                    <td className="px-4 py-3 text-center"><span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${getBadge(s.poder)}`}>{s.poder}</span></td>
+                    <td className="px-4 py-3 text-center hidden md:table-cell"><span className={`text-xs font-semibold px-2 py-1 rounded-lg ${getEst(s.estrategia)}`}>{s.estrategia}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">2</span>
+            Matriz de Poder e Interés
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            {[
+              { zona: "Alto Poder · Alto Interés", bg: "bg-blue-700", est: "GESTIONAR DE CERCA", actores: ["Director / Directora", "Subdirector", "Área de TI"] },
+              { zona: "Alto Poder · Medio Interés", bg: "bg-indigo-600", est: "MANTENER INVOLUCRADOS", actores: ["Docentes", "Coordinadores Académicos", "Psicólogo Escolar"] },
+              { zona: "Bajo Poder · Alto Interés", bg: "bg-amber-600", est: "MANTENER SATISFECHOS", actores: ["Padres de Familia", "Estudiantes"] },
+              { zona: "Bajo Poder · Bajo Interés", bg: "bg-slate-500", est: "MANTENER INFORMADOS", actores: ["Personal Administrativo"] },
+            ].map((z) => (
+              <div key={z.zona} className={`${z.bg} rounded-2xl p-5 text-white`}>
+                <p className="text-xs font-semibold opacity-70 mb-1 uppercase tracking-wider">{z.zona}</p>
+                <p className="font-black text-sm mb-3">{z.est}</p>
+                <div className="flex flex-wrap gap-2">
+                  {z.actores.map((a) => <span key={a} className="bg-white/20 text-xs px-3 py-1 rounded-full">{a}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">3</span>
+            Análisis de Expectativas
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {[
+              { q: "Director / Directora", a: "Mejorar la toma de decisiones estratégicas y reducir la deserción escolar para mantener una matrícula estable." },
+              { q: "Docentes", a: "Herramientas que faciliten el seguimiento de estudiantes sin incrementar su carga de trabajo diaria." },
+              { q: "Psicólogo Escolar", a: "Identificar temprana y confiablemente a los estudiantes en riesgo para intervenir con efectividad." },
+              { q: "Padres de Familia", a: "Recibir información oportuna y comprensible sobre el desempeño y asistencia de sus hijos." },
+              { q: "Estudiantes", a: "Recibir acompañamiento personalizado antes de llegar a una situación de abandono escolar." },
+              { q: "Área de TI", a: "Implementar una solución funcional, compatible con Cubicol y sostenible a largo plazo con recursos propios." },
+            ].map((e) => (
+              <div key={e.q} className="bg-amber-50 border border-amber-100 rounded-xl p-4">
+                <p className="font-bold text-amber-800 text-sm mb-1.5">{e.q}</p>
+                <p className="text-slate-600 text-xs leading-relaxed">{e.a}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">4</span>
+            Plan de Comunicación
+          </h3>
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-slate-800 text-white">
+                  <th className="px-4 py-3 text-left font-semibold">Stakeholder</th>
+                  <th className="px-4 py-3 text-left font-semibold">Medio de Comunicación</th>
+                  <th className="px-4 py-3 text-center font-semibold">Frecuencia</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Director / Directora", "Reuniones formales presenciales", "Mensual"],
+                  ["Docentes", "Reuniones / Plataforma digital interna", "Semanal"],
+                  ["Área de TI", "Reuniones técnicas y reportes", "Semanal"],
+                  ["Padres de Familia", "Comunicados / Plataforma Cubicol", "Mensual"],
+                  ["Estudiantes", "Plataforma educativa", "Continua"],
+                ].map(([s, m, f], i) => (
+                  <tr key={s} className={i % 2 === 0 ? "bg-white" : "bg-slate-50"}>
+                    <td className="px-4 py-3 font-semibold text-slate-800">{s}</td>
+                    <td className="px-4 py-3 text-slate-500">{m}</td>
+                    <td className="px-4 py-3 text-center"><span className="bg-blue-50 text-blue-700 border border-blue-100 text-xs font-semibold px-2 py-0.5 rounded-full">{f}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FACTORES + ACTIVOS ── */}
+      <section id="factores" className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-teal-100 text-teal-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Contexto Organizacional</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Factores Ambientales de la Empresa</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm">Condicionantes del éxito o fracaso del proyecto — factores no controlables directamente por el equipo.</p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            <div>
+              <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-teal-600 text-white text-xs font-bold flex items-center justify-center">I</span>
+                Factores Internos
+              </h3>
+              <div className="space-y-3">
+                {FACTORES_INTERNOS.map((f) => (
+                  <div key={f.factor} className="bg-white rounded-xl border border-slate-100 p-4 shadow-sm hover:shadow-md transition-all">
+                    <h4 className="font-semibold text-teal-800 text-sm mb-1">{f.factor}</h4>
+                    <p className="text-slate-500 text-xs leading-relaxed">{f.descripcion}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-orange-600 text-white text-xs font-bold flex items-center justify-center">E</span>
+                Factores Externos
+              </h3>
+              <div className="space-y-3">
+                {FACTORES_EXTERNOS.map((f) => (
+                  <div key={f.factor} className="bg-white rounded-xl border border-slate-100 p-4 shadow-sm hover:shadow-md transition-all">
+                    <h4 className="font-semibold text-orange-800 text-sm mb-1">{f.factor}</h4>
+                    <p className="text-slate-500 text-xs leading-relaxed">{f.descripcion}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mb-10">
+            <span className="inline-block bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Recursos</span>
+            <h2 className="text-2xl font-extrabold text-slate-900 mb-2">Activos de los Procesos de la Organización</h2>
+            <p className="text-slate-500 max-w-xl mx-auto text-sm">Recursos, conocimientos y herramientas que la institución aporta al proyecto.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {ACTIVOS.map((a) => (
+              <div key={a.titulo} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <h4 className="font-bold text-slate-900 text-sm mb-3 pb-2 border-b border-slate-100">{a.titulo}</h4>
+                <ul className="space-y-1.5">
+                  {a.items.map((item) => (
+                    <li key={item} className="flex items-start gap-1.5 text-xs text-slate-600">
+                      <span className="text-indigo-500 mt-0.5 flex-shrink-0">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SOLUCIÓN ── */}
+      <section id="solucion" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Propuesta Tecnológica</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Sistema Inteligente ML — Propuesta de Solución</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed">
+              El sistema integra los datos del colegio y aplica Machine Learning para detectar patrones de riesgo antes de que ocurra la deserción.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+            {MODULOS.map((m) => (
+              <div key={m.letra} className={`${m.color} rounded-2xl p-5 text-white hover:-translate-y-1 hover:shadow-lg transition-all`}>
+                <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center font-black text-base mb-3">{m.letra}</div>
+                <h3 className="font-bold text-sm mb-2 leading-tight">{m.nombre}</h3>
+                <p className="text-white/80 text-xs leading-relaxed">{m.descripcion}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            <div className="bg-slate-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-4">Funcionalidades Principales</h3>
+              <ul className="space-y-2.5">
+                {["Registro digital de asistencia con lectura de QR desde celular", "Integración con Cubicol para notas e incidencias", "Modelos predictivos ML de riesgo de deserción por alumno", "Alertas tempranas automáticas priorizadas por criticidad", "Dashboard con reportes visuales por aula y grado", "Panel para padres con seguimiento del progreso del alumno"].map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-slate-600">
+                    <span className="text-emerald-500 flex-shrink-0 mt-0.5">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-6">
+              <h3 className="font-bold text-slate-900 mb-5">Viabilidad del Proyecto</h3>
+              <div className="space-y-4">
+                {[
+                  { tipo: "Viabilidad Técnica", nivel: 90, color: "bg-emerald-500", nota: "Infraestructura y personal disponibles" },
+                  { tipo: "Viabilidad Económica", nivel: 78, color: "bg-blue-500", nota: "Bajo costo con tecnología open-source" },
+                  { tipo: "Viabilidad Operativa", nivel: 85, color: "bg-purple-500", nota: "Integra sin cambiar flujos actuales" },
+                ].map((v) => (
+                  <div key={v.tipo}>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="font-semibold text-slate-700">{v.tipo}</span>
+                      <span className="text-slate-400 text-xs">{v.nivel}%</span>
+                    </div>
+                    <div className="h-2 bg-slate-200 rounded-full overflow-hidden mb-1">
+                      <div className={`h-full ${v.color} rounded-full transition-all`} style={{ width: `${v.nivel}%` }} />
+                    </div>
+                    <p className="text-xs text-slate-400">{v.nota}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <h3 className="font-bold text-slate-900 text-xl mb-4">Análisis de Riesgos</h3>
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-slate-800 text-white">
+                  <th className="px-4 py-3 text-left font-semibold">Riesgo</th>
+                  <th className="px-4 py-3 text-center font-semibold">Impacto</th>
+                  <th className="px-4 py-3 text-center font-semibold">Probabilidad</th>
+                  <th className="px-4 py-3 text-left font-semibold hidden sm:table-cell">Mitigación</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Resistencia al cambio del personal docente", "Alto", "Medio", "Capacitación y sensibilización previa a la implementación"],
+                  ["Baja calidad o falta de datos históricos", "Alto", "Medio", "Validación, limpieza y enriquecimiento de datos inicial"],
+                  ["Limitaciones presupuestarias del colegio", "Medio", "Medio", "Uso de tecnología open-source y servicios cloud gratuitos"],
+                  ["Problemas de integración con Cubicol", "Medio", "Bajo", "Coordinación directa con el encargado TI de la institución"],
+                ].map(([r, imp, prob, mit], i) => (
+                  <tr key={r} className={i % 2 === 0 ? "bg-white" : "bg-slate-50"}>
+                    <td className="px-4 py-3 text-slate-700 text-sm">{r}</td>
+                    <td className="px-4 py-3 text-center"><span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${getBadge(imp)}`}>{imp}</span></td>
+                    <td className="px-4 py-3 text-center"><span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${getBadge(prob)}`}>{prob}</span></td>
+                    <td className="px-4 py-3 text-slate-500 text-xs hidden sm:table-cell">{mit}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EQUIPO ── */}
+      <section id="equipo" className="py-20 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-white/10 text-white/70 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Investigadores</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3">El Equipo</h2>
+            <p className="text-slate-400 text-sm">Escuela Profesional de Ingeniería de Sistemas — UNTELS</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+            {[
+              { nombre: "Henry Brayan Nuñez Figueroa", codigo: "2014101295", inicial: "H" },
+              { nombre: "Helber Javier Perez Gutierrez", codigo: "2008100137", inicial: "H" },
+              { nombre: "Fernando Medina Ccangri", codigo: "20a3110232", inicial: "F" },
+              { nombre: "Jhostin Jefry Galarza Camarena", codigo: "2123010051", inicial: "J" },
+            ].map((m) => (
+              <div key={m.codigo} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 hover:-translate-y-1 transition-all">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center text-2xl font-black mx-auto mb-4 shadow-lg">
+                  {m.inicial}
+                </div>
+                <h3 className="font-bold text-white text-sm leading-tight mb-2">{m.nombre}</h3>
+                <p className="text-slate-400 text-xs">Cód. {m.codigo}</p>
+              </div>
+            ))}
+          </div>
+          <div className="border-t border-white/10 pt-8">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-slate-400">
+              <span>🎓 <strong className="text-white">UNTELS</strong> — Univ. Nacional Tecnológica de Lima Sur</span>
+              <span>📖 Formulación y Evaluación de Proyectos TI — ISR0832</span>
+              <span>👨‍🏫 Docente: <strong className="text-white">Arqque Pantigozo Antonio</strong></span>
+              <span>📅 Lima, Perú — 2026</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer className="bg-black py-5 text-center text-slate-600 text-xs">
+        <p>© 2026 · Sistema ML Detección de Deserción Escolar · IE Peruano Francés · UNTELS · ISR0832</p>
+      </footer>
     </div>
   );
 }
