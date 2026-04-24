@@ -5,11 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000"
-  ),
+  metadataBase: new URL("https://peruano-frances-web.vercel.app"),
   title: "Sistema ML - Detección de Riesgo de Deserción Escolar | IE Peruano Francés",
   description:
     "Formulación y evaluación de un sistema inteligente basado en ML para la detección del riesgo de deserción escolar en la IE Peruano Francés, Villa el Salvador.",
