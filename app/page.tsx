@@ -306,6 +306,25 @@ export default function Home() {
               </div>
             ))}
           </div>
+          {/* Evidencia: formulario físico actual */}
+          <div className="flex flex-col sm:flex-row gap-6 items-center bg-red-50 border border-red-100 rounded-2xl p-6 mb-10">
+            <div className="flex-shrink-0 w-full sm:w-48 rounded-xl overflow-hidden border border-red-100 shadow-sm">
+              <Image src="/reporte_incidencia.jpeg" alt="Reporte de Incidencia Escolar — formulario físico IE Peruano Francés" width={400} height={560} className="w-full h-auto" />
+            </div>
+            <div>
+              <span className="inline-block bg-red-100 text-red-700 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider mb-2">Evidencia — Proceso Actual</span>
+              <h4 className="font-bold text-slate-900 text-base mb-2">Reporte de Incidencia Escolar — 100% Físico y Manual</h4>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">
+                Este es el formulario en papel utilizado actualmente por la institución para registrar cada incidencia escolar. Se completa a mano, se archiva de forma física y se notifica por WhatsApp o correo. <strong className="text-red-700">No existe trazabilidad digital, ni historial centralizado, ni alertas automáticas.</strong>
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Sin trazabilidad digital", "Sin alertas automáticas", "Sin historial centralizado", "Riesgo de pérdida de información"].map((t) => (
+                  <span key={t} className="bg-white border border-red-200 text-red-600 text-[10px] font-semibold px-2.5 py-1 rounded-full">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="bg-gradient-to-r from-slate-800 to-blue-900 rounded-2xl p-8 text-white">
             <h3 className="text-xl font-bold mb-3">Objetivo General del Proyecto</h3>
             <p className="text-blue-100 leading-relaxed">
