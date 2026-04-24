@@ -10,8 +10,66 @@ const NAV_LINKS = [
   { href: "#stakeholders", label: "Stakeholders" },
   { href: "#factores", label: "Factores" },
   { href: "#solucion", label: "Solución" },
+  { href: "#canvas", label: "Canvas" },
   { href: "#equipo", label: "Equipo" },
 ];
+
+const CANVAS = {
+  socios: [
+    "UNTELS — equipo de desarrollo del sistema",
+    "Cubicol — plataforma educativa existente",
+    "Proveedor WIN — conectividad 1000 Mbps",
+    "Ministerio de Educación — marco normativo",
+  ],
+  actividades: [
+    "Recolección e integración de datos académicos",
+    "Entrenamiento y actualización de modelos ML",
+    "Generación de alertas tempranas automáticas",
+    "Mantenimiento, soporte y capacitación del personal",
+  ],
+  recursos: [
+    "Datos históricos: asistencia, notas e incidencias",
+    "Infraestructura TI del colegio (Cubicol, internet)",
+    "Equipo de desarrollo UNTELS",
+    "Personal TI de la institución",
+  ],
+  propuesta: [
+    "Detección temprana del riesgo de deserción mediante ML",
+    "Alertas automáticas para intervención oportuna",
+    "Dashboard visual para toma de decisiones directivas",
+    "Reducción de la deserción y estabilidad de matrícula",
+  ],
+  relacion: [
+    "Capacitación presencial al personal docente y administrativo",
+    "Soporte técnico continuo por el área TI de la institución",
+    "Actualizaciones periódicas del sistema ML",
+    "Comunicación mensual de reportes a dirección",
+  ],
+  canales: [
+    "Plataforma web responsive (móvil y escritorio)",
+    "Lectura QR para registro de asistencia",
+    "Integración directa con Cubicol",
+    "Notificaciones vía correo y WhatsApp",
+  ],
+  segmentos: [
+    "Director y docentes de la IE Peruano Francés",
+    "Psicólogo escolar",
+    "Personal administrativo y área TI",
+    "Padres de familia (200 alumnos)",
+  ],
+  costos: [
+    "Desarrollo del sistema — costo mínimo (equipo universitario)",
+    "Hosting cloud — tier gratuito (Vercel / Supabase)",
+    "Capacitación del personal docente",
+    "Mantenimiento y actualizaciones anuales",
+  ],
+  ingresos: [
+    "Reducción de deserción → matrícula estable → ingresos sostenidos",
+    "Ahorro en procesos manuales de seguimiento estudiantil",
+    "Potencial licenciamiento a otras IEP del distrito de VES",
+    "Mejora de imagen institucional y competitividad",
+  ],
+};
 
 const PHOTOS = [
   { src: "/img6.jpeg", caption: "Fachada principal de la I.E.P. Peruano Francés, Villa el Salvador" },
@@ -626,6 +684,107 @@ export default function Home() {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CANVAS ── */}
+      <section id="canvas" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-block bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3">Caso de Negocio</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Business Model Canvas</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed">
+              Modelo de negocio del sistema inteligente de detección de riesgo de deserción escolar para la I.E.P. Peruano Francés.
+            </p>
+          </div>
+
+          {/* Canvas Grid */}
+          <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-md text-sm">
+
+            {/* Fila 1: Socios | Actividades + Recursos | Propuesta | Relación | Segmentos */}
+            <div className="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+
+              {/* Socios Clave */}
+              <div className="bg-blue-50 p-5">
+                <p className="text-xs font-black text-blue-700 uppercase tracking-wider mb-3">🤝 Socios Clave</p>
+                <ul className="space-y-1.5">
+                  {CANVAS.socios.map((i) => <li key={i} className="text-xs text-slate-600 flex gap-1.5"><span className="text-blue-400 flex-shrink-0">·</span>{i}</li>)}
+                </ul>
+              </div>
+
+              {/* Actividades + Recursos */}
+              <div className="md:col-span-1 divide-y divide-slate-200">
+                <div className="bg-indigo-50 p-5">
+                  <p className="text-xs font-black text-indigo-700 uppercase tracking-wider mb-3">⚙️ Actividades Clave</p>
+                  <ul className="space-y-1.5">
+                    {CANVAS.actividades.map((i) => <li key={i} className="text-xs text-slate-600 flex gap-1.5"><span className="text-indigo-400 flex-shrink-0">·</span>{i}</li>)}
+                  </ul>
+                </div>
+                <div className="bg-violet-50 p-5">
+                  <p className="text-xs font-black text-violet-700 uppercase tracking-wider mb-3">🧱 Recursos Clave</p>
+                  <ul className="space-y-1.5">
+                    {CANVAS.recursos.map((i) => <li key={i} className="text-xs text-slate-600 flex gap-1.5"><span className="text-violet-400 flex-shrink-0">·</span>{i}</li>)}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Propuesta de Valor */}
+              <div className="bg-rose-600 p-5 text-white">
+                <p className="text-xs font-black text-rose-200 uppercase tracking-wider mb-3">💡 Propuesta de Valor</p>
+                <ul className="space-y-2">
+                  {CANVAS.propuesta.map((i) => <li key={i} className="text-xs text-white/90 flex gap-1.5"><span className="text-rose-300 flex-shrink-0">·</span>{i}</li>)}
+                </ul>
+              </div>
+
+              {/* Relación + Canales */}
+              <div className="md:col-span-1 divide-y divide-slate-200">
+                <div className="bg-amber-50 p-5">
+                  <p className="text-xs font-black text-amber-700 uppercase tracking-wider mb-3">🤲 Relación con Clientes</p>
+                  <ul className="space-y-1.5">
+                    {CANVAS.relacion.map((i) => <li key={i} className="text-xs text-slate-600 flex gap-1.5"><span className="text-amber-400 flex-shrink-0">·</span>{i}</li>)}
+                  </ul>
+                </div>
+                <div className="bg-orange-50 p-5">
+                  <p className="text-xs font-black text-orange-700 uppercase tracking-wider mb-3">📡 Canales</p>
+                  <ul className="space-y-1.5">
+                    {CANVAS.canales.map((i) => <li key={i} className="text-xs text-slate-600 flex gap-1.5"><span className="text-orange-400 flex-shrink-0">·</span>{i}</li>)}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Segmentos */}
+              <div className="bg-emerald-50 p-5">
+                <p className="text-xs font-black text-emerald-700 uppercase tracking-wider mb-3">👥 Segmentos de Clientes</p>
+                <ul className="space-y-1.5">
+                  {CANVAS.segmentos.map((i) => <li key={i} className="text-xs text-slate-600 flex gap-1.5"><span className="text-emerald-400 flex-shrink-0">·</span>{i}</li>)}
+                </ul>
+              </div>
+            </div>
+
+            {/* Fila 2: Costos | Ingresos */}
+            <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 border-t border-slate-200">
+              <div className="bg-slate-100 p-5">
+                <p className="text-xs font-black text-slate-700 uppercase tracking-wider mb-3">💸 Estructura de Costos</p>
+                <ul className="grid sm:grid-cols-2 gap-2">
+                  {CANVAS.costos.map((i) => (
+                    <li key={i} className="text-xs text-slate-600 flex gap-1.5 items-start">
+                      <span className="text-slate-400 flex-shrink-0">·</span>{i}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-teal-50 p-5">
+                <p className="text-xs font-black text-teal-700 uppercase tracking-wider mb-3">💰 Fuentes de Ingresos / Valor</p>
+                <ul className="grid sm:grid-cols-2 gap-2">
+                  {CANVAS.ingresos.map((i) => (
+                    <li key={i} className="text-xs text-slate-600 flex gap-1.5 items-start">
+                      <span className="text-teal-400 flex-shrink-0">·</span>{i}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
