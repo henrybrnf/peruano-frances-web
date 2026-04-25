@@ -794,10 +794,10 @@ export default function Home() {
               </thead>
               <tbody>
                 {[
-                  ["Promotora Directora", "Reuniones formales presenciales", "Mensual"],
+                  ["Promotora Directora", "Reuniones formales presenciales", "Semanal"],
                   ["Docentes", "Reuniones / Plataforma digital interna", "Semanal"],
                   ["Área de TI", "Reuniones técnicas y reportes", "Semanal"],
-                  ["Padres de Familia", "Comunicados / Plataforma Cubicol", "Mensual"],
+                  ["Padres de Familia", "Comunicados / Plataforma Cubicol", "Semanal"],
                   ["Estudiantes", "Plataforma educativa", "Continua"],
                 ].map(([s, m, f], i) => (
                   <tr key={s} className={i % 2 === 0 ? "bg-white" : "bg-slate-50"}>
