@@ -736,31 +736,8 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Seguimiento / Monitoreo */}
           <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
             <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">4</span>
-            Seguimiento y Nivel de Involucramiento
-          </h3>
-          <div className="grid sm:grid-cols-2 gap-4 mb-10">
-            {MONITOREO.map((m) => (
-              <div key={m.nombre} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all">
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <p className="font-bold text-slate-800 text-sm">{m.nombre}</p>
-                    <span className={`inline-block mt-0.5 text-[10px] font-semibold px-2 py-0.5 rounded-full text-white ${m.color}`}>{m.estado}</span>
-                  </div>
-                  <span className="text-2xl font-black text-slate-700">{m.nivel}%</span>
-                </div>
-                <div className="h-2 bg-slate-100 rounded-full overflow-hidden mb-3">
-                  <div className={`h-full ${m.color} rounded-full transition-all`} style={{ width: `${m.nivel}%` }} />
-                </div>
-                <p className="text-xs text-slate-500 leading-relaxed">{m.accion}</p>
-              </div>
-            ))}
-          </div>
-
-          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
-            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">5</span>
             Análisis de Expectativas
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
@@ -780,10 +757,10 @@ export default function Home() {
           </div>
 
           <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
-            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">6</span>
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">5</span>
             Plan de Comunicación
           </h3>
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm mb-10">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-slate-800 text-white">
@@ -808,6 +785,29 @@ export default function Home() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Seguimiento / Monitoreo */}
+          <h3 className="font-bold text-slate-900 text-xl mb-4 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center">6</span>
+            Seguimiento y Nivel de Involucramiento
+          </h3>
+          <div className="grid sm:grid-cols-2 gap-4 mb-10">
+            {MONITOREO.map((m) => (
+              <div key={m.nombre} className="bg-white border border-slate-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all">
+                <div className="flex items-center justify-between mb-3">
+                  <div>
+                    <p className="font-bold text-slate-800 text-sm">{m.nombre}</p>
+                    <span className={`inline-block mt-0.5 text-[10px] font-semibold px-2 py-0.5 rounded-full text-white ${m.color}`}>{m.estado}</span>
+                  </div>
+                  <span className="text-2xl font-black text-slate-700">{m.nivel}%</span>
+                </div>
+                <div className="h-2 bg-slate-100 rounded-full overflow-hidden mb-3">
+                  <div className={`h-full ${m.color} rounded-full transition-all`} style={{ width: `${m.nivel}%` }} />
+                </div>
+                <p className="text-xs text-slate-500 leading-relaxed">{m.accion}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
