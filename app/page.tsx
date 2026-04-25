@@ -297,7 +297,7 @@ export default function Home() {
             {[
               { icon: "📋", titulo: "Registro 100% Manual", desc: "La asistencia se registra en papel por docentes y auxiliares. Las incidencias se reportan por WhatsApp o correo, sin trazabilidad centralizada." },
               { icon: "⚠️", titulo: "Detección Tardía", desc: "La identificación de alumnos en riesgo depende exclusivamente de la observación individual del docente. No hay sistema de alertas tempranas." },
-              { icon: "📱", titulo: "40% de Padres sin Acceso", desc: "4 de cada 10 padres no puede ingresar a la plataforma Cubicol. Las notificaciones por WhatsApp no garantizan respuesta inmediata." },
+              { icon: "📱", titulo: "40% de Padres No Usa la Plataforma", desc: "4 de cada 10 padres no tiene el hábito ni la cultura de ingresar a Cubicol. Las notificaciones por WhatsApp no garantizan respuesta inmediata." },
             ].map((c) => (
               <div key={c.titulo} className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
                 <div className="text-4xl mb-3">{c.icon}</div>
@@ -568,7 +568,7 @@ export default function Home() {
               {[
                 { icon: "📄", t: "Asistencia 100% manual", d: "Registro físico en cuadernos por docentes y auxiliares, sin trazabilidad digital ni alertas automáticas." },
                 { icon: "📲", t: "Incidencias por WhatsApp", d: "Las incidencias se notifican a los padres por WhatsApp o correo. Sin registro centralizado ni respuesta garantizada." },
-                { icon: "🔴", t: "40% padres sin acceso", d: "El 40% de padres de familia tiene dificultades para ingresar a Cubicol, limitando la comunicación efectiva." },
+                { icon: "🔴", t: "40% padres no usa la plataforma", d: "El 40% de padres de familia no tiene el hábito de ingresar a Cubicol, limitando la comunicación efectiva con la institución." },
                 { icon: "✅", t: "Apertura al QR", d: "La directora expresó total interés en el QR para control de asistencia y notificación puntual a los padres." },
                 { icon: "🤝", t: "Disposición institucional", d: "La directora ofrece acceso a los datos del colegio para formular y evaluar una solución tecnológica adecuada." },
                 { icon: "💡", t: "Necesidad prioritaria", d: "Control digitalizado de asistencia que permita visualizar el progreso del alumno durante todo el año escolar." },
