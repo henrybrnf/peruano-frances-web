@@ -5,20 +5,53 @@ html {
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #1e293b;
+  --teal:     #0d7377;
+  --teal-dk:  #0a5c5f;
+  --teal-lt:  #e8f5f5;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #1e293b;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
+/* ── Tipografía ──────────────────────────────────────── */
+.font-serif-display {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+.font-mono-label {
+  font-family: var(--font-mono), 'Courier New', monospace;
+  letter-spacing: 0.12em;
+}
+
+/* Label monospace que aparece antes de cada sección */
+.chapter-label {
+  display: block;
+  font-family: var(--font-mono), 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+
+/* ── Fade-in por sección ────────────────────────────── */
+.fade-section {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Utilidades legacy ──────────────────────────────── */
 .section-alt {
   background-color: #f8fafc;
 }
-
 .card-hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -26,11 +59,6 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
-
-.nav-link {
-  transition: color 0.2s ease;
-}
-
 .photo-item img {
   transition: transform 0.3s ease;
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Lora, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const lora = Lora({ subsets: ["latin"], variable: "--font-lora", style: ["normal", "italic"] });
+const spaceMono = Space_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://peruano-frances-web.vercel.app"),
@@ -26,7 +28,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className="h-full scroll-smooth">
-      <body className={`${inter.className} min-h-full flex flex-col antialiased`}>
+      <body className={`${inter.variable} ${lora.variable} ${spaceMono.variable} min-h-full flex flex-col antialiased`}>
         {children}
       </body>
     </html>
