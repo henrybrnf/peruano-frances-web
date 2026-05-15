@@ -1385,13 +1385,13 @@ export default function Home() {
               <span className="chapter-label block mb-2">02 · Análisis del Problema · Herramienta y Técnica</span>
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Análisis del Problema (Marco Lógico + Encuesta Docente)</h2>
               <p className="text-slate-600 mb-8 max-w-3xl">
-                De acuerdo con la metodología del Marco Lógico, el análisis del problema permite identificar la situación negativa principal, sus causas y sus efectos, estableciendo relaciones de causa–efecto que justifican el desarrollo del proyecto.
+                Para identificar la problemática central de la institución, se aplicaron dos metodologías complementarias:
               </p>
               
               <div className="mb-10">
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">1. Metodología del Marco Lógico</h3>
                 <p className="text-slate-600 mb-6 max-w-3xl">
-                  A partir de este análisis estructurado se identificaron las causas raíz del problema central:
+                  De acuerdo con la metodología del Marco Lógico, el análisis del problema permite identificar la situación negativa principal, sus causas y sus efectos, estableciendo relaciones de causa–efecto que justifican el desarrollo del proyecto. A partir de este análisis estructurado se identificaron las causas raíz del problema central:
                 </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
                 <div className="border border-slate-300 rounded-lg p-6 bg-white">
@@ -1466,7 +1466,21 @@ export default function Home() {
                 <p className="text-slate-600 text-sm mb-6">
                   <strong>Objetivo:</strong> Recopilar evidencia cualitativa que valide la necesidad del sistema inteligente, identifique barreras actuales en el seguimiento académico y mida la receptividad docente hacia soluciones tecnológicas innovadoras basadas en Machine Learning.
                 </p>
-                <div className="bg-emerald-50 border border-emerald-300 rounded-lg p-4 flex items-center justify-between\">\n                  <div>\n                    <p className="text-sm font-semibold text-slate-900\">¿Deseas participar en la encuesta?</p>\n                    <p className=\"text-xs text-slate-600 mt-1\">Accede al formulario de Google Forms</p>\n                  </div>\n                  <a\n                    href=\"https://docs.google.com/forms/d/1LN6uAT6pnceHI7a77IrxZnJov6myUH3BFOSWjrWxHdU/viewform?chromeless=1&edit_requested=true\"\n                    target=\"_blank\"\n                    rel=\"noopener noreferrer\"\n                    className=\"px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors flex-shrink-0\"\n                  >\n                    Responder Encuesta →\n                  </a>\n                </div>\n              </div>
+                <div className="bg-emerald-50 border border-emerald-300 rounded-lg p-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">¿Deseas participar en la encuesta?</p>
+                    <p className="text-xs text-slate-600 mt-1">Accede al formulario de Google Forms</p>
+                  </div>
+                  <a
+                    href="https://docs.google.com/forms/d/1LN6uAT6pnceHI7a77IrxZnJov6myUH3BFOSWjrWxHdU/viewform?chromeless=1&edit_requested=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors flex-shrink-0"
+                  >
+                    Responder Encuesta →
+                  </a>
+                </div>
+              </div>
             </div>
           </section>
 
