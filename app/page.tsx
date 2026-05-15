@@ -88,6 +88,141 @@ const ACTIVOS = [
   { titulo: "Capital Humano", items: ["1 técnico de laboratorio TI", "1 gestora de Cubicol", "Directora con apertura TI", "Docentes capacitados"] },
 ];
 
+const ENCUESTA_PREGUNTAS = [
+  {
+    num: 1, img: "/pregunta1.png",
+    texto: "¿Cuántos años de experiencia tiene como docente?",
+    tipo: "nominal",
+    filas: [
+      { opcion: "Más de 7 años", n: 3, pct: 50 },
+      { opcion: "4 a 7 años",    n: 1, pct: 16.7 },
+      { opcion: "1 a 3 años",    n: 1, pct: 16.7 },
+      { opcion: "Menos de 1 año",n: 1, pct: 16.7 },
+    ],
+    hallazgo: "Equipo docente mayoritariamente experimentado (50% con más de 7 años).",
+    color: "blue",
+  },
+  {
+    num: 2, img: "/pregunta2.png",
+    texto: "¿Con qué frecuencia realiza seguimiento al rendimiento académico de sus estudiantes?",
+    tipo: "nominal",
+    filas: [
+      { opcion: "Diariamente",  n: 5, pct: 83.3 },
+      { opcion: "Mensualmente", n: 1, pct: 16.7 },
+    ],
+    hallazgo: "83.3% realiza seguimiento diario, pero de forma manual e individualizada.",
+    color: "indigo",
+  },
+  {
+    num: 3, img: "/pregunta3.png",
+    texto: "¿Considera que actualmente la institución cuenta con herramientas suficientes para detectar estudiantes con bajo rendimiento académico?",
+    tipo: "nominal",
+    filas: [
+      { opcion: "Sí",           n: 3, pct: 50.0 },
+      { opcion: "No",           n: 2, pct: 33.3 },
+      { opcion: "Parcialmente", n: 1, pct: 16.7 },
+    ],
+    hallazgo: "50% reconoce carencia o insuficiencia de herramientas (No + Parcialmente).",
+    color: "amber",
+  },
+  {
+    num: 4, img: "/pregunta4.png",
+    texto: "¿Qué tan difícil considera identificar oportunamente a estudiantes con problemas académicos?",
+    tipo: "likert",
+    filas: [
+      { opcion: "Regular", n: 5, pct: 83.3 },
+      { opcion: "Fácil",   n: 1, pct: 16.7 },
+      { opcion: "Difícil", n: 0, pct: 0 },
+    ],
+    hallazgo: "83.3% califica la identificación oportuna de complejidad moderada.",
+    color: "orange",
+  },
+  {
+    num: 5, img: "/pregunta5.png",
+    texto: "¿Cuáles son los principales factores que afectan el rendimiento académico de los estudiantes?",
+    tipo: "nominal",
+    filas: [
+      { opcion: "Uso excesivo de redes sociales",  n: 2, pct: 33.3 },
+      { opcion: "Bajo hábito de estudio",           n: 1, pct: 16.7 },
+      { opcion: "Bajo acompañamiento familiar",     n: 1, pct: 16.7 },
+      { opcion: "Problemas familiares",             n: 1, pct: 16.7 },
+      { opcion: "Todas las anteriores",             n: 1, pct: 16.7 },
+    ],
+    hallazgo: "Factores múltiples y combinados — justifica un sistema multivariable.",
+    color: "red",
+  },
+  {
+    num: 6, img: "/pregunta6.png",
+    texto: "¿Qué información considera más importante para detectar estudiantes con bajo rendimiento académico?",
+    tipo: "nominal",
+    filas: [
+      { opcion: "Todas las anteriores", n: 4, pct: 66.7 },
+      { opcion: "Entrega de tareas",    n: 1, pct: 16.7 },
+      { opcion: "Conducta",             n: 1, pct: 16.7 },
+    ],
+    hallazgo: "66.7% necesita datos integrados — valida el diseño multivariable del sistema.",
+    color: "purple",
+  },
+  {
+    num: 7, img: "/pregunta7.png",
+    texto: "¿Considera que los problemas académicos suelen detectarse tardíamente?",
+    tipo: "likert",
+    filas: [
+      { opcion: "Algunas veces",  n: 4, pct: 66.7 },
+      { opcion: "Frecuentemente", n: 2, pct: 33.3 },
+      { opcion: "Raramente",      n: 0, pct: 0 },
+    ],
+    hallazgo: "100% reconoce detección tardía — valida directamente el problema central.",
+    color: "red",
+  },
+  {
+    num: 8, img: "/pregunta8.png",
+    texto: "¿Cree que un sistema inteligente basado en Machine Learning ayudaría a mejorar el seguimiento académico?",
+    tipo: "likert",
+    filas: [
+      { opcion: "Totalmente de acuerdo", n: 3, pct: 50.0 },
+      { opcion: "De acuerdo",            n: 2, pct: 33.3 },
+      { opcion: "Neutral",               n: 1, pct: 16.7 },
+      { opcion: "En desacuerdo",         n: 0, pct: 0 },
+    ],
+    hallazgo: "83.3% favorable a la solución ML (De acuerdo + Totalmente de acuerdo).",
+    color: "emerald",
+  },
+  {
+    num: 9, img: "/pregunta9.png",
+    texto: "¿Qué tan útil considera la implementación de alertas tempranas para identificar estudiantes en riesgo académico?",
+    tipo: "likert",
+    filas: [
+      { opcion: "Muy útil",   n: 4, pct: 66.7 },
+      { opcion: "Útil",       n: 2, pct: 33.3 },
+      { opcion: "Poco útil",  n: 0, pct: 0 },
+    ],
+    hallazgo: "100% considera útiles las alertas tempranas — validación total de la funcionalidad core.",
+    color: "emerald",
+  },
+  {
+    num: 10, img: "/pregunta10.png",
+    texto: "¿Estaría dispuesto(a) a utilizar una plataforma tecnológica que ayude a monitorear el rendimiento académico estudiantil?",
+    tipo: "nominal",
+    filas: [
+      { opcion: "Sí",      n: 5, pct: 83.3 },
+      { opcion: "Tal vez", n: 1, pct: 16.7 },
+      { opcion: "No",      n: 0, pct: 0 },
+    ],
+    hallazgo: "0% de rechazo — alta disposición tecnológica del equipo docente.",
+    color: "teal",
+  },
+];
+
+const ENCUESTA_P11 = [
+  "Control digital de notas y asistencia de forma continua.",
+  "Mayor apoyo y comunicación con las familias.",
+  "Fomento de hábitos de estudio desde el hogar.",
+  "Tutorías personalizadas por alumno.",
+  "Uso de datos y tecnología para monitoreo académico.",
+  "Estrategias dinámicas que motiven el aprendizaje.",
+];
+
 const MODULOS = [
   { letra: "A", nombre: "Recolección de Datos", color: "bg-blue-700", descripcion: "Integra asistencia, notas e incidencias desde Cubicol y nuevos registros digitales." },
   { letra: "B", nombre: "Procesamiento", color: "bg-indigo-700", descripcion: "Limpieza, normalización e integración de datos para el análisis." },
@@ -154,7 +289,10 @@ const TOC_CHAPTERS: TocChapter[] = [
         { label: "Marco Lógico", href: "#p02-herramientas" },
         { label: "Encuesta Docente", href: "#p02-herramientas" }
       ] },
-      { label: "Evidencias", color: "text-purple-600", sections: [{ label: "Respuestas de Docentes", href: "#p02-evidencias" }] },
+      { label: "Evidencias", color: "text-purple-600", sections: [
+        { label: "Respuestas de Docentes", href: "#p02-evidencias" },
+        { label: "Resultados por Pregunta", href: "#p02-resultados" },
+      ] },
       { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Problema Central", href: "#p02-salidas" }] },
     ],
   },
@@ -1538,6 +1676,129 @@ export default function Home() {
               <div className="bg-blue-50 border border-blue-300 rounded-lg p-4 mt-6">
                 <p className="text-sm text-slate-700">
                   <strong>Interpretación:</strong> Las respuestas documentadas evidencian que los docentes reconocen la dificultad actual en detectar tempranamente problemas académicos, validan la necesidad de herramientas más eficientes de monitoreo, y expresan disposición a utilizar sistemas tecnológicos innovadores. Esto refuerza la justificación del proyecto.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Resultados encuesta ── */}
+          <section id="p02-resultados" className="fade-section py-14 bg-slate-50 border-b border-slate-200">
+            <div className="px-8 lg:px-12">
+              <span className="chapter-label block mb-2">02 · Análisis del Problema · Resultados del Instrumento</span>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-2">Resultados de la Encuesta Docente</h2>
+              <p className="text-slate-600 mb-2 max-w-3xl text-sm">
+                Análisis descriptivo de las 6 respuestas recibidas. Instrumento: Google Forms, 11 preguntas, aplicado a docentes y auxiliares de la IE Peruano Francés<Cite r="Márquez-Vera et al., 2013" />.
+              </p>
+
+              {/* Ficha técnica */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mb-10">
+                {[
+                  { label: "Respuestas",        val: "6",      sub: "de 16 docentes/auxiliares" },
+                  { label: "Tasa de respuesta",  val: "37.5%",  sub: "muestra indicativa" },
+                  { label: "Preguntas",          val: "11",     sub: "10 cerradas + 1 abierta" },
+                  { label: "Valores nulos",      val: "0",      sub: "instrumento completo" },
+                ].map((f) => (
+                  <div key={f.label} className="bg-white border border-slate-200 rounded-xl p-4 text-center shadow-sm">
+                    <p className="text-2xl font-bold text-[#0d7377]">{f.val}</p>
+                    <p className="text-xs font-semibold text-slate-800 mt-0.5">{f.label}</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">{f.sub}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Preguntas 1–10 */}
+              <div className="space-y-10">
+                {ENCUESTA_PREGUNTAS.map((p) => (
+                  <div key={p.num} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <div className="bg-slate-800 px-6 py-3 flex items-center gap-3">
+                      <span className="font-mono-label text-[11px] bg-slate-600 text-slate-200 px-2 py-0.5 rounded font-bold">P{p.num}</span>
+                      <p className="text-white text-sm font-medium leading-snug">{p.texto}</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                      {/* Gráfico */}
+                      <div className="p-4 flex items-center justify-center bg-white">
+                        <div className="relative w-full" style={{ maxWidth: 480 }}>
+                          <Image
+                            src={p.img}
+                            alt={`Resultados P${p.num}`}
+                            width={480}
+                            height={300}
+                            className="w-full h-auto object-contain rounded"
+                          />
+                        </div>
+                      </div>
+                      {/* Tabla + hallazgo */}
+                      <div className="p-5 flex flex-col justify-between">
+                        <table className="w-full text-sm mb-4">
+                          <thead>
+                            <tr className="border-b border-slate-200">
+                              <th className="text-left text-xs text-slate-500 font-mono-label pb-2">Opción</th>
+                              <th className="text-center text-xs text-slate-500 font-mono-label pb-2">n</th>
+                              <th className="text-right text-xs text-slate-500 font-mono-label pb-2">%</th>
+                            </tr>
+                          </thead>
+                          <tbody className="divide-y divide-slate-100">
+                            {p.filas.map((f) => (
+                              <tr key={f.opcion}>
+                                <td className="py-1.5 text-slate-700 text-xs">{f.opcion}</td>
+                                <td className="py-1.5 text-center text-slate-700 text-xs font-mono">{f.n}</td>
+                                <td className="py-1.5 text-right text-slate-700 text-xs font-mono">{f.pct}%</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+                          <p className="text-xs font-semibold text-emerald-800">Hallazgo clave</p>
+                          <p className="text-xs text-slate-700 mt-0.5">{p.hallazgo}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* P11 abierta */}
+              <div className="mt-10 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                <div className="bg-slate-800 px-6 py-3 flex items-center gap-3">
+                  <span className="font-mono-label text-[11px] bg-slate-600 text-slate-200 px-2 py-0.5 rounded font-bold">P11</span>
+                  <p className="text-white text-sm font-medium">¿Qué mejoras considera necesarias para fortalecer el seguimiento académico de los estudiantes?</p>
+                </div>
+                <div className="p-6">
+                  <p className="text-xs text-slate-500 mb-4 font-mono-label uppercase tracking-wider">Pregunta abierta — respuestas textuales codificadas</p>
+                  <ul className="space-y-2">
+                    {ENCUESTA_P11.map((r, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                        <span className="font-mono-label text-[10px] bg-[#e8f5f5] text-[#0d7377] px-1.5 py-0.5 rounded font-bold flex-shrink-0 mt-0.5">{i + 1}</span>
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-xs text-slate-700"><strong>Síntesis:</strong> Los docentes demandan control digital integrado de notas y asistencia, tutorías personalizadas y uso de datos para monitoreo — convergente con los módulos planificados del sistema.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hallazgos clave resumen */}
+              <div className="mt-10 bg-slate-800 rounded-2xl p-6 text-white">
+                <h3 className="font-serif-display text-lg font-bold mb-4">Hallazgos Clave — Validación del Instrumento</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {[
+                    { pct: "100%", desc: "reconoce detección tardía de problemas (P7)", color: "bg-red-500" },
+                    { pct: "83.3%", desc: "acepta la solución ML (P8)", color: "bg-emerald-500" },
+                    { pct: "100%", desc: "valora las alertas tempranas como útiles o muy útiles (P9)", color: "bg-emerald-500" },
+                    { pct: "83.3%", desc: "usaría la plataforma tecnológica (P10)", color: "bg-blue-500" },
+                    { pct: "50%",   desc: "reconoce herramientas insuficientes (P3)", color: "bg-amber-500" },
+                    { pct: "66.7%", desc: "necesita datos integrados multivariable (P6)", color: "bg-purple-500" },
+                  ].map((h) => (
+                    <div key={h.desc} className="flex items-start gap-3 bg-white/10 rounded-lg p-3">
+                      <span className={`${h.color} text-white font-bold text-sm px-2 py-1 rounded flex-shrink-0`}>{h.pct}</span>
+                      <p className="text-slate-200 text-sm">{h.desc}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-slate-400 text-xs mt-4">
+                  Nota: N=6 (37.5% de tasa de respuesta sobre 16 docentes/auxiliares). Resultados indicativos — no estadísticamente representativos dado el tamaño muestral.
                 </p>
               </div>
             </div>
