@@ -153,7 +153,7 @@ const MAPA_EMPATIA = [
       "Mejorar el rendimiento de sus estudiantes con menos esfuerzo manual.",
     ],
   },
-  {
+  /* {
     usuario: "Área TI",
     cargo: "Encargado Lab + Gestora Cubicol — Implementadores",
     color: "border-emerald-500",
@@ -184,7 +184,7 @@ const MAPA_EMPATIA = [
       "Automatizar procesos manuales repetitivos.",
       "Ser el soporte técnico de una solución innovadora.",
     ],
-  },
+  }, */
 ];
 
 const HMW = [
