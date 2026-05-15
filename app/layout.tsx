@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Lora, Space_Mono } from "next/font/google";
+import { Playfair_Display, Crimson_Pro, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const lora = Lora({ subsets: ["latin"], variable: "--font-lora", style: ["normal", "italic"] });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", style: ["normal", "italic"] });
+const crimson = Crimson_Pro({ subsets: ["latin"], variable: "--font-crimson", style: ["normal", "italic"], weight: ["400", "600"] });
 const spaceMono = Space_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "700"] });
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className="h-full scroll-smooth">
-      <body className={`${inter.variable} ${lora.variable} ${spaceMono.variable} min-h-full flex flex-col antialiased`}>
+      <body className={`${playfair.variable} ${crimson.variable} ${spaceMono.variable} min-h-full flex flex-col antialiased`}>
         {children}
       </body>
     </html>
