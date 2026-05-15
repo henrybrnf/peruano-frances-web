@@ -1493,7 +1493,7 @@ export default function Home() {
               <span className="chapter-label block mb-2">02 · Análisis del Problema · Evidencia</span>
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Evidencias: Respuestas de Docentes</h2>
               <p className="text-slate-600 mb-8 max-w-3xl">
-                Las siguientes capturas de pantalla muestran ejemplos reales de las respuestas obtenidas en la encuesta de Google Forms aplicada a los docentes de la IE Peruano Francés. Estas respuestas validan la necesidad identificada y demuestran la receptividad del equipo docente hacia soluciones de detección temprana basadas en análisis de datos e inteligencia artificial.
+                Las siguientes fotografías muestran ejemplos reales de las respuestas obtenidas en la encuesta de Google Forms aplicada a los docentes de la IE Peruano Francés. Estas respuestas validan la necesidad identificada y demuestran la receptividad del equipo docente hacia soluciones de detección temprana basadas en análisis de datos e inteligencia artificial.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {[
