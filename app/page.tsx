@@ -148,18 +148,18 @@ const TOC_CHAPTERS: TocChapter[] = [
     num: "02",
     label: "Análisis del Problema",
     groups: [
-      { label: "Entradas", color: "text-blue-600", sections: [{ label: "Por definir", href: "#p02-entradas" }] },
-      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [{ label: "Por definir", href: "#p02-herramientas" }] },
-      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Por definir", href: "#p02-salidas" }] },
+      { label: "Entradas", color: "text-blue-600", sections: [{ label: "Descripción de la problemática", href: "#p02-entradas" }] },
+      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [{ label: "Causas y Efectos", href: "#p02-herramientas" }] },
+      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Problema Central", href: "#p02-salidas" }] },
     ],
   },
   {
     num: "03",
     label: "Análisis del Objetivo",
     groups: [
-      { label: "Entradas", color: "text-blue-600", sections: [{ label: "Por definir", href: "#p03-entradas" }] },
-      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [{ label: "Por definir", href: "#p03-herramientas" }] },
-      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Por definir", href: "#p03-salidas" }] },
+      { label: "Entradas", color: "text-blue-600", sections: [{ label: "Problema Central", href: "#p03-entradas" }] },
+      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [{ label: "Árbol de Objetivos", href: "#p03-herramientas" }] },
+      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Objetivo Central", href: "#p03-salidas" }] },
     ],
   },
   {
@@ -1351,24 +1351,143 @@ export default function Home() {
           <section id="p02-entradas" className="fade-section py-14 bg-white border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">02 · Análisis del Problema · Entrada</span>
-              <h2 className="font-serif-display text-3xl font-bold text-slate-300 mb-2">Por definir</h2>
-              <p className="text-slate-400 text-sm">Contenido pendiente — próxima semana.</p>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Descripción de la Problemática</h2>
+              <div className="prose prose-sm max-w-3xl space-y-4 text-slate-700">
+                <p>
+                  En muchas instituciones educativas, el seguimiento del rendimiento académico de los estudiantes se realiza de manera manual o mediante sistemas que únicamente almacenan notas y asistencias sin realizar análisis predictivos. Esta situación dificulta identificar oportunamente a estudiantes que presentan bajo desempeño académico o riesgo de desaprobación.
+                </p>
+                <p>
+                  En el colegio Peruano Francés, aunque existen registros académicos y administrativos, <strong>no se cuenta con una herramienta inteligente</strong> que permita analizar de manera integrada variables como:
+                </p>
+                <ul className="list-disc list-inside space-y-1 ml-2">
+                  <li>Asistencia</li>
+                  <li>Calificaciones</li>
+                  <li>Participación</li>
+                  <li>Incidencias conductuales</li>
+                  <li>Cumplimiento de tareas</li>
+                  <li>Evolución del desempeño académico</li>
+                </ul>
+                <p>
+                  Debido a ello, las intervenciones por parte de docentes y directivos suelen realizarse <strong>cuando el problema académico ya se encuentra avanzado</strong>, afectando el aprendizaje, la motivación y el desempeño general de los estudiantes.
+                </p>
+                <p>
+                  Asimismo, la gran cantidad de información generada diariamente dificulta realizar un monitoreo personalizado y continuo de cada estudiante, provocando retrasos en la toma de decisiones pedagógicas.
+                </p>
+                <p className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6">
+                  <strong>Necesidad identificada:</strong> Implementar un sistema inteligente basado en Machine Learning que permita analizar patrones académicos y generar alertas tempranas sobre estudiantes con riesgo de bajo rendimiento académico.
+                </p>
+              </div>
             </div>
           </section>
 
           <section id="p02-herramientas" className="fade-section py-14 bg-slate-50 border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">02 · Análisis del Problema · Herramienta y Técnica</span>
-              <h2 className="font-serif-display text-3xl font-bold text-slate-300 mb-2">Por definir</h2>
-              <p className="text-slate-400 text-sm">Contenido pendiente — próxima semana.</p>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Análisis del Problema (Marco Lógico + Encuesta Docente)</h2>
+              <p className="text-slate-600 mb-8 max-w-3xl">
+                De acuerdo con la metodología del Marco Lógico, el análisis del problema permite identificar la situación negativa principal, sus causas y sus efectos, estableciendo relaciones de causa–efecto que justifican el desarrollo del proyecto.
+              </p>
+              
+              <div className="mb-10">
+                <h3 className="text-lg font-semibold text-slate-900 mb-4">1. Metodología del Marco Lógico</h3>
+                <p className="text-slate-600 mb-6 max-w-3xl">
+                  A partir de este análisis estructurado se identificaron las causas raíz del problema central:
+                </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                <div className="border border-slate-300 rounded-lg p-6 bg-white">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">→</span> Causas Directas
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Falta de herramientas de análisis predictivo académico</li>
+                    <li>• Seguimiento manual del desempeño estudiantil</li>
+                    <li>• Información académica dispersa en diferentes sistemas</li>
+                    <li>• Ausencia de alertas tempranas automatizadas</li>
+                  </ul>
+                </div>
+                <div className="border border-slate-300 rounded-lg p-6 bg-white">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">→</span> Causas Indirectas
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Limitado uso de tecnologías de inteligencia artificial</li>
+                    <li>• Procesos tradicionales de monitoreo académico</li>
+                    <li>• Escasa integración de bases de datos institucionales</li>
+                    <li>• Falta de indicadores académicos en tiempo real</li>
+                  </ul>
+                </div>
+                <div className="border border-red-300 rounded-lg p-6 bg-red-50">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">↓</span> Efectos Directos
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Intervenciones tardías por parte de docentes</li>
+                    <li>• Bajo desempeño académico sostenido</li>
+                    <li>• Dificultad en la toma de decisiones pedagógicas</li>
+                  </ul>
+                </div>
+                <div className="border border-red-300 rounded-lg p-6 bg-red-50">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">↓</span> Efectos Indirectos
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Desmotivación estudiantil</li>
+                    <li>• Incremento de estudiantes desaprobados</li>
+                    <li>• Disminución del rendimiento institucional</li>
+                    <li>• Riesgo de abandono escolar a largo plazo</li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+              
+              <hr className="my-10 border-slate-300" />
+              
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-4">2. Encuesta Docente sobre Seguimiento Académico (Google Forms)</h3>
+                <p className="text-slate-600 mb-6 max-w-3xl">
+                  Se desarrolló una encuesta digital mediante Google Forms dirigida a los docentes de la IE Peruano Francés para validar la percepción institucional sobre el seguimiento académico estudiantil. La encuesta incluye 11 preguntas estructuradas que exploran:
+                </p>
+                <div className="bg-white border border-slate-300 rounded-lg p-6 mb-6">
+                  <h4 className="font-semibold text-slate-900 mb-3">Temas Evaluados:</h4>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Experiencia y práctica docente</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Frecuencia de seguimiento académico</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Disponibilidad de herramientas actuales</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Dificultad en detección temprana</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Factores que afectan rendimiento</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Información relevante para detectar riesgo</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Oportunidad de detección de problemas</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Aceptación de sistemas de IA/ML</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Utilidad de alertas tempranas</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Disposición de uso de plataforma</li>
+                    <li className="flex gap-2"><span className="text-blue-600">✓</span> Mejoras necesarias en seguimiento</li>
+                  </ul>
+                </div>
+                <p className="text-slate-600 text-sm mb-6">
+                  <strong>Objetivo:</strong> Recopilar evidencia cualitativa que valide la necesidad del sistema inteligente, identifique barreras actuales en el seguimiento académico y mida la receptividad docente hacia soluciones tecnológicas innovadoras basadas en Machine Learning.
+                </p>
+                <div className="bg-emerald-50 border border-emerald-300 rounded-lg p-4 flex items-center justify-between\">\n                  <div>\n                    <p className="text-sm font-semibold text-slate-900\">¿Deseas participar en la encuesta?</p>\n                    <p className=\"text-xs text-slate-600 mt-1\">Accede al formulario de Google Forms</p>\n                  </div>\n                  <a\n                    href=\"https://docs.google.com/forms/d/1LN6uAT6pnceHI7a77IrxZnJov6myUH3BFOSWjrWxHdU/viewform?chromeless=1&edit_requested=true\"\n                    target=\"_blank\"\n                    rel=\"noopener noreferrer\"\n                    className=\"px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-lg transition-colors flex-shrink-0\"\n                  >\n                    Responder Encuesta →\n                  </a>\n                </div>\n              </div>
             </div>
           </section>
 
           <section id="p02-salidas" className="fade-section py-14 bg-white border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">02 · Análisis del Problema · Salida</span>
-              <h2 className="font-serif-display text-3xl font-bold text-slate-300 mb-2">Por definir</h2>
-              <p className="text-slate-400 text-sm">Contenido pendiente — próxima semana.</p>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-8">Problema Central Identificado</h2>
+              <div className="max-w-3xl">
+                <div className="border-l-4 border-red-600 bg-red-50 p-6 rounded-r-lg mb-10">
+                  <h3 className="text-sm font-mono-label text-red-700 uppercase tracking-wider mb-2">Problema Central</h3>
+                  <p className="text-2xl font-serif-display text-slate-900 leading-tight">
+                    "Deficiente detección temprana del bajo rendimiento académico estudiantil."
+                  </p>
+                </div>
+                <div className="bg-slate-100 rounded-lg p-6">
+                  <h3 className="font-semibold text-slate-900 mb-3">Efecto Final del Problema</h3>
+                  <p className="text-slate-700">
+                    <strong>Afectación de la calidad educativa institucional</strong> — La falta de detección temprana genera una cascada de efectos negativos que impacta directamente en la calidad educativa institucional y el bienestar integral de los estudiantes.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -1401,24 +1520,88 @@ export default function Home() {
           <section id="p03-entradas" className="fade-section py-14 bg-white border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Entrada</span>
-              <h2 className="font-serif-display text-3xl font-bold text-slate-300 mb-2">Por definir</h2>
-              <p className="text-slate-400 text-sm">Contenido pendiente — próxima semana.</p>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Entrada: Problema Central</h2>
+              <div className="prose prose-sm max-w-3xl space-y-4 text-slate-700">
+                <p>
+                  El análisis del objetivo parte de la situación negativa identificada previamente. El problema central actúa como punto de partida para la construcción del árbol de objetivos, que refleja cómo el proyecto abordará y resolverá este problema.
+                </p>
+                <div className="border-l-4 border-blue-500 bg-blue-50 p-4 my-6">
+                  <p className="font-semibold text-slate-900 mb-2">Problema Identificado:</p>
+                  <p className="text-slate-700">
+                    "Deficiente detección temprana del bajo rendimiento académico estudiantil."
+                  </p>
+                </div>
+                <p>
+                  Este problema central será transformado en un objetivo positivo que guiará el desarrollo e implementación del sistema inteligente de detección temprana.
+                </p>
+              </div>
             </div>
           </section>
 
           <section id="p03-herramientas" className="fade-section py-14 bg-slate-50 border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Herramienta y Técnica</span>
-              <h2 className="font-serif-display text-3xl font-bold text-slate-300 mb-2">Por definir</h2>
-              <p className="text-slate-400 text-sm">Contenido pendiente — próxima semana.</p>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Árbol de Objetivos</h2>
+              <p className="text-slate-600 mb-8 max-w-3xl">
+                El árbol de objetivos transforma el problema central en un objetivo positivo y articula los medios para alcanzarlo. Refleja la visión del proyecto y cómo se resolverá la situación negativa inicial.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                <div className="border border-emerald-300 rounded-lg p-6 bg-emerald-50">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">✓</span> Medios Directos
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Implementación de análisis de datos académicos</li>
+                    <li>• Automatización del seguimiento estudiantil</li>
+                    <li>• Implementación de modelos predictivos ML</li>
+                  </ul>
+                </div>
+                <div className="border border-emerald-300 rounded-lg p-6 bg-emerald-50">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">✓</span> Medios Indirectos
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Integración de información académica</li>
+                    <li>• Uso de dashboards e indicadores</li>
+                    <li>• Aplicación de técnicas de Machine Learning</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </section>
 
           <section id="p03-salidas" className="fade-section py-14 bg-white border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Salida</span>
-              <h2 className="font-serif-display text-3xl font-bold text-slate-300 mb-2">Por definir</h2>
-              <p className="text-slate-400 text-sm">Contenido pendiente — próxima semana.</p>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-8">Objetivo Central del Proyecto</h2>
+              <div className="max-w-3xl">
+                <div className="border-l-4 border-emerald-600 bg-emerald-50 p-6 rounded-r-lg mb-10">
+                  <h3 className="text-sm font-mono-label text-emerald-700 uppercase tracking-wider mb-2">Objetivo General</h3>
+                  <p className="text-2xl font-serif-display text-slate-900 leading-tight">
+                    "Mejorar la detección temprana del rendimiento académico estudiantil mediante un sistema inteligente basado en Machine Learning."
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="border border-slate-300 rounded-lg p-5 bg-slate-50">
+                    <h4 className="font-semibold text-slate-900 mb-3">Impacto Esperado</h4>
+                    <ul className="text-sm text-slate-700 space-y-2">
+                      <li>✓ Detección temprana de riesgos académicos</li>
+                      <li>✓ Intervenciones más oportunas</li>
+                      <li>✓ Mejora del rendimiento estudiantil</li>
+                      <li>✓ Reducción de deserción escolar</li>
+                    </ul>
+                  </div>
+                  <div className="border border-slate-300 rounded-lg p-5 bg-slate-50">
+                    <h4 className="font-semibold text-slate-900 mb-3">Componentes Clave</h4>
+                    <ul className="text-sm text-slate-700 space-y-2">
+                      <li>📊 Análisis de datos integrado</li>
+                      <li>🤖 Modelos predictivos ML</li>
+                      <li>🔔 Alertas tempranas automáticas</li>
+                      <li>📈 Dashboards para decisiones</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
