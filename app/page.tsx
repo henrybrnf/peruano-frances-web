@@ -1485,6 +1485,22 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+              
+              <div className="mt-12 pt-12 border-t border-slate-300">
+                <h3 className="text-lg font-semibold text-slate-900 mb-4">Visualización: Árbol de Problemas</h3>
+                <p className="text-slate-600 mb-6 max-w-3xl">
+                  La siguiente imagen representa el árbol de problemas construido mediante el análisis del Marco Lógico. Muestra de manera visual las relaciones causa-efecto entre el problema central, sus causas raíz y los efectos generados, facilitando la comprensión integral de la situación negativa identificada en la institución.
+                </p>
+                <div className="relative w-full h-auto rounded-lg overflow-hidden border border-slate-300 shadow-md">
+                  <Image
+                    src="/arbol-problemas.jpeg"
+                    alt="Árbol de Problemas - Análisis de causas y efectos"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
+              </div>
             </div>
           </section>
 
@@ -1625,6 +1641,22 @@ export default function Home() {
                     <li>• Uso de dashboards e indicadores</li>
                     <li>• Aplicación de técnicas de Machine Learning</li>
                   </ul>
+                </div>
+              </div>
+              
+              <div className="mt-12 pt-12 border-t border-slate-400">
+                <h3 className="text-lg font-semibold text-slate-900 mb-4">Visualización: Árbol de Objetivos</h3>
+                <p className="text-slate-600 mb-6 max-w-3xl">
+                  La siguiente imagen representa el árbol de objetivos construido al invertir positivamente el árbol de problemas. Visualiza cómo los medios directos e indirectos convergen hacia el objetivo central del proyecto, mostrando la estructura lógica de cómo se alcanzarán los resultados deseados mediante el sistema de detección temprana basado en Machine Learning.
+                </p>
+                <div className="relative w-full h-auto rounded-lg overflow-hidden border border-slate-300 shadow-md">
+                  <Image
+                    src="/arbol-objetivos.jpeg"
+                    alt="Árbol de Objetivos - Estructura de medios y objetivo central"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain"
+                  />
                 </div>
               </div>
             </div>
