@@ -149,7 +149,10 @@ const TOC_CHAPTERS: TocChapter[] = [
     label: "Análisis del Problema",
     groups: [
       { label: "Entradas", color: "text-blue-600", sections: [{ label: "Descripción de la problemática", href: "#p02-entradas" }] },
-      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [{ label: "Causas y Efectos", href: "#p02-herramientas" }] },
+      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [
+        { label: "Marco Lógico", href: "#p02-herramientas" },
+        { label: "Encuesta Docente", href: "#p02-herramientas" }
+      ] },
       { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Problema Central", href: "#p02-salidas" }] },
     ],
   },
