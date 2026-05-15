@@ -153,6 +153,7 @@ const TOC_CHAPTERS: TocChapter[] = [
         { label: "Marco Lógico", href: "#p02-herramientas" },
         { label: "Encuesta Docente", href: "#p02-herramientas" }
       ] },
+      { label: "Evidencias", color: "text-purple-600", sections: [{ label: "Respuestas de Docentes", href: "#p02-evidencias" }] },
       { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Problema Central", href: "#p02-salidas" }] },
     ],
   },
@@ -1483,6 +1484,48 @@ export default function Home() {
                     Responder Encuesta →
                   </a>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="p02-evidencias" className="fade-section py-14 bg-white border-b border-slate-200">
+            <div className="px-8 lg:px-12">
+              <span className="chapter-label block mb-2">02 · Análisis del Problema · Evidencia</span>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Evidencias: Respuestas de Docentes</h2>
+              <p className="text-slate-600 mb-8 max-w-3xl">
+                Las siguientes capturas de pantalla muestran ejemplos reales de las respuestas obtenidas en la encuesta de Google Forms aplicada a los docentes de la IE Peruano Francés. Estas respuestas validan la necesidad identificada y demuestran la receptividad del equipo docente hacia soluciones de detección temprana basadas en análisis de datos e inteligencia artificial.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                {[
+                  { num: 1, title: "Pregunta 1: Experiencia Docente" },
+                  { num: 2, title: "Pregunta 2: Frecuencia de Seguimiento" },
+                  { num: 3, title: "Pregunta 3: Herramientas Disponibles" },
+                  { num: 4, title: "Pregunta 4: Dificultad en Detección" },
+                  { num: 5, title: "Pregunta 5: Factores que Afectan Rendimiento" },
+                  { num: 6, title: "Pregunta 6: Información Importante" },
+                ].map((encuesta) => (
+                  <div key={encuesta.num} className="border border-slate-300 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="bg-slate-100 p-3 border-b border-slate-300">
+                      <h4 className="font-semibold text-slate-900 text-sm">{encuesta.title}</h4>
+                    </div>
+                    <div className="relative w-full h-64 bg-slate-50">
+                      <Image
+                        src={`/Encuesta${encuesta.num}.jpg`}
+                        alt={`Respuesta de encuesta - ${encuesta.title}`}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="p-3 bg-white border-t border-slate-300">
+                      <p className="text-xs text-slate-600 font-mono">Encuesta{encuesta.num}.jpg</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-blue-50 border border-blue-300 rounded-lg p-4 mt-6">
+                <p className="text-sm text-slate-700">
+                  <strong>Interpretación:</strong> Las respuestas documentadas evidencian que los docentes reconocen la dificultad actual en detectar tempranamente problemas académicos, validan la necesidad de herramientas más eficientes de monitoreo, y expresan disposición a utilizar sistemas tecnológicos innovadores. Esto refuerza la justificación del proyecto.
+                </p>
               </div>
             </div>
           </section>
