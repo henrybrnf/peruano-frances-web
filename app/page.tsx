@@ -1493,7 +1493,7 @@ export default function Home() {
                 </p>
                 <div className="relative w-full h-auto rounded-lg overflow-hidden border border-slate-300 shadow-md">
                   <Image
-                    src="/arbol-problemas.jpeg"
+                    src="/arbol-problemas.png"
                     alt="Árbol de Problemas - Análisis de causas y efectos"
                     width={800}
                     height={600}
@@ -1651,7 +1651,7 @@ export default function Home() {
                 </p>
                 <div className="relative w-full h-auto rounded-lg overflow-hidden border border-slate-300 shadow-md">
                   <Image
-                    src="/arbol-objetivos.jpeg"
+                    src="/arbol-objetivos.png"
                     alt="Árbol de Objetivos - Estructura de medios y objetivo central"
                     width={800}
                     height={600}
