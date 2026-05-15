@@ -88,6 +88,128 @@ const ACTIVOS = [
   { titulo: "Capital Humano", items: ["1 técnico de laboratorio TI", "1 gestora de Cubicol", "Directora con apertura TI", "Docentes capacitados"] },
 ];
 
+const MAPA_EMPATIA = [
+  {
+    usuario: "Directora",
+    cargo: "Promotora Directora — Decisora estratégica",
+    color: "border-blue-500",
+    colorBg: "bg-blue-50",
+    colorLabel: "bg-blue-600",
+    piensa: [
+      "Quiere que la matrícula sea estable y creciente.",
+      "Preocupada por alumnos que reprueban sin que nadie lo detecte a tiempo.",
+      "Confía en la tecnología: 7 años usando Cubicol.",
+    ],
+    ve: [
+      "Reportes académicos llegando tarde o incompletos.",
+      "Docentes haciendo seguimiento en cuadernos físicos.",
+      "Padres que no pueden acceder a Cubicol (40%).",
+    ],
+    dice: [
+      "\"Necesitamos un sistema que nos ayude a tomar decisiones.\"",
+      "Le interesa el QR para asistencia (confirmado en entrevista).",
+      "Ofrece acceso a datos institucionales para el proyecto.",
+    ],
+    frustraciones: [
+      "No tiene visión global del rendimiento en tiempo real.",
+      "Las intervenciones llegan cuando el problema ya es grave.",
+      "Comunicación con padres limitada a WhatsApp/correo.",
+    ],
+    motivaciones: [
+      "Mejorar indicadores académicos institucionales.",
+      "Posicionar la IE como referente tecnológico en VES.",
+      "Estabilizar y hacer crecer la matrícula.",
+    ],
+  },
+  {
+    usuario: "Docente",
+    cargo: "Docente/Auxiliar — Usuario primario del sistema",
+    color: "border-indigo-500",
+    colorBg: "bg-indigo-50",
+    colorLabel: "bg-indigo-600",
+    piensa: [
+      "Quiere ayudar a sus alumnos pero le falta tiempo.",
+      "Siente que detecta los problemas tarde (P7: 100% lo reconoce).",
+      "Está dispuesto a adoptar tecnología si no aumenta su carga (P10: 83.3%).",
+    ],
+    ve: [
+      "25+ alumnos por aula con información dispersa en varios sistemas.",
+      "Asistencia registrada en papel sin trazabilidad digital.",
+      "Incidencias reportadas por WhatsApp sin historial consolidado.",
+    ],
+    dice: [
+      "Necesita control de notas y asistencia continuo (P11).",
+      "Los factores del bajo rendimiento son múltiples (P5).",
+      "Considera útil o muy útil tener alertas tempranas (P9: 100%).",
+    ],
+    frustraciones: [
+      "Seguimiento manual consume tiempo sin generar alertas.",
+      "Información académica dispersa en Cubicol, papel y WhatsApp.",
+      "Sin indicadores en tiempo real para actuar oportunamente.",
+    ],
+    motivaciones: [
+      "Intervenir a tiempo antes de que el alumno repruebe.",
+      "Tener una herramienta que centralice la información académica.",
+      "Mejorar el rendimiento de sus estudiantes con menos esfuerzo manual.",
+    ],
+  },
+  {
+    usuario: "Área TI",
+    cargo: "Encargado Lab + Gestora Cubicol — Implementadores",
+    color: "border-emerald-500",
+    colorBg: "bg-emerald-50",
+    colorLabel: "bg-emerald-600",
+    piensa: [
+      "Receptiva a integración técnica con la nueva plataforma.",
+      "Conoce las limitaciones actuales de Cubicol.",
+      "Comprometida con el proyecto desde la entrevista inicial.",
+    ],
+    ve: [
+      "Cubicol subutilizado: almacena datos pero no genera análisis.",
+      "1 solo modem WiFi sin repetidores — conectividad limitada.",
+      "Sistema de asistencia aún 100% manual en papel.",
+    ],
+    dice: [
+      "Próximo paso: análisis de API de Cubicol para integración.",
+      "Dispuesta a dar soporte técnico continuo al sistema.",
+      "Conoce la infraestructura real: internet WIN 1000 Mbps.",
+    ],
+    frustraciones: [
+      "1 solo encargado TI para todo el colegio.",
+      "Cubicol no se integra con otras herramientas fácilmente.",
+      "Sin capacidad para generar analítica sobre los datos existentes.",
+    ],
+    motivaciones: [
+      "Integrar el nuevo sistema con Cubicol sin migrar datos.",
+      "Automatizar procesos manuales repetitivos.",
+      "Ser el soporte técnico de una solución innovadora.",
+    ],
+  },
+];
+
+const HMW = [
+  {
+    pregunta: "¿Cómo podríamos centralizar asistencia, notas e incidencias sin aumentar la carga del docente?",
+    insight: "83.3% de docentes hace seguimiento diario pero de forma manual (P2). 66.7% necesita datos integrados (P6).",
+    vinculo: "Módulo A — Recolección automatizada desde Cubicol + QR",
+  },
+  {
+    pregunta: "¿Cómo podríamos alertar al docente antes de que el alumno ya esté en situación crítica?",
+    insight: "100% reconoce que los problemas se detectan tardíamente (P7: Algunas veces o Frecuentemente).",
+    vinculo: "Módulo D — Alertas tempranas automáticas por nivel de riesgo",
+  },
+  {
+    pregunta: "¿Cómo podríamos darle a la directora visibilidad del riesgo académico en tiempo real?",
+    insight: "Directora carece de reportes consolidados. Necesita base para decisiones estratégicas (entrevista).",
+    vinculo: "Módulo E — Dashboard con indicadores por aula y grado",
+  },
+  {
+    pregunta: "¿Cómo podríamos mantener informados a los padres que no pueden acceder a Cubicol?",
+    insight: "40% de padres no puede ingresar a Cubicol (entrevista con directora).",
+    vinculo: "Notificaciones vía WhatsApp/correo — canales ya utilizados por la institución",
+  },
+];
+
 const ENCUESTA_PREGUNTAS = [
   {
     num: 1, img: "/pregunta1.png",
@@ -287,7 +409,8 @@ const TOC_CHAPTERS: TocChapter[] = [
       { label: "Entradas", color: "text-blue-600", sections: [{ label: "Descripción de la problemática", href: "#p02-entradas" }] },
       { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [
         { label: "Marco Lógico", href: "#p02-herramientas" },
-        { label: "Encuesta Docente", href: "#p02-herramientas" }
+        { label: "Encuesta Docente", href: "#p02-herramientas" },
+        { label: "Design Thinking", href: "#p02-design-thinking" },
       ] },
       { label: "Evidencias", color: "text-purple-600", sections: [
         { label: "Respuestas de Docentes", href: "#p02-evidencias" },
@@ -1482,7 +1605,7 @@ export default function Home() {
               </div>
               <div className="bg-amber-900/30 border border-amber-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-amber-300 uppercase tracking-wider mb-3">Herramientas y Técnicas</p>
-                <p className="text-amber-200 text-xs">Marco Lógico (Árbol de Problemas: causas, problema central y efectos) + Encuesta Docente validatoria (Google Forms, 11 ítems)</p>
+                <p className="text-amber-200 text-xs">Marco Lógico (Árbol de Problemas) + Encuesta Docente (Google Forms, 11 ítems) + Design Thinking (Empatizar + Definir: mapas de empatía + POV + HMW)</p>
               </div>
               <div className="bg-emerald-900/30 border border-emerald-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-emerald-300 uppercase tracking-wider mb-3">Salidas</p>
@@ -1634,6 +1757,111 @@ export default function Home() {
                     height={600}
                     className="w-full h-auto object-contain"
                   />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── Design Thinking ── */}
+          <section id="p02-design-thinking" className="fade-section py-14 bg-white border-b border-slate-200">
+            <div className="px-8 lg:px-12">
+              <span className="chapter-label block mb-2">02 · Análisis del Problema · Herramienta 3</span>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-2">Design Thinking — Empatizar y Definir</h2>
+              <p className="text-slate-600 mb-10 max-w-3xl text-sm">
+                Complementando el Marco Lógico, se aplicó Design Thinking como enfoque centrado en el usuario para comprender en profundidad las necesidades reales de los actores clave e identificar el problema desde su perspectiva. Las fases de <strong>Empatizar</strong> y <strong>Definir</strong> son las que corresponden al análisis del problema.
+              </p>
+
+              {/* Fase 1: Empatizar */}
+              <div className="mb-14">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-8 h-8 rounded-full bg-[#0d1f3c] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">1</span>
+                  <div>
+                    <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider">Fase 1 — Design Thinking</p>
+                    <h3 className="font-serif-display text-xl font-bold text-slate-900">Empatizar</h3>
+                  </div>
+                </div>
+                <p className="text-slate-600 text-sm mb-8 max-w-3xl">
+                  A partir de la entrevista con la Directora y el Área TI, y de los resultados de la encuesta docente, se construyeron los mapas de empatía para los tres usuarios primarios del sistema.
+                </p>
+
+                <div className="space-y-6">
+                  {MAPA_EMPATIA.map((u) => (
+                    <div key={u.usuario} className={`border-l-4 ${u.color} rounded-r-2xl overflow-hidden shadow-sm`}>
+                      <div className={`${u.colorBg} px-6 py-4 border-b border-slate-200 flex items-center gap-3`}>
+                        <span className={`${u.colorLabel} text-white font-bold text-xs px-3 py-1 rounded-full`}>{u.usuario}</span>
+                        <p className="text-slate-600 text-sm">{u.cargo}</p>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-slate-200 bg-white">
+                        {[
+                          { label: "Piensa y Siente", items: u.piensa,       icon: "💭" },
+                          { label: "Ve",              items: u.ve,            icon: "👁" },
+                          { label: "Dice y Hace",     items: u.dice,          icon: "💬" },
+                          { label: "Frustraciones",   items: u.frustraciones, icon: "⚡" },
+                          { label: "Motivaciones",    items: u.motivaciones,  icon: "🎯" },
+                        ].map((bloque) => (
+                          <div key={bloque.label} className="p-4">
+                            <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider mb-2">{bloque.icon} {bloque.label}</p>
+                            <ul className="space-y-1.5">
+                              {bloque.items.map((it, i) => (
+                                <li key={i} className="text-xs text-slate-700 leading-snug flex items-start gap-1.5">
+                                  <span className="text-slate-400 flex-shrink-0 mt-0.5">·</span>
+                                  {it}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Fase 2: Definir */}
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="w-8 h-8 rounded-full bg-[#0d1f3c] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">2</span>
+                  <div>
+                    <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider">Fase 2 — Design Thinking</p>
+                    <h3 className="font-serif-display text-xl font-bold text-slate-900">Definir</h3>
+                  </div>
+                </div>
+
+                {/* POV */}
+                <div className="bg-[#0d1f3c] rounded-2xl p-8 mb-8 max-w-3xl">
+                  <p className="font-mono-label text-[10px] text-[#4ec8cc] uppercase tracking-wider mb-3">Enunciado POV — Point of View</p>
+                  <p className="text-white text-lg font-serif-display leading-relaxed">
+                    "El docente de la IE Peruano Francés{" "}
+                    <span className="text-[#4ec8cc]">necesita</span> detectar tempranamente el bajo rendimiento académico de sus alumnos,{" "}
+                    <span className="text-[#4ec8cc]">porque</span> el seguimiento actual es manual, disperso y reactivo, lo que retrasa las intervenciones pedagógicas hasta que el problema ya es grave."
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-white/20 grid grid-cols-3 gap-4 text-xs text-slate-400">
+                    <div><span className="text-[#4ec8cc] font-bold block mb-0.5">USUARIO</span>Docente de la IE Peruano Francés</div>
+                    <div><span className="text-[#4ec8cc] font-bold block mb-0.5">NECESIDAD</span>Detectar bajo rendimiento a tiempo</div>
+                    <div><span className="text-[#4ec8cc] font-bold block mb-0.5">INSIGHT</span>El proceso manual retrasa la acción</div>
+                  </div>
+                </div>
+
+                {/* HMW */}
+                <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider mb-4">¿Cómo Podríamos…? — How Might We</p>
+                <div className="space-y-4 max-w-4xl">
+                  {HMW.map((h, i) => (
+                    <div key={i} className="border border-slate-200 rounded-xl p-5 bg-slate-50 hover:shadow-sm transition-shadow">
+                      <div className="flex items-start gap-4">
+                        <span className="font-mono-label text-[11px] bg-amber-100 text-amber-700 border border-amber-200 px-2 py-1 rounded font-bold flex-shrink-0">HMW {i + 1}</span>
+                        <div className="flex-1">
+                          <p className="text-slate-900 font-semibold text-sm mb-2">{h.pregunta}</p>
+                          <p className="text-slate-500 text-xs mb-3">
+                            <span className="font-semibold text-slate-600">Insight:</span> {h.insight}
+                          </p>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono-label text-slate-400">→</span>
+                            <span className="text-xs text-[#0d7377] font-medium bg-[#e8f5f5] border border-[#c0e0e0] px-2 py-0.5 rounded">{h.vinculo}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
