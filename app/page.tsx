@@ -1497,12 +1497,12 @@ export default function Home() {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 {[
-                  { num: 1, title: "Pregunta 1: Experiencia Docente" },
-                  { num: 2, title: "Pregunta 2: Frecuencia de Seguimiento" },
-                  { num: 3, title: "Pregunta 3: Herramientas Disponibles" },
-                  { num: 4, title: "Pregunta 4: Dificultad en Detección" },
-                  { num: 5, title: "Pregunta 5: Factores que Afectan Rendimiento" },
-                  { num: 6, title: "Pregunta 6: Información Importante" },
+                  { num: 1, title: "Primer docente" },
+                  { num: 2, title: "Segundo docente" },
+                  { num: 3, title: "Tercer docente" },
+                  { num: 4, title: "Cuarto docente" },
+                  { num: 5, title: "Quinto docente" },
+                  { num: 6, title: "Sexto docente" },
                 ].map((encuesta) => (
                   <div key={encuesta.num} className="border border-slate-300 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                     <div className="bg-slate-100 p-3 border-b border-slate-300">
