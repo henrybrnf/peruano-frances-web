@@ -10,13 +10,14 @@ const REFERENCIAS = [
   { clave: "UNESCO, 2022", texto: "UNESCO. (2022). Informe de Seguimiento de la Educación en el Mundo 2022: No dejar a nadie atrás. París: Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura." },
   { clave: "MINEDU, 2023", texto: "Ministerio de Educación del Perú — MINEDU. (2023). Estadísticas de la Calidad Educativa (ESCALE). Lima: MINEDU. Recuperado de http://escale.minedu.gob.pe" },
   { clave: "Ley 29733, 2011", texto: "Congreso de la República del Perú. (2011). Ley N° 29733 — Ley de Protección de Datos Personales y su Reglamento (D.S. N° 003-2013-JUS). Lima: El Peruano." },
+  { clave: "CEPAL/ILPES, 2005", texto: "Comisión Económica para América Latina y el Caribe — CEPAL/ILPES. (2005). Metodología del Marco Lógico para la planificación, el seguimiento y la evaluación de proyectos y programas. Santiago de Chile: Naciones Unidas." },
 ];
 
 const CANVAS = {
   socios: ["UNTELS — equipo de desarrollo del sistema", "Cubicol — plataforma educativa existente", "Proveedor WIN — conectividad 1000 Mbps", "Ministerio de Educación — marco normativo"],
   actividades: ["Recolección e integración de datos académicos", "Entrenamiento y actualización de modelos ML", "Generación de alertas tempranas automáticas", "Mantenimiento, soporte y capacitación del personal"],
   recursos: ["Datos históricos: asistencia, notas e incidencias", "Infraestructura TI del colegio (Cubicol, internet)", "Equipo de desarrollo UNTELS", "Personal TI de la institución"],
-  propuesta: ["Detección temprana del riesgo de deserción mediante ML", "Alertas automáticas para intervención oportuna", "Dashboard visual para toma de decisiones directivas", "Reducción de la deserción y estabilidad de matrícula"],
+  propuesta: ["Alerta temprana del bajo rendimiento académico mediante ML", "Alertas automáticas para intervención oportuna", "Dashboard visual para toma de decisiones directivas", "Reducción del bajo rendimiento y mejora de resultados académicos"],
   relacion: ["Capacitación presencial al personal docente y administrativo", "Soporte técnico continuo por el área TI de la institución", "Actualizaciones periódicas del sistema ML", "Comunicación mensual de reportes a dirección"],
   canales: ["Plataforma web responsive (móvil y escritorio)", "Lectura QR para registro de asistencia", "Integración directa con Cubicol", "Notificaciones vía correo y WhatsApp"],
   segmentos: ["Director y docentes de la IE Peruano Francés", "Psicólogo escolar", "Personal administrativo y área TI", "Padres de familia (200 alumnos)"],
@@ -90,7 +91,7 @@ const ACTIVOS = [
 const MODULOS = [
   { letra: "A", nombre: "Recolección de Datos", color: "bg-blue-700", descripcion: "Integra asistencia, notas e incidencias desde Cubicol y nuevos registros digitales." },
   { letra: "B", nombre: "Procesamiento", color: "bg-indigo-700", descripcion: "Limpieza, normalización e integración de datos para el análisis." },
-  { letra: "C", nombre: "Analítica ML", color: "bg-purple-700", descripcion: "Modelos de Machine Learning calculan el riesgo de deserción de cada alumno." },
+  { letra: "C", nombre: "Analítica ML", color: "bg-purple-700", descripcion: "Modelos de Machine Learning calculan el nivel de riesgo de bajo rendimiento académico de cada alumno." },
   { letra: "D", nombre: "Alertas Tempranas", color: "bg-red-700", descripcion: "Notificaciones automáticas a docentes y directivos sobre estudiantes en riesgo crítico." },
   { letra: "E", nombre: "Dashboard", color: "bg-emerald-700", descripcion: "Paneles visuales con reportes e indicadores clave para la toma de decisiones." },
 ];
@@ -290,7 +291,7 @@ export default function Home() {
             <Image src="/logo.jpeg" alt="Logo IE Peruano Francés" width={32} height={32} className="w-full h-full object-contain" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-serif-display text-sm font-bold text-slate-900 truncate">Sistema ML — Detección de Riesgo de Deserción Escolar</p>
+            <p className="font-serif-display text-sm font-bold text-slate-900 truncate">Sistema ML — Alerta Temprana del Bajo Rendimiento Académico</p>
             <p className="font-mono-label text-[10px] text-slate-800 hidden sm:block">UNTELS · ISR0832 · Formulación y Evaluación de Proyectos TI · 2026</p>
           </div>
           <span className="hidden md:flex items-center gap-1.5 font-mono-label text-[10px] text-slate-800 border border-slate-200 rounded-full px-3 py-1 flex-shrink-0">
@@ -433,8 +434,8 @@ export default function Home() {
               </p>
 
               <h1 className="font-serif-display text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-3">
-                Sistema Inteligente basado en ML<br />
-                <span className="text-[#0d7377]">para la Detección del Riesgo de Deserción Escolar</span>
+                Sistema Inteligente usando Machine Learning<br />
+                <span className="text-[#0d7377]">para Alerta Temprana del Bajo Rendimiento Académico</span>
               </h1>
 
               <p className="text-slate-800 text-base mb-0.5">
@@ -496,7 +497,7 @@ export default function Home() {
                 </p>
                 <div className="mt-5 pt-4 border-t border-slate-200 flex flex-wrap items-center gap-2">
                   <span className="font-mono-label text-[10px] text-slate-800">Palabras clave:</span>
-                  {["Machine Learning", "Deserción escolar", "PMBOK 6", "Gestión de proyectos TI", "Alertas tempranas", "IEP Peruano Francés"].map((k) => (
+                  {["Machine Learning", "Bajo rendimiento académico", "PMBOK 6", "Gestión de proyectos TI", "Alertas tempranas", "IEP Peruano Francés"].map((k) => (
                     <span key={k} className="bg-[#e8f5f5] text-[#0a5c5f] border border-[#c0e0e0] text-xs px-2 py-0.5 rounded-full">{k}</span>
                   ))}
                 </div>
@@ -520,8 +521,8 @@ export default function Home() {
           <section id="problema" className="fade-section py-14 bg-white border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">00 · Introducción · Motivación del Proyecto</span>
-              <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-slate-900 mb-2">La Deserción Escolar: Un Problema Urgente</h2>
-              <p className="text-slate-700 text-sm mb-8">En la IE Peruano Francés, la identificación de alumnos en riesgo de abandono se realiza de manera manual y reactiva, sin herramientas que permitan intervenir a tiempo.</p>
+              <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-slate-900 mb-2">El Bajo Rendimiento Académico: Un Problema Urgente</h2>
+              <p className="text-slate-700 text-sm mb-8">En la IE Peruano Francés, la identificación de alumnos con bajo rendimiento académico se realiza de manera manual y reactiva, sin herramientas que permitan intervenir a tiempo.</p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-10">
                 {[
@@ -558,7 +559,7 @@ export default function Home() {
               <div className="bg-slate-800 rounded-2xl p-8 text-white">
                 <h3 className="font-serif-display text-xl font-bold mb-3">Objetivo General del Proyecto</h3>
                 <p className="text-blue-100 leading-relaxed">
-                  Formular y evaluar un <strong className="text-white">sistema inteligente basado en Machine Learning</strong> que permita predecir el riesgo de deserción escolar en la IE Peruano Francés, facilitando la identificación temprana de estudiantes en situación de riesgo y mejorando la toma de decisiones de directivos y docentes mediante alertas automáticas y dashboards visuales.
+                  Formular y evaluar un <strong className="text-white">sistema inteligente usando Machine Learning</strong> que genere alertas tempranas del bajo rendimiento académico en la IE Peruano Francés, facilitando la identificación oportuna de estudiantes en riesgo y mejorando la toma de decisiones de directivos y docentes mediante alertas automáticas y dashboards visuales.
                 </p>
               </div>
             </div>
@@ -689,7 +690,7 @@ export default function Home() {
               <span className="chapter-label block mb-2">00 · Introducción · Propuesta de Valor</span>
               <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-slate-900 mb-2">Propuesta de Valor del Sistema</h2>
               <p className="text-slate-700 text-sm mb-8">
-                El sistema integra los datos del colegio y aplica Machine Learning<Cite r="Romero & Ventura, 2010" /> para detectar patrones de riesgo antes de que ocurra la deserción.
+                El sistema integra los datos del colegio y aplica Machine Learning<Cite r="Romero & Ventura, 2010" /> para detectar patrones de bajo rendimiento académico y generar alertas tempranas antes de que el problema se agrave.
               </p>
 
               <h3 className="font-serif-display font-bold text-slate-900 text-lg mb-4">Módulos del Sistema</h3>
@@ -707,7 +708,7 @@ export default function Home() {
                 <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200">
                   <h3 className="font-serif-display font-bold text-slate-900 mb-4">Funcionalidades Principales</h3>
                   <ul className="space-y-2.5">
-                    {["Registro digital de asistencia con lectura de QR desde celular", "Integración con Cubicol para notas e incidencias", "Modelos predictivos ML de riesgo de deserción por alumno", "Alertas tempranas automáticas priorizadas por criticidad", "Dashboard con reportes visuales por aula y grado", "Panel para padres con seguimiento del progreso del alumno"].map((f) => (
+                    {["Registro digital de asistencia con lectura de QR desde celular", "Integración con Cubicol para notas e incidencias", "Modelos predictivos ML de bajo rendimiento académico por alumno", "Alertas tempranas automáticas priorizadas por nivel de riesgo", "Dashboard con reportes visuales por aula y grado", "Panel para padres con seguimiento del progreso del alumno"].map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-slate-800">
                         <span className="text-[#0d7377] flex-shrink-0 mt-0.5">✓</span>
                         {f}
@@ -741,7 +742,7 @@ export default function Home() {
               <div className="bg-[#e8f5f5] border border-[#c0e0e0] rounded-2xl p-6">
                 <h3 className="font-serif-display font-bold text-[#0a5c5f] text-lg mb-2">Resultado Esperado</h3>
                 <p className="text-[#0a5c5f] text-sm leading-relaxed">
-                  Reducir la tasa de deserción escolar en la I.E.P. Peruano Francés mediante la detección temprana y la intervención oportuna, estabilizando la matrícula y mejorando la toma de decisiones directivas con información centralizada y automatizada.
+                  Reducir el bajo rendimiento académico en la I.E.P. Peruano Francés mediante alertas tempranas e intervención oportuna, mejorando los resultados estudiantiles y la toma de decisiones directivas con información centralizada y automatizada.
                 </p>
               </div>
             </div>
@@ -906,7 +907,7 @@ export default function Home() {
               <h2 className="font-serif-display text-3xl sm:text-4xl font-bold text-slate-900 mb-1">Caso de Negocio</h2>
               <p className="text-slate-600 text-sm font-mono-label mb-2">Business Model Canvas</p>
               <p className="text-slate-700 text-sm mb-8">
-                Modelo de negocio del sistema inteligente de detección de riesgo de deserción escolar para la I.E.P. Peruano Francés<Cite r="Osterwalder & Pigneur, 2010" />.
+                Modelo de negocio del sistema inteligente de alerta temprana del bajo rendimiento académico para la I.E.P. Peruano Francés<Cite r="Osterwalder & Pigneur, 2010" />.
               </p>
 
               <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-md text-sm">
@@ -1333,21 +1334,21 @@ export default function Home() {
               <div>
                 <p className="chapter-label text-[#4ec8cc] mb-0.5">Capítulo 02 · PMBOK® 6.ª edición</p>
                 <h2 className="font-serif-display text-2xl font-bold text-white leading-tight">Análisis del Problema</h2>
-                <p className="text-slate-400 text-sm mt-1 font-mono-label text-[11px]">Proceso por definir</p>
+                <p className="text-slate-400 text-sm mt-1 font-mono-label text-[11px]">Marco Lógico — Árbol de Problemas</p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div className="bg-blue-900/40 border border-blue-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-blue-300 uppercase tracking-wider mb-3">Entradas</p>
-                <p className="text-blue-200/50 text-xs italic">Por definir</p>
+                <p className="text-blue-200 text-xs">Situación actual de la IE Peruano Francés (entrevista con directora + documento de avance del proyecto)</p>
               </div>
               <div className="bg-amber-900/30 border border-amber-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-amber-300 uppercase tracking-wider mb-3">Herramientas y Técnicas</p>
-                <p className="text-amber-200/50 text-xs italic">Por definir</p>
+                <p className="text-amber-200 text-xs">Marco Lógico (Árbol de Problemas: causas, problema central y efectos) + Encuesta Docente validatoria (Google Forms, 11 ítems)</p>
               </div>
               <div className="bg-emerald-900/30 border border-emerald-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-emerald-300 uppercase tracking-wider mb-3">Salidas</p>
-                <p className="text-emerald-200/50 text-xs italic">Por definir</p>
+                <p className="text-emerald-200 text-xs">Enunciado del Problema Central y árbol de causas–efectos validado por la institución</p>
               </div>
             </div>
           </section>
@@ -1358,27 +1359,23 @@ export default function Home() {
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Descripción de la Problemática</h2>
               <div className="prose prose-sm max-w-3xl space-y-4 text-slate-700">
                 <p>
-                  En muchas instituciones educativas, el seguimiento del rendimiento académico de los estudiantes se realiza de manera manual o mediante sistemas que únicamente almacenan notas y asistencias sin realizar análisis predictivos. Esta situación dificulta identificar oportunamente a estudiantes que presentan bajo desempeño académico o riesgo de desaprobación.
+                  En muchas instituciones educativas de América Latina, el seguimiento del rendimiento académico se realiza de manera manual o mediante sistemas que únicamente almacenan notas y asistencias sin generar análisis predictivos<Cite r="UNESCO, 2022" />. Esta situación dificulta identificar oportunamente a estudiantes que presentan bajo desempeño académico, limitando la capacidad de intervención oportuna de docentes y directivos<Cite r="Romero & Ventura, 2010" />.
                 </p>
                 <p>
-                  En el colegio Peruano Francés, aunque existen registros académicos y administrativos, <strong>no se cuenta con una herramienta inteligente</strong> que permita analizar de manera integrada variables como:
+                  En la IE Peruano Francés, institución con 200 estudiantes en niveles inicial, primaria y secundaria, los registros académicos se gestionan a través de la plataforma Cubicol y de procesos manuales en papel. Sin embargo, <strong>no se cuenta con una herramienta inteligente</strong> que permita analizar de manera integrada variables como:
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-2">
-                  <li>Asistencia</li>
-                  <li>Calificaciones</li>
-                  <li>Participación</li>
-                  <li>Incidencias conductuales</li>
+                  <li>Asistencia (actualmente registrada en papel)</li>
+                  <li>Calificaciones y evolución del desempeño académico</li>
+                  <li>Participación en clase</li>
+                  <li>Incidencias conductuales (reportadas vía WhatsApp/correo)</li>
                   <li>Cumplimiento de tareas</li>
-                  <li>Evolución del desempeño académico</li>
                 </ul>
                 <p>
-                  Debido a ello, las intervenciones por parte de docentes y directivos suelen realizarse <strong>cuando el problema académico ya se encuentra avanzado</strong>, afectando el aprendizaje, la motivación y el desempeño general de los estudiantes.
-                </p>
-                <p>
-                  Asimismo, la gran cantidad de información generada diariamente dificulta realizar un monitoreo personalizado y continuo de cada estudiante, provocando retrasos en la toma de decisiones pedagógicas.
+                  Debido a ello, las intervenciones por parte de docentes y directivos suelen realizarse <strong>cuando el problema académico ya se encuentra avanzado</strong>, afectando el aprendizaje, la motivación y el desempeño general de los estudiantes. La dispersión de información en distintos sistemas dificulta el monitoreo personalizado y continuo de cada alumno, provocando retrasos críticos en la toma de decisiones pedagógicas<Cite r="Márquez-Vera et al., 2013" />.
                 </p>
                 <p className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6">
-                  <strong>Necesidad identificada:</strong> Implementar un sistema inteligente basado en Machine Learning que permita analizar patrones académicos y generar alertas tempranas sobre estudiantes con riesgo de bajo rendimiento académico.
+                  <strong>Necesidad identificada:</strong> Formular un sistema inteligente basado en Machine Learning que permita analizar patrones académicos multivariable y generar alertas tempranas sobre estudiantes con riesgo de bajo rendimiento en la IE Peruano Francés<Cite r="Márquez-Vera et al., 2013" />.
                 </p>
               </div>
             </div>
@@ -1395,7 +1392,7 @@ export default function Home() {
               <div className="mb-10">
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">1. Metodología del Marco Lógico</h3>
                 <p className="text-slate-600 mb-6 max-w-3xl">
-                  De acuerdo con la metodología del Marco Lógico, el análisis del problema permite identificar la situación negativa principal, sus causas y sus efectos, estableciendo relaciones de causa–efecto que justifican el desarrollo del proyecto. A partir de este análisis estructurado se identificaron las causas raíz del problema central:
+                  De acuerdo con la metodología del Marco Lógico, el análisis del problema permite identificar la situación negativa principal, sus causas y sus efectos, estableciendo relaciones de causa–efecto que justifican el desarrollo del proyecto<Cite r="CEPAL/ILPES, 2005" />. A partir de este análisis estructurado, aplicado con base en los procesos de inicio del PMBOK® 6.ª edición<Cite r="PMI, 2017" />, se identificaron las causas raíz del problema central:
                 </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
                 <div className="border border-slate-300 rounded-lg p-6 bg-white">
@@ -1449,7 +1446,7 @@ export default function Home() {
               <div>
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">2. Encuesta Docente sobre Seguimiento Académico (Google Forms)</h3>
                 <p className="text-slate-600 mb-6 max-w-3xl">
-                  Se desarrolló una encuesta digital mediante Google Forms dirigida a los docentes de la IE Peruano Francés para validar la percepción institucional sobre el seguimiento académico estudiantil. La encuesta incluye 11 preguntas estructuradas que exploran:
+                  Se desarrolló una encuesta digital mediante Google Forms dirigida a los 16 docentes y auxiliares de la IE Peruano Francés para validar la percepción institucional sobre el seguimiento académico estudiantil. Esta técnica de recolección de datos primarios es consistente con la literatura sobre detección temprana del bajo rendimiento<Cite r="Márquez-Vera et al., 2013" />. La encuesta incluye 11 preguntas estructuradas que exploran:
                 </p>
                 <div className="bg-white border border-slate-300 rounded-lg p-6 mb-6">
                   <h4 className="font-semibold text-slate-900 mb-3">Temas Evaluados:</h4>
@@ -1559,9 +1556,15 @@ export default function Home() {
                 </div>
                 <div className="bg-slate-100 rounded-lg p-6">
                   <h3 className="font-semibold text-slate-900 mb-3">Efecto Final del Problema</h3>
-                  <p className="text-slate-700">
-                    <strong>Afectación de la calidad educativa institucional</strong> — La falta de detección temprana genera una cascada de efectos negativos que impacta directamente en la calidad educativa institucional y el bienestar integral de los estudiantes.
+                  <p className="text-slate-700 mb-3">
+                    <strong>Afectación de la calidad educativa institucional</strong> — La falta de detección temprana genera una cascada de efectos negativos que impacta directamente en el rendimiento académico sostenido, la motivación estudiantil y la calidad educativa de la IE Peruano Francés.
                   </p>
+                  <ul className="text-sm text-slate-600 space-y-1 border-t border-slate-200 pt-3">
+                    <li>↓ Bajo rendimiento académico sostenido sin intervención oportuna</li>
+                    <li>↓ Desmotivación y desvinculación progresiva del estudiante</li>
+                    <li>↓ Incremento de estudiantes desaprobados al cierre de año escolar</li>
+                    <li>↓ Deterioro de indicadores de calidad educativa institucional<Cite r="MINEDU, 2023" /></li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -1574,21 +1577,21 @@ export default function Home() {
               <div>
                 <p className="chapter-label text-[#4ec8cc] mb-0.5">Capítulo 03 · PMBOK® 6.ª edición</p>
                 <h2 className="font-serif-display text-2xl font-bold text-white leading-tight">Análisis del Objetivo</h2>
-                <p className="text-slate-400 text-sm mt-1 font-mono-label text-[11px]">Proceso por definir</p>
+                <p className="text-slate-400 text-sm mt-1 font-mono-label text-[11px]">Árbol de Objetivos — Marco Lógico</p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div className="bg-blue-900/40 border border-blue-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-blue-300 uppercase tracking-wider mb-3">Entradas</p>
-                <p className="text-blue-200/50 text-xs italic">Por definir</p>
+                <p className="text-blue-200 text-xs">Problema Central identificado en Cap. 02: "Deficiente detección temprana del bajo rendimiento académico estudiantil"</p>
               </div>
               <div className="bg-amber-900/30 border border-amber-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-amber-300 uppercase tracking-wider mb-3">Herramientas y Técnicas</p>
-                <p className="text-amber-200/50 text-xs italic">Por definir</p>
+                <p className="text-amber-200 text-xs">Árbol de Objetivos: inversión positiva del árbol de problemas — causas → medios, efectos → fines, problema → objetivo central</p>
               </div>
               <div className="bg-emerald-900/30 border border-emerald-700/40 rounded-xl p-5">
                 <p className="font-mono-label text-[10px] text-emerald-300 uppercase tracking-wider mb-3">Salidas</p>
-                <p className="text-emerald-200/50 text-xs italic">Por definir</p>
+                <p className="text-emerald-200 text-xs">Objetivo Central del Proyecto y estructura de medios–fines que orienta el diseño del sistema inteligente</p>
               </div>
             </div>
           </section>
@@ -1599,16 +1602,16 @@ export default function Home() {
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Entrada: Problema Central</h2>
               <div className="prose prose-sm max-w-3xl space-y-4 text-slate-700">
                 <p>
-                  El análisis del objetivo parte de la situación negativa identificada previamente. El problema central actúa como punto de partida para la construcción del árbol de objetivos, que refleja cómo el proyecto abordará y resolverá este problema.
+                  El análisis del objetivo parte de la situación negativa identificada en el Cap. 02. Siguiendo la metodología del Marco Lógico<Cite r="CEPAL/ILPES, 2005" />, cada elemento negativo del árbol de problemas se convierte en su correspondiente positivo: las causas se transforman en medios, los efectos en fines, y el problema central en el objetivo central del proyecto.
                 </p>
                 <div className="border-l-4 border-blue-500 bg-blue-50 p-4 my-6">
-                  <p className="font-semibold text-slate-900 mb-2">Problema Identificado:</p>
+                  <p className="font-semibold text-slate-900 mb-2">Problema Central (entrada):</p>
                   <p className="text-slate-700">
                     "Deficiente detección temprana del bajo rendimiento académico estudiantil."
                   </p>
                 </div>
                 <p>
-                  Este problema central será transformado en un objetivo positivo que guiará el desarrollo e implementación del sistema inteligente de detección temprana.
+                  Este enunciado negativo se invierte para formular el objetivo central positivo que orienta el diseño del sistema inteligente. La aplicación de Machine Learning como medio técnico tiene respaldo empírico en la literatura sobre detección temprana del bajo rendimiento académico<Cite r="Márquez-Vera et al., 2013" /><Cite r="Romero & Ventura, 2010" />.
                 </p>
               </div>
             </div>
@@ -1619,17 +1622,20 @@ export default function Home() {
               <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Herramienta y Técnica</span>
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Árbol de Objetivos</h2>
               <p className="text-slate-600 mb-8 max-w-3xl">
-                El árbol de objetivos transforma el problema central en un objetivo positivo y articula los medios para alcanzarlo. Refleja la visión del proyecto y cómo se resolverá la situación negativa inicial.
+                El árbol de objetivos transforma el problema central en un objetivo positivo y articula los medios para alcanzarlo y los fines que se obtendrán al lograrlo<Cite r="CEPAL/ILPES, 2005" />. Cada nivel negativo del árbol de problemas se convierte en su equivalente positivo: causas → medios, problema → objetivo, efectos → fines.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+
+              <h3 className="text-base font-semibold text-slate-700 uppercase tracking-wider mb-4 font-mono-label text-[11px]">Medios — ¿Cómo se alcanza el objetivo?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mb-10">
                 <div className="border border-emerald-300 rounded-lg p-6 bg-emerald-50">
                   <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
                     <span className="text-lg">✓</span> Medios Directos
                   </h3>
                   <ul className="space-y-2 text-sm text-slate-700">
-                    <li>• Implementación de análisis de datos académicos</li>
-                    <li>• Automatización del seguimiento estudiantil</li>
-                    <li>• Implementación de modelos predictivos ML</li>
+                    <li>• Análisis integrado de datos académicos (asistencia, notas, incidencias)</li>
+                    <li>• Automatización del seguimiento estudiantil mediante sistema digital</li>
+                    <li>• Implementación de modelos predictivos de Machine Learning<Cite r="Romero & Ventura, 2010" /></li>
+                    <li>• Generación de alertas tempranas automáticas<Cite r="Márquez-Vera et al., 2013" /></li>
                   </ul>
                 </div>
                 <div className="border border-emerald-300 rounded-lg p-6 bg-emerald-50">
@@ -1637,9 +1643,34 @@ export default function Home() {
                     <span className="text-lg">✓</span> Medios Indirectos
                   </h3>
                   <ul className="space-y-2 text-sm text-slate-700">
-                    <li>• Integración de información académica</li>
-                    <li>• Uso de dashboards e indicadores</li>
-                    <li>• Aplicación de técnicas de Machine Learning</li>
+                    <li>• Integración de bases de datos institucionales (Cubicol + registros físicos)</li>
+                    <li>• Uso de indicadores académicos en tiempo real</li>
+                    <li>• Dashboards visuales para toma de decisiones directivas</li>
+                    <li>• Capacitación docente en uso del sistema inteligente</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h3 className="text-base font-semibold text-slate-700 uppercase tracking-wider mb-4 font-mono-label text-[11px]">Fines — ¿Qué se logra al alcanzar el objetivo?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                <div className="border border-blue-300 rounded-lg p-6 bg-blue-50">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">↑</span> Fines Directos
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Intervenciones pedagógicas oportunas por docentes y directivos</li>
+                    <li>• Mejora del rendimiento académico de estudiantes en riesgo</li>
+                    <li>• Reducción de estudiantes desaprobados al cierre del año escolar</li>
+                  </ul>
+                </div>
+                <div className="border border-blue-300 rounded-lg p-6 bg-blue-50">
+                  <h3 className="font-semibold text-slate-900 mb-4 flex items-center gap-2">
+                    <span className="text-lg">↑</span> Fin Último
+                  </h3>
+                  <ul className="space-y-2 text-sm text-slate-700">
+                    <li>• Mejora sostenida de la calidad educativa institucional</li>
+                    <li>• Fortalecimiento de la gestión académica basada en datos</li>
+                    <li>• Modelo replicable para otras IEP del distrito de Villa El Salvador<Cite r="MINEDU, 2023" /></li>
                   </ul>
                 </div>
               </div>
@@ -1670,26 +1701,29 @@ export default function Home() {
                 <div className="border-l-4 border-emerald-600 bg-emerald-50 p-6 rounded-r-lg mb-10">
                   <h3 className="text-sm font-mono-label text-emerald-700 uppercase tracking-wider mb-2">Objetivo General</h3>
                   <p className="text-2xl font-serif-display text-slate-900 leading-tight">
-                    "Mejorar la detección temprana del rendimiento académico estudiantil mediante un sistema inteligente basado en Machine Learning."
+                    "Mejorar la detección temprana del bajo rendimiento académico estudiantil mediante un sistema inteligente basado en Machine Learning en la IE Peruano Francés."
                   </p>
                 </div>
+                <p className="text-slate-600 text-sm mb-6 max-w-2xl">
+                  Este objetivo es la inversión positiva del problema central identificado. Su formulación sigue el principio de correspondencia del Marco Lógico<Cite r="CEPAL/ILPES, 2005" /> y está respaldado por evidencia empírica sobre la efectividad de modelos ML en la predicción del bajo rendimiento académico<Cite r="Márquez-Vera et al., 2013" /><Cite r="Romero & Ventura, 2010" />.
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="border border-slate-300 rounded-lg p-5 bg-slate-50">
                     <h4 className="font-semibold text-slate-900 mb-3">Impacto Esperado</h4>
                     <ul className="text-sm text-slate-700 space-y-2">
-                      <li>✓ Detección temprana de riesgos académicos</li>
-                      <li>✓ Intervenciones más oportunas</li>
-                      <li>✓ Mejora del rendimiento estudiantil</li>
-                      <li>✓ Reducción de deserción escolar</li>
+                      <li>✓ Detección temprana del bajo rendimiento académico</li>
+                      <li>✓ Intervenciones pedagógicas más oportunas</li>
+                      <li>✓ Reducción de estudiantes desaprobados</li>
+                      <li>✓ Mejora sostenida de la calidad educativa institucional<Cite r="MINEDU, 2023" /></li>
                     </ul>
                   </div>
                   <div className="border border-slate-300 rounded-lg p-5 bg-slate-50">
-                    <h4 className="font-semibold text-slate-900 mb-3">Componentes Clave</h4>
+                    <h4 className="font-semibold text-slate-900 mb-3">Componentes Clave del Sistema</h4>
                     <ul className="text-sm text-slate-700 space-y-2">
-                      <li>📊 Análisis de datos integrado</li>
-                      <li>🤖 Modelos predictivos ML</li>
-                      <li>🔔 Alertas tempranas automáticas</li>
-                      <li>📈 Dashboards para decisiones</li>
+                      <li>Análisis integrado de datos (asistencia, notas, incidencias)</li>
+                      <li>Modelos predictivos ML entrenados con datos históricos</li>
+                      <li>Alertas tempranas automáticas por nivel de riesgo</li>
+                      <li>Dashboards visuales para decisiones directivas</li>
                     </ul>
                   </div>
                 </div>
@@ -1722,7 +1756,7 @@ export default function Home() {
 
           {/* Footer */}
           <footer className="bg-slate-900 py-5 text-center text-slate-400 text-xs">
-            <p className="font-mono-label">© 2026 · Sistema ML Detección de Deserción Escolar · IE Peruano Francés · UNTELS · ISR0832</p>
+            <p className="font-mono-label">© 2026 · Sistema ML Alerta Temprana del Bajo Rendimiento Académico · IE Peruano Francés · UNTELS · ISR0832</p>
           </footer>
 
         </main>

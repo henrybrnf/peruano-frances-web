@@ -8,11 +8,11 @@ const spaceMono = Space_Mono({ subsets: ["latin"], variable: "--font-mono", weig
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://peruano-frances-web.vercel.app"),
-  title: "Sistema ML - Detección de Riesgo de Deserción Escolar | IE Peruano Francés",
+  title: "Sistema ML - Alerta Temprana del Bajo Rendimiento Académico | IE Peruano Francés",
   description:
-    "Formulación y evaluación de un sistema inteligente basado en ML para la detección del riesgo de deserción escolar en la IE Peruano Francés, Villa el Salvador.",
+    "Formulación y evaluación de un sistema inteligente usando Machine Learning para alerta temprana del bajo rendimiento académico en la IE Peruano Francés, Villa el Salvador.",
   openGraph: {
-    title: "Sistema ML - Deserción Escolar | IE Peruano Francés",
+    title: "Sistema ML - Alerta Temprana del Bajo Rendimiento Académico | IE Peruano Francés",
     description: "Proyecto universitario UNTELS - ISR0832",
     type: "website",
     images: [{ url: "/logo.jpeg", width: 1080, height: 1080, alt: "Logo IE Peruano Francés" }],
