@@ -428,7 +428,7 @@ const TOC_CHAPTERS: TocChapter[] = [
         { label: "Árbol de Objetivos", href: "#p03-herramientas" },
         { label: "Análisis SMART", href: "#p03-smart" },
       ] },
-      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Objetivo Central SMART", href: "#p03-salidas" }] },
+      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Objetivo Central", href: "#p03-salidas" }] },
     ],
   },
   {
