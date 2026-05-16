@@ -2258,35 +2258,20 @@ export default function Home() {
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Salida</span>
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-8">Objetivo Central del Proyecto</h2>
-              <div className="max-w-4xl">
-                <div className="border-l-4 border-emerald-600 bg-emerald-50 p-6 rounded-r-lg mb-4">
+              <div className="max-w-3xl">
+                <div className="border-l-4 border-emerald-600 bg-emerald-50 p-6 rounded-r-lg mb-6">
                   <h3 className="text-sm font-mono-label text-emerald-700 uppercase tracking-wider mb-2">Objetivo General — Formulación SMART</h3>
-                  <p className="text-xl font-serif-display text-slate-900 leading-snug">
+                  <p className="text-2xl font-serif-display text-slate-900 leading-tight">
                     "Reducir en al menos un <strong>30%</strong> la detección tardía del bajo rendimiento académico estudiantil en la <strong>IE Peruano Francés</strong>, mediante un sistema inteligente basado en Machine Learning que integre <strong>asistencia, notas e incidencias</strong> de los <strong>200 alumnos</strong>, proveyendo alertas automáticas a docentes y directivos, <strong>durante el año escolar 2026</strong>."
                   </p>
                 </div>
-                <p className="text-slate-500 text-xs mb-10 max-w-2xl">
-                  Objetivo resultante de aplicar el análisis SMART<Cite r="PMI, 2017" /> sobre el objetivo derivado del Marco Lógico<Cite r="CEPAL/ILPES, 2005" />. Evidencia empírica: <Cite r="Márquez-Vera et al., 2013" /><Cite r="Romero & Ventura, 2010" />.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="border border-slate-300 rounded-lg p-5 bg-slate-50">
-                    <h4 className="font-semibold text-slate-900 mb-3">Impacto Esperado</h4>
-                    <ul className="text-sm text-slate-700 space-y-2">
-                      <li>✓ Reducción ≥30% en detección tardía del bajo rendimiento</li>
-                      <li>✓ Intervenciones pedagógicas más oportunas</li>
-                      <li>✓ Reducción de estudiantes desaprobados al cierre del año</li>
-                      <li>✓ Mejora sostenida de la calidad educativa institucional<Cite r="MINEDU, 2023" /></li>
-                    </ul>
-                  </div>
-                  <div className="border border-slate-300 rounded-lg p-5 bg-slate-50">
-                    <h4 className="font-semibold text-slate-900 mb-3">Componentes Clave del Sistema</h4>
-                    <ul className="text-sm text-slate-700 space-y-2">
-                      <li>Análisis integrado de datos (asistencia, notas, incidencias)</li>
-                      <li>Modelos predictivos ML entrenados con datos históricos</li>
-                      <li>Alertas tempranas automáticas por nivel de riesgo</li>
-                      <li>Dashboards visuales para decisiones directivas</li>
-                    </ul>
-                  </div>
+                <div className="bg-slate-100 rounded-lg p-5">
+                  <h3 className="font-semibold text-slate-900 mb-3">Fines del Objetivo</h3>
+                  <ul className="text-sm text-slate-700 space-y-1.5">
+                    <li>↑ Intervenciones pedagógicas más oportunas</li>
+                    <li>↑ Reducción de estudiantes desaprobados al cierre del año escolar</li>
+                    <li>↑ Mejora sostenida de la calidad educativa institucional<Cite r="MINEDU, 2023" /></li>
+                  </ul>
                 </div>
               </div>
             </div>
