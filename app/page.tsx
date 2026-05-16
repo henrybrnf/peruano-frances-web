@@ -424,8 +424,11 @@ const TOC_CHAPTERS: TocChapter[] = [
     label: "Análisis del Objetivo",
     groups: [
       { label: "Entradas", color: "text-blue-600", sections: [{ label: "Problema Central", href: "#p03-entradas" }] },
-      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [{ label: "Árbol de Objetivos", href: "#p03-herramientas" }] },
-      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Objetivo Central", href: "#p03-salidas" }] },
+      { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [
+        { label: "Árbol de Objetivos", href: "#p03-herramientas" },
+        { label: "Análisis SMART", href: "#p03-smart" },
+      ] },
+      { label: "Salidas", color: "text-emerald-600", sections: [{ label: "Objetivo Central SMART", href: "#p03-salidas" }] },
     ],
   },
   {
@@ -2182,13 +2185,80 @@ export default function Home() {
             </div>
           </section>
 
+          {/* ── SMART — Herramienta ── */}
+          <section id="p03-smart" className="fade-section py-14 bg-slate-50 border-b border-slate-200">
+            <div className="px-8 lg:px-12">
+              <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Herramienta y Técnica</span>
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-2">Análisis SMART del Objetivo</h2>
+              <p className="text-slate-600 text-sm mb-8 max-w-3xl">
+                Se aplicó la metodología SMART<Cite r="PMI, 2017" /> para verificar y reforzar la calidad del objetivo derivado del Marco Lógico<Cite r="CEPAL/ILPES, 2005" />. Cada criterio se evalúa contra el objetivo inicial y se documenta la mejora aplicada.
+              </p>
+              <div className="space-y-3 max-w-4xl">
+                {[
+                  {
+                    letra: "S", nombre: "Específico", estado: "corregido",
+                    cumple: ["Nombra la institución: IE Peruano Francés", "Define la herramienta: Machine Learning", "Especifica variables monitoreadas: asistencia, notas e incidencias", "Nombra beneficiarios directos: docentes y directivos"],
+                    mejora: "Se agregaron variables monitoreadas y beneficiarios directos — ausentes en la formulación inicial del Marco Lógico.",
+                  },
+                  {
+                    letra: "M", nombre: "Medible", estado: "corregido",
+                    cumple: ["Meta cuantitativa: reducir en al menos 30% la detección tardía", "Universo definido: 200 alumnos de la institución", "Indicador basado en P7 de la encuesta (100% reconoce detección tardía actualmente)"],
+                    mejora: "Se incorporó la meta del 30% como indicador de éxito medible — el objetivo original solo decía 'mejorar'.",
+                  },
+                  {
+                    letra: "A", nombre: "Alcanzable", estado: "cumple",
+                    cumple: ["Infraestructura existente: Cubicol + internet WIN 1000 Mbps", "Datos históricos disponibles en Cubicol (7 años de uso)", "Equipo técnico disponible: UNTELS + Área TI de la institución", "Receptividad docente confirmada: 83.3% acepta ML (encuesta P8)"],
+                    mejora: null,
+                  },
+                  {
+                    letra: "R", nombre: "Relevante", estado: "cumple",
+                    cumple: ["Directamente vinculado al problema central (Marco Lógico)", "Validado: 100% de docentes reconoce detección tardía (encuesta P7)", "Alineado con la necesidad estratégica de la directora (entrevista)", "Respaldado por literatura académica sobre ML educativo"],
+                    mejora: null,
+                  },
+                  {
+                    letra: "T", nombre: "Temporal", estado: "corregido",
+                    cumple: ["Plazo definido: año escolar 2026", "Acota el horizonte de implementación y evaluación del sistema"],
+                    mejora: "Se agregó el plazo 'año escolar 2026' — ausente en la formulación original del árbol de objetivos.",
+                  },
+                ].map((c) => (
+                  <div key={c.letra} className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm">
+                    <div className="flex items-center gap-4 px-5 py-3 border-b border-slate-100">
+                      <span className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0 ${
+                        c.estado === "cumple" ? "bg-emerald-600 text-white" : "bg-blue-600 text-white"
+                      }`}>{c.letra}</span>
+                      <p className="font-semibold text-slate-900 text-sm flex-1">{c.nombre}</p>
+                      <span className={`font-mono-label text-[10px] px-2 py-1 rounded-full font-bold ${
+                        c.estado === "cumple" ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-blue-700"
+                      }`}>
+                        {c.estado === "cumple" ? "✓ Cumple" : "✓ Corregido"}
+                      </span>
+                    </div>
+                    <div className="px-5 py-3">
+                      <ul className="space-y-1 mb-2">
+                        {c.cumple.map((item, i) => (
+                          <li key={i} className="text-xs text-slate-700 flex items-start gap-2">
+                            <span className="text-emerald-500 flex-shrink-0 mt-0.5">✓</span>{item}
+                          </li>
+                        ))}
+                      </ul>
+                      {c.mejora && (
+                        <p className="text-xs text-blue-700 bg-blue-50 border border-blue-200 rounded px-3 py-1.5 mt-2">
+                          <strong>Mejora aplicada:</strong> {c.mejora}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* ── Salida: Objetivo SMART ── */}
           <section id="p03-salidas" className="fade-section py-14 bg-white border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Salida</span>
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-8">Objetivo Central del Proyecto</h2>
               <div className="max-w-4xl">
-
-                {/* Objetivo SMART */}
                 <div className="border-l-4 border-emerald-600 bg-emerald-50 p-6 rounded-r-lg mb-4">
                   <h3 className="text-sm font-mono-label text-emerald-700 uppercase tracking-wider mb-2">Objetivo General — Formulación SMART</h3>
                   <p className="text-xl font-serif-display text-slate-900 leading-snug">
@@ -2196,74 +2266,8 @@ export default function Home() {
                   </p>
                 </div>
                 <p className="text-slate-500 text-xs mb-10 max-w-2xl">
-                  Formulación revisada aplicando criterios SMART<Cite r="PMI, 2017" /> sobre el objetivo derivado del Marco Lógico<Cite r="CEPAL/ILPES, 2005" />. Evidencia empírica: <Cite r="Márquez-Vera et al., 2013" /><Cite r="Romero & Ventura, 2010" />.
+                  Objetivo resultante de aplicar el análisis SMART<Cite r="PMI, 2017" /> sobre el objetivo derivado del Marco Lógico<Cite r="CEPAL/ILPES, 2005" />. Evidencia empírica: <Cite r="Márquez-Vera et al., 2013" /><Cite r="Romero & Ventura, 2010" />.
                 </p>
-
-                {/* Análisis SMART */}
-                <h3 className="font-serif-display text-xl font-bold text-slate-900 mb-4">Análisis SMART del Objetivo</h3>
-                <div className="space-y-3 mb-10">
-                  {[
-                    {
-                      letra: "S", nombre: "Específico", estado: "parcial", color: "amber",
-                      cumple: ["Nombra la institución: IE Peruano Francés", "Define la herramienta: Machine Learning", "Especifica variables: asistencia, notas e incidencias", "Nombra beneficiarios: docentes y directivos"],
-                      mejora: "Se agregaron variables monitoreadas y beneficiarios directos al enunciado.",
-                    },
-                    {
-                      letra: "M", nombre: "Medible", estado: "corregido", color: "emerald",
-                      cumple: ["Meta cuantitativa: reducir en al menos 30% la detección tardía", "Universo definido: 200 alumnos de la institución", "Indicador basable en P7 de la encuesta (100% reconoce detección tardía)"],
-                      mejora: "Se incorporó la meta del 30% como indicador de éxito medible.",
-                    },
-                    {
-                      letra: "A", nombre: "Alcanzable", estado: "cumple", color: "emerald",
-                      cumple: ["Infraestructura existente: Cubicol + internet WIN 1000 Mbps", "Datos históricos disponibles en Cubicol (7 años)", "Equipo técnico: UNTELS + TI de la institución", "Receptividad docente confirmada: 83.3% acepta ML (P8)"],
-                      mejora: null,
-                    },
-                    {
-                      letra: "R", nombre: "Relevante", estado: "cumple", color: "emerald",
-                      cumple: ["Directamente vinculado al problema central (Marco Lógico)", "Validado: 100% de docentes reconoce detección tardía (P7)", "Alineado con la necesidad estratégica de la directora (entrevista)", "Respaldado por literatura académica sobre ML educativo"],
-                      mejora: null,
-                    },
-                    {
-                      letra: "T", nombre: "Temporal", estado: "corregido", color: "emerald",
-                      cumple: ["Plazo definido: año escolar 2026", "Acota el horizonte de implementación y evaluación del sistema"],
-                      mejora: "Se agregó el plazo 'año escolar 2026' ausente en la formulación original.",
-                    },
-                  ].map((c) => (
-                    <div key={c.letra} className="border border-slate-200 rounded-xl overflow-hidden bg-white">
-                      <div className="flex items-center gap-4 px-5 py-3 border-b border-slate-100">
-                        <span className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0 ${
-                          c.color === "emerald" ? "bg-emerald-600 text-white" : "bg-amber-500 text-white"
-                        }`}>{c.letra}</span>
-                        <div className="flex-1">
-                          <p className="font-semibold text-slate-900 text-sm">{c.nombre}</p>
-                        </div>
-                        <span className={`font-mono-label text-[10px] px-2 py-1 rounded-full font-bold ${
-                          c.estado === "cumple"    ? "bg-emerald-100 text-emerald-700" :
-                          c.estado === "corregido" ? "bg-blue-100 text-blue-700"      :
-                                                     "bg-amber-100 text-amber-700"
-                        }`}>
-                          {c.estado === "cumple" ? "✓ Cumple" : c.estado === "corregido" ? "✓ Corregido" : "⚠ Parcial"}
-                        </span>
-                      </div>
-                      <div className="px-5 py-3">
-                        <ul className="space-y-1 mb-2">
-                          {c.cumple.map((item, i) => (
-                            <li key={i} className="text-xs text-slate-700 flex items-start gap-2">
-                              <span className="text-emerald-500 flex-shrink-0 mt-0.5">✓</span>{item}
-                            </li>
-                          ))}
-                        </ul>
-                        {c.mejora && (
-                          <p className="text-xs text-blue-700 bg-blue-50 border border-blue-200 rounded px-3 py-1.5 mt-2">
-                            <strong>Mejora aplicada:</strong> {c.mejora}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Resultado + impacto */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="border border-slate-300 rounded-lg p-5 bg-slate-50">
                     <h4 className="font-semibold text-slate-900 mb-3">Impacto Esperado</h4>
