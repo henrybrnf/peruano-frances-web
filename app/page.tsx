@@ -1620,26 +1620,74 @@ export default function Home() {
           <section id="p02-entradas" className="fade-section py-14 bg-white border-b border-slate-200">
             <div className="px-8 lg:px-12">
               <span className="chapter-label block mb-2">02 · Análisis del Problema · Entrada</span>
-              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-6">Descripción de la Problemática</h2>
-              <div className="prose prose-sm max-w-3xl space-y-4 text-slate-700">
-                <p>
-                  En muchas instituciones educativas de América Latina, el seguimiento del rendimiento académico se realiza de manera manual o mediante sistemas que únicamente almacenan notas y asistencias sin generar análisis predictivos<Cite r="UNESCO, 2022" />. Esta situación dificulta identificar oportunamente a estudiantes que presentan bajo desempeño académico, limitando la capacidad de intervención oportuna de docentes y directivos<Cite r="Romero & Ventura, 2010" />.
-                </p>
-                <p>
-                  En la IE Peruano Francés, institución con 200 estudiantes en niveles inicial, primaria y secundaria, los registros académicos se gestionan a través de la plataforma Cubicol y de procesos manuales en papel. Sin embargo, <strong>no se cuenta con una herramienta inteligente</strong> que permita analizar de manera integrada variables como:
-                </p>
-                <ul className="list-disc list-inside space-y-1 ml-2">
-                  <li>Asistencia (actualmente registrada en papel)</li>
-                  <li>Calificaciones y evolución del desempeño académico</li>
-                  <li>Participación en clase</li>
-                  <li>Incidencias conductuales (reportadas vía WhatsApp/correo)</li>
-                  <li>Cumplimiento de tareas</li>
-                </ul>
-                <p>
-                  Debido a ello, las intervenciones por parte de docentes y directivos suelen realizarse <strong>cuando el problema académico ya se encuentra avanzado</strong>, afectando el aprendizaje, la motivación y el desempeño general de los estudiantes. La dispersión de información en distintos sistemas dificulta el monitoreo personalizado y continuo de cada alumno, provocando retrasos críticos en la toma de decisiones pedagógicas<Cite r="Márquez-Vera et al., 2013" />.
-                </p>
-                <p className="bg-blue-50 border-l-4 border-blue-500 p-4 mt-6">
-                  <strong>Necesidad identificada:</strong> Formular un sistema inteligente basado en Machine Learning que permita analizar patrones académicos multivariable y generar alertas tempranas sobre estudiantes con riesgo de bajo rendimiento en la IE Peruano Francés<Cite r="Márquez-Vera et al., 2013" />.
+              <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-2">Descripción de la Problemática</h2>
+              <p className="text-slate-600 text-sm mb-8 max-w-3xl">
+                Contexto general y situación actual de la IE Peruano Francés que justifica la necesidad del proyecto<Cite r="UNESCO, 2022" />.
+              </p>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                {/* Narrativa */}
+                <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
+                  <p>
+                    En América Latina, el seguimiento del rendimiento académico se realiza de manera manual o mediante sistemas que almacenan notas y asistencias sin generar análisis predictivos<Cite r="UNESCO, 2022" />. Esta situación dificulta identificar oportunamente a estudiantes en bajo desempeño, limitando la intervención oportuna de docentes y directivos<Cite r="Romero & Ventura, 2010" />.
+                  </p>
+                  <p>
+                    En la <strong>IE Peruano Francés</strong>, los registros académicos se gestionan a través de Cubicol y procesos manuales en papel. <strong>No se cuenta con una herramienta inteligente</strong> que permita analizar de manera integrada las variables clave del rendimiento estudiantil.
+                  </p>
+                  <p>
+                    Las intervenciones docentes suelen realizarse <strong>cuando el problema académico ya está avanzado</strong>. La dispersión de información dificulta el monitoreo personalizado de cada alumno, provocando retrasos críticos en las decisiones pedagógicas<Cite r="Márquez-Vera et al., 2013" />.
+                  </p>
+                </div>
+
+                {/* Tarjeta de contexto institucional */}
+                <div className="space-y-4">
+                  <div className="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <div className="bg-slate-800 px-4 py-3">
+                      <p className="font-mono-label text-[10px] text-slate-300 uppercase tracking-wider">IE Peruano Francés — Situación Actual</p>
+                    </div>
+                    <div className="divide-y divide-slate-100">
+                      {[
+                        { label: "Estudiantes", val: "200", sub: "inicial, primaria y secundaria" },
+                        { label: "Docentes / Auxiliares", val: "16", sub: "usuarios primarios del sistema" },
+                        { label: "Asistencia", val: "Manual", sub: "registrada en papel, sin trazabilidad digital" },
+                        { label: "Incidencias", val: "WhatsApp", sub: "sin historial consolidado" },
+                        { label: "Plataforma actual", val: "Cubicol", sub: "7 años de uso — sin analítica predictiva" },
+                      ].map((r) => (
+                        <div key={r.label} className="flex items-center justify-between px-4 py-2.5">
+                          <p className="text-xs text-slate-500">{r.label}</p>
+                          <div className="text-right">
+                            <p className="text-sm font-semibold text-slate-900">{r.val}</p>
+                            <p className="text-[10px] text-slate-400">{r.sub}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="border border-amber-200 rounded-xl p-4 bg-amber-50">
+                    <p className="font-mono-label text-[10px] text-amber-700 uppercase tracking-wider mb-2">Variables sin integrar actualmente</p>
+                    <ul className="space-y-1">
+                      {[
+                        "Asistencia (papel)",
+                        "Calificaciones y evolución académica",
+                        "Participación en clase",
+                        "Incidencias conductuales",
+                        "Cumplimiento de tareas",
+                      ].map((v) => (
+                        <li key={v} className="flex items-center gap-2 text-xs text-amber-900">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 flex-shrink-0" />{v}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Necesidad identificada */}
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-lg max-w-3xl">
+                <p className="text-sm font-semibold text-slate-900 mb-1">Necesidad identificada</p>
+                <p className="text-sm text-slate-700">
+                  Formular un sistema inteligente basado en Machine Learning que permita analizar patrones académicos multivariable y generar alertas tempranas sobre estudiantes con riesgo de bajo rendimiento en la IE Peruano Francés<Cite r="Márquez-Vera et al., 2013" />.
                 </p>
               </div>
             </div>
