@@ -2259,10 +2259,16 @@ export default function Home() {
               <span className="chapter-label block mb-2">03 · Análisis del Objetivo · Salida</span>
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-8">Objetivo Central del Proyecto</h2>
               <div className="max-w-3xl">
-                <div className="border-l-4 border-emerald-600 bg-emerald-50 p-6 rounded-r-lg mb-6">
+                <div className="border-l-4 border-emerald-600 bg-emerald-50 p-6 rounded-r-lg mb-4">
                   <h3 className="text-sm font-mono-label text-emerald-700 uppercase tracking-wider mb-2">Objetivo General</h3>
                   <p className="text-2xl font-serif-display text-slate-900 leading-tight">
                     "Mejorar la detección temprana del bajo rendimiento académico estudiantil mediante un sistema inteligente basado en Machine Learning en la IE Peruano Francés."
+                  </p>
+                </div>
+                <div className="border-l-4 border-blue-600 bg-blue-50 p-6 rounded-r-lg mb-6">
+                  <h3 className="text-sm font-mono-label text-blue-700 uppercase tracking-wider mb-2">Objetivo Central del Proyecto — SMART<Cite r="PMI, 2017" /></h3>
+                  <p className="text-2xl font-serif-display text-slate-900 leading-tight">
+                    "Reducir en al menos un <strong>30%</strong> la detección tardía del bajo rendimiento académico estudiantil en la <strong>IE Peruano Francés</strong>, mediante un sistema inteligente basado en Machine Learning que integre <strong>asistencia, notas e incidencias</strong> de los <strong>200 alumnos</strong>, proveyendo alertas automáticas a docentes y directivos, <strong>durante el año escolar 2026</strong>."
                   </p>
                 </div>
                 <p className="text-slate-600 text-sm mb-6">
@@ -2289,22 +2295,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Comparación objetivo original vs SMART */}
-                <div className="border border-slate-200 rounded-xl overflow-hidden">
-                  <div className="bg-slate-100 px-4 py-2 border-b border-slate-200">
-                    <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider">Comparación — Marco Lógico vs. SMART<Cite r="PMI, 2017" /></p>
-                  </div>
-                  <div className="divide-y divide-slate-200">
-                    <div className="flex items-start gap-4 p-4">
-                      <span className="font-mono-label text-[10px] bg-slate-200 text-slate-600 px-2 py-1 rounded font-bold flex-shrink-0 mt-0.5">Antes</span>
-                      <p className="text-sm text-slate-600 italic">"Mejorar la detección temprana del bajo rendimiento académico estudiantil mediante un sistema inteligente basado en Machine Learning en la IE Peruano Francés."</p>
-                    </div>
-                    <div className="flex items-start gap-4 p-4 bg-emerald-50">
-                      <span className="font-mono-label text-[10px] bg-emerald-600 text-white px-2 py-1 rounded font-bold flex-shrink-0 mt-0.5">SMART</span>
-                      <p className="text-sm text-slate-800 font-medium">"Reducir en al menos un <strong>30%</strong> la detección tardía del bajo rendimiento académico estudiantil en la IE Peruano Francés, mediante un sistema inteligente basado en Machine Learning que integre asistencia, notas e incidencias de los 200 alumnos, proveyendo alertas automáticas a docentes y directivos, durante el año escolar 2026."</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
