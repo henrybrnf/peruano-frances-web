@@ -2040,11 +2040,27 @@ export default function Home() {
               <span className="chapter-label block mb-2">02 · Análisis del Problema · Salida</span>
               <h2 className="font-serif-display text-3xl font-bold text-slate-900 mb-8">Problema Central Identificado</h2>
               <div className="max-w-3xl">
-                <div className="border-l-4 border-red-600 bg-red-50 p-6 rounded-r-lg mb-10">
+                <div className="border-l-4 border-red-600 bg-red-50 p-6 rounded-r-lg mb-6">
                   <h3 className="text-sm font-mono-label text-red-700 uppercase tracking-wider mb-2">Problema Central</h3>
                   <p className="text-2xl font-serif-display text-slate-900 leading-tight">
                     "Deficiente detección temprana del bajo rendimiento académico estudiantil."
                   </p>
+                </div>
+                <div className="border border-red-200 rounded-lg p-5 bg-white mb-6">
+                  <h3 className="text-sm font-mono-label text-red-700 uppercase tracking-wider mb-3">Problemas Específicos</h3>
+                  <ul className="space-y-2">
+                    {[
+                      "Falta de herramientas de análisis predictivo del rendimiento académico.",
+                      "Seguimiento manual y disperso del desempeño estudiantil.",
+                      "Información académica fragmentada en distintos sistemas (Cubicol, papel, WhatsApp).",
+                      "Ausencia de alertas tempranas automatizadas para docentes y directivos.",
+                    ].map((p, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                        <span className="font-mono-label text-[10px] bg-red-100 text-red-700 px-1.5 py-0.5 rounded font-bold flex-shrink-0 mt-0.5">PE{i + 1}</span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="bg-slate-100 rounded-lg p-6">
                   <h3 className="font-semibold text-slate-900 mb-3">Efecto Final del Problema</h3>
@@ -2264,6 +2280,22 @@ export default function Home() {
                   <p className="text-2xl font-serif-display text-slate-900 leading-tight">
                     "Mejorar la detección temprana del bajo rendimiento académico estudiantil mediante un sistema inteligente basado en Machine Learning en la IE Peruano Francés."
                   </p>
+                </div>
+                <div className="border border-emerald-200 rounded-lg p-5 bg-white mb-6">
+                  <h3 className="text-sm font-mono-label text-emerald-700 uppercase tracking-wider mb-3">Objetivos Específicos</h3>
+                  <ul className="space-y-2">
+                    {[
+                      "Implementar un módulo de análisis integrado de datos académicos (asistencia, notas e incidencias) de los 200 alumnos de la IE Peruano Francés.",
+                      "Automatizar el seguimiento estudiantil mediante modelos predictivos de Machine Learning entrenados con datos históricos.",
+                      "Centralizar la información académica dispersa en una plataforma única integrada con Cubicol.",
+                      "Generar alertas tempranas automáticas priorizadas por nivel de riesgo académico para docentes y directivos.",
+                    ].map((o, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                        <span className="font-mono-label text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded font-bold flex-shrink-0 mt-0.5">OE{i + 1}</span>
+                        {o}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <div className="border-l-4 border-blue-600 bg-blue-50 p-6 rounded-r-lg mb-6">
                   <h3 className="text-sm font-mono-label text-blue-700 uppercase tracking-wider mb-2">Objetivo Central del Proyecto — SMART<Cite r="PMI, 2017" /></h3>
