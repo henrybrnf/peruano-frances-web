@@ -409,7 +409,7 @@ const TOC_CHAPTERS: TocChapter[] = [
       { label: "Entradas", color: "text-blue-600", sections: [{ label: "Descripción de la problemática", href: "#p02-entradas" }] },
       { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [
         { label: "Marco Lógico", href: "#p02-herramientas" },
-        { label: "Encuesta Docente", href: "#p02-herramientas" },
+        { label: "Encuesta Docente", href: "#p02-encuesta" },
         { label: "Design Thinking", href: "#p02-design-thinking" },
       ] },
       { label: "Evidencias", color: "text-purple-600", sections: [
@@ -1755,7 +1755,7 @@ export default function Home() {
               
               <hr className="my-10 border-slate-300" />
               
-              <div>
+              <div id="p02-encuesta">
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">2. Encuesta Docente sobre Seguimiento Académico (Google Forms)</h3>
                 <p className="text-slate-600 mb-6 max-w-3xl">
                   Se desarrolló una encuesta digital mediante Google Forms dirigida a los 16 docentes y auxiliares de la IE Peruano Francés para validar la percepción institucional sobre el seguimiento académico estudiantil. Esta técnica de recolección de datos primarios es consistente con la literatura sobre detección temprana del bajo rendimiento<Cite r="Márquez-Vera et al., 2013" />. La encuesta incluye 11 preguntas estructuradas que exploran:
