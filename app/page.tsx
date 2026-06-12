@@ -2027,25 +2027,6 @@ export default function Home() {
                             />
                           </div>
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <h5 className="font-bold text-slate-800 text-sm mb-2">Sustitutir:</h5>
-                            <p className="text-xs text-slate-600">Reemplazar los procesos manuales por mecanismos automatizados de Machine Learning.</p>
-                          </div>
-                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <h5 className="font-bold text-slate-800 text-sm mb-2">Combinar:</h5>
-                            <p className="text-xs text-slate-600">Integrar notas, asistencia, conducta y participación académica.</p>
-                          </div>
-                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <h5 className="font-bold text-slate-800 text-sm mb-2">Adaptar:</h5>
-                            <p className="text-xs text-slate-600">Usar técnicas de evaluación de riesgo financiero (credit scoring) en colegios.</p>
-                          </div>
-                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                            <h5 className="font-bold text-slate-800 text-sm mb-2">Revertir Enfoque:</h5>
-                            <p className="text-xs text-slate-600">Actuar preventivamente antes de que ocurran las reprobaciones escolares.</p>
-                          </div>
-                        </div>
                       </div>
                 </div>
 
