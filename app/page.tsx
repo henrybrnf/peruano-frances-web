@@ -1822,99 +1822,323 @@ export default function Home() {
                 Complementando el Marco Lógico, se aplicó Design Thinking como enfoque centrado en el usuario para comprender en profundidad las necesidades reales de los actores clave e identificar el problema desde su perspectiva. Las fases de <strong>Empatizar</strong> y <strong>Definir</strong> son las que corresponden al análisis del problema.
               </p>
 
-              {/* Fase 1: Empatizar */}
-              <div className="mb-14">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-8 h-8 rounded-full bg-[#0d1f3c] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">1</span>
-                  <div>
-                    <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider">Fase 1 — Design Thinking</p>
-                    <h3 className="font-serif-display text-xl font-bold text-slate-900">Empatizar</h3>
+              <div className="space-y-12">
+                {/* Resumen de la Fase */}
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8">
+                  <h3 className="font-serif text-2xl font-bold text-slate-900 mb-4">Fase Empatizar — Comprensión del Entorno</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                    La fase de Empatizar tuvo como propósito comprender las necesidades, preocupaciones y expectativas de los principales actores involucrados en el proceso de seguimiento académico estudiantil. Para ello, se analizaron los stakeholders de la IE Peruano Francés.
+                  </p>
+                </div>
+
+                {/* Mapa de Empatía del Docente */}
+                <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                  <div className="border-b border-slate-100 pb-4 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                      <span className="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Docente Tutor
+                      </span>
+                      <h4 className="text-xl font-bold text-slate-800 mt-2">Mapa de Empatía del Docente</h4>
+                    </div>
+                  </div>
+
+                  {/* CONTENEDOR DE LA IMAGEN DEL MAPA DE EMPATÍA DEL DOCENTE */}
+                  <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                    <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE MAPA DE EMPATÍA DEL DOCENTE */</p>
+                    <div className="relative w-full max-w-4xl h-[400px]">
+                      <Image 
+                        src="/Mapa de empatia.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/mapa_empatia_docente.jpg")
+                        alt="Mapa de Empatía del Docente"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Análisis textual del Mapa de Empatía */}
+                  <div className="bg-slate-50 rounded-xl p-4 mt-6">
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      El mapa de empatía del docente permitió identificar que uno de sus principales intereses es detectar oportunamente a los estudiantes que presentan dificultades académicas. Asimismo, se evidenció que gran parte de la información necesaria para realizar el seguimiento se encuentra dispersa o requiere revisión manual, lo que dificulta la intervención temprana. Los docentes esperan contar con herramientas que faciliten el monitoreo continuo del desempeño estudiantil y les permitan tomar decisiones pedagógicas basadas en información actualizada y confiable.
+                    </p>
                   </div>
                 </div>
-                <p className="text-slate-600 text-sm mb-8 max-w-3xl">
-                  A partir de la entrevista con la Directora y el Área TI, y de los resultados de la encuesta docente, se construyeron los mapas de empatía para los tres usuarios primarios del sistema.
-                </p>
 
-                <div className="space-y-6">
-                  {MAPA_EMPATIA.map((u) => (
-                    <div key={u.usuario} className={`border-l-4 ${u.color} rounded-r-2xl overflow-hidden shadow-sm`}>
-                      <div className={`${u.colorBg} px-6 py-4 border-b border-slate-200 flex items-center gap-3`}>
-                        <span className={`${u.colorLabel} text-white font-bold text-xs px-3 py-1 rounded-full`}>{u.usuario}</span>
-                        <p className="text-slate-600 text-sm">{u.cargo}</p>
-                      </div>
-                      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-slate-200 bg-white">
-                        {[
-                          { label: "Piensa y Siente", items: u.piensa,       icon: "💭" },
-                          { label: "Ve",              items: u.ve,            icon: "👁" },
-                          { label: "Dice y Hace",     items: u.dice,          icon: "💬" },
-                          { label: "Frustraciones",   items: u.frustraciones, icon: "⚡" },
-                          { label: "Motivaciones",    items: u.motivaciones,  icon: "🎯" },
-                        ].map((bloque) => (
-                          <div key={bloque.label} className="p-4">
-                            <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider mb-2">{bloque.icon} {bloque.label}</p>
-                            <ul className="space-y-1.5">
-                              {bloque.items.map((it, i) => (
-                                <li key={i} className="text-xs text-slate-700 leading-snug flex items-start gap-1.5">
-                                  <span className="text-slate-400 flex-shrink-0 mt-0.5">·</span>
-                                  {it}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
+                {/* Mapa de Empatía del Padre de Familia */}
+                <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                  <div className="border-b border-slate-100 pb-4 mb-6">
+                    <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      Padres de Familia
+                    </span>
+                    <h4 className="text-xl font-bold text-slate-800 mt-2">Mapa de Empatía del Padre de Familia</h4>
+                  </div>
+
+                  {/* CONTENEDOR DE LA IMAGEN DEL MAPA DE EMPATÍA DE PADRES */}
+                  <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                    <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE MAPA DE EMPATÍA DE PADRES */</p>
+                    <div className="relative w-full max-w-4xl h-[400px]">
+                      <Image 
+                        src="/Mapa de Empatia Padres.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/mapa_empatia_familia.jpg")
+                        alt="Mapa de Empatía del Padre de Familia"
+                        fill
+                        className="object-contain"
+                      />
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="bg-slate-50 rounded-xl p-4 mt-4">
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      El análisis realizado sobre los padres de familia permitió identificar que su principal preocupación es conocer oportunamente el desempeño académico de sus hijos y poder actuar antes de que se presenten problemas mayores. Asimismo, valoran recibir información clara, sencilla y comprensible sobre el progreso académico, asistencia y comportamiento estudiantil. Los padres esperan que la institución educativa disponga de mecanismos que permitan una comunicación más efectiva y un seguimiento preventivo del rendimiento académico.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Buyer Persona: Luis Ramírez */}
+                <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                  <div className="border-b border-slate-100 pb-4 mb-6">
+                    <span className="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      Perfil del Usuario
+                    </span>
+                    <h4 className="text-xl font-bold text-slate-800 mt-2">Buyer Persona Principal: Docente Coordinador Académico</h4>
+                  </div>
+
+                  {/* CONTENEDOR DE LA IMAGEN DEL BUYER PERSONA */}
+                  <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                    <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE BUYER PERSONA */</p>
+                    <div className="relative w-full max-w-2xl h-[500px]">
+                      <Image 
+                        src="/Buyer Persona Principal Docente.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/buyer_persona_docente.jpg")
+                        alt="Buyer Persona Principal Luis Ramírez"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-50 rounded-xl p-4 mt-4">
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      A partir de la información recopilada se definió como usuario principal al <strong>Docente Coordinador Académico</strong>, quien participa activamente en el seguimiento del rendimiento estudiantil y en la toma de decisiones relacionadas con intervenciones académicas. Este perfil representa a los usuarios que utilizarán con mayor frecuencia el sistema inteligente propuesto, consultando indicadores, reportes y alertas tempranas generadas por los modelos de Machine Learning.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Hallazgos Clave de Empatizar */}
+                <div className="bg-blue-50/50 border border-blue-200 rounded-2xl p-6">
+                  <h4 className="font-bold text-slate-900 mb-3">Hallazgos de la Fase Empatizar</h4>
+                  <ul className="space-y-2.5 text-sm text-slate-700 list-disc list-inside">
+                    <li>Los docentes requieren información consolidada y actualizada para detectar tempranamente problemas de rendimiento académico.</li>
+                    <li>Los padres de familia necesitan mecanismos de comunicación más oportunos respecto al desempeño de sus hijos.</li>
+                    <li>El seguimiento académico actual depende en gran medida de procesos manuales y revisiones periódicas.</li>
+                    <li>La identificación de estudiantes en riesgo suele realizarse cuando los problemas académicos ya se han manifestado.</li>
+                    <li>Existe interés por utilizar herramientas tecnológicas que faciliten el monitoreo y la toma de decisiones preventivas.</li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Fase 2: Definir */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="w-8 h-8 rounded-full bg-[#0d1f3c] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">2</span>
-                  <div>
-                    <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider">Fase 2 — Design Thinking</p>
-                    <h3 className="font-serif-display text-xl font-bold text-slate-900">Definir</h3>
-                  </div>
+
+
+              {/* ── Fase 2: Definir ── */}
+              <div className="space-y-12">
+                    {/* Resumen */}
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                      <h3 className="font-serif text-2xl font-bold text-slate-900 mb-4">Fase Definir — Árbol de Problemas y Diagnóstico</h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        En esta etapa, estructuramos y definimos las causas y consecuencias del problema central: la deficiencia en detectar temprano el rendimiento inestable.
+                      </p>
+                    </div>
+
+                    {/* Punto de Vista (POV) */}
+                    <div className="bg-slate-900 text-white rounded-2xl p-6 md:p-8">
+                      <span className="text-teal-400 text-xs font-mono font-bold tracking-wider uppercase">Punto de Vista — POV</span>
+                      <blockquote className="text-lg md:text-xl font-serif mt-4 leading-relaxed border-l-4 border-teal-400 pl-4">
+                        "El <strong>Docente Tutor de la IE Peruano Francés</strong> necesita <strong>detectar tempranamente el bajo rendimiento académico de sus alumnos</strong> porque el seguimiento actual es manual, disperso y reactivo, lo que retrasa las intervenciones pedagógicas preventivas."
+                      </blockquote>
+                    </div>
+
+                    {/* Árbol de problemas */}
+                    <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                      <h4 className="text-xl font-bold text-slate-800 mb-4">Visualización: Árbol de Problemas</h4>
+                      
+                      {/* CONTENEDOR DE LA IMAGEN DEL ÁRBOL DE PROBLEMAS */}
+                      <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                        <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE ÁRBOL DE PROBLEMAS */</p>
+                        <div className="relative w-full max-w-4xl h-[450px]">
+                          <Image 
+                            src="/arbol-problemas.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/arbol_de_problemas.jpg")
+                            alt="Árbol de Problemas - Metodología"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="bg-slate-50 rounded-xl p-4 mt-6">
+                        <p className="text-sm text-slate-700 leading-relaxed font-sans">
+                          A partir de los hallazgos identificados en la fase Empatizar se construyó el <strong>Árbol de Problemas</strong>, herramienta que permitió estructurar las causas y consecuencias asociadas al problema principal. El análisis evidenció que la deficiente detección temprana del bajo rendimiento académico se origina principalmente por la dispersión de la información académica, la existencia de procesos manuales de seguimiento y la limitada capacidad de monitoreo del comportamiento estudiantil. Estas causas generan dificultades en la toma de decisiones, intervenciones tardías y un incremento del riesgo de desaprobación de los estudiantes.
+                        </p>
+                      </div>
+                    </div>
                 </div>
 
-                {/* POV */}
-                <div className="bg-[#0d1f3c] rounded-2xl p-8 mb-8 max-w-3xl">
-                  <p className="font-mono-label text-[10px] text-[#4ec8cc] uppercase tracking-wider mb-3">Enunciado POV — Point of View</p>
-                  <p className="text-white text-lg font-serif-display leading-relaxed">
-                    "El docente de la IE Peruano Francés{" "}
-                    <span className="text-[#4ec8cc]">necesita</span> detectar tempranamente el bajo rendimiento académico de sus alumnos,{" "}
-                    <span className="text-[#4ec8cc]">porque</span> el seguimiento actual es manual, disperso y reactivo, lo que retrasa las intervenciones pedagógicas hasta que el problema ya es grave."
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-white/20 grid grid-cols-3 gap-4 text-xs text-slate-400">
-                    <div><span className="text-[#4ec8cc] font-bold block mb-0.5">USUARIO</span>Docente de la IE Peruano Francés</div>
-                    <div><span className="text-[#4ec8cc] font-bold block mb-0.5">NECESIDAD</span>Detectar bajo rendimiento a tiempo</div>
-                    <div><span className="text-[#4ec8cc] font-bold block mb-0.5">INSIGHT</span>El proceso manual retrasa la acción</div>
-                  </div>
-                </div>
 
-                {/* HMW */}
-                <p className="font-mono-label text-[10px] text-slate-500 uppercase tracking-wider mb-4">¿Cómo Podríamos…? — How Might We</p>
-                <div className="space-y-4 max-w-4xl">
-                  {HMW.map((h, i) => (
-                    <div key={i} className="border border-slate-200 rounded-xl p-5 bg-slate-50 hover:shadow-sm transition-shadow">
-                      <div className="flex items-start gap-4">
-                        <span className="font-mono-label text-[11px] bg-amber-100 text-amber-700 border border-amber-200 px-2 py-1 rounded font-bold flex-shrink-0">HMW {i + 1}</span>
-                        <div className="flex-1">
-                          <p className="text-slate-900 font-semibold text-sm mb-2">{h.pregunta}</p>
-                          <p className="text-slate-500 text-xs mb-3">
-                            <span className="font-semibold text-slate-600">Insight:</span> {h.insight}
-                          </p>
-                          <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-mono-label text-slate-400">→</span>
-                            <span className="text-xs text-[#0d7377] font-medium bg-[#e8f5f5] border border-[#c0e0e0] px-2 py-0.5 rounded">{h.vinculo}</span>
+              {/* ── Fase 3: Idear ── */}
+                <div className="space-y-12">
+                      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                        <h3 className="font-serif text-2xl font-bold text-slate-900 mb-4">Fase Idear — Brainstorming & SCAMPER</h3>
+                        <p className="text-slate-600 text-sm leading-relaxed">
+                          Una vez identificado el problema central, desarrollamos dinámicas creativas para proponer soluciones sistémicas y viables para la IE Peruano Francés.
+                        </p>
+                      </div>
+
+                      {/* Brainstorming visual */}
+                      <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                        <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Idear — Brainstorming y Diagrama de Afinidad</h4>
+                        
+                        {/* CONTENEDOR DE LA IMAGEN DE LLUVIA DE IDEAS / AFINIDAD */}
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                          <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE DIAGRAMA DE AFINIDAD */</p>
+                          <div className="relative w-full max-w-4xl h-[450px]">
+                            <Image 
+                              src="/Diagrama de Afinidad.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/diagrama_afinidad.jpg")
+                              alt="Diagrama de Afinidad y Brainstorming"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-slate-600 mt-4 leading-relaxed">
+                          Una vez identificado el problema central y analizadas sus causas mediante el Árbol de Problemas, se desarrolló una sesión de brainstorming con el propósito de generar posibles alternativas de solución que contribuyan a mejorar la detección temprana del bajo rendimiento académico estudiantil.
+                        </p>
+                      </div>
+
+                      {/* SCAMPER visual */}
+                      <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                        <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Diagrama SCAMPER</h4>
+                        
+                        {/* CONTENEDOR DE LA IMAGEN DE SCAMPER */}
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                          <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE SCAMPER */</p>
+                          <div className="relative w-full max-w-4xl h-[450px]">
+                            <Image 
+                              src="/SCAMPER.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/diagrama_scamper.jpg")
+                              alt="Mapa Diagrama SCAMPER"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <h5 className="font-bold text-slate-800 text-sm mb-2">Sustitutir:</h5>
+                            <p className="text-xs text-slate-600">Reemplazar los procesos manuales por mecanismos automatizados de Machine Learning.</p>
+                          </div>
+                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <h5 className="font-bold text-slate-800 text-sm mb-2">Combinar:</h5>
+                            <p className="text-xs text-slate-600">Integrar notas, asistencia, conducta y participación académica.</p>
+                          </div>
+                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <h5 className="font-bold text-slate-800 text-sm mb-2">Adaptar:</h5>
+                            <p className="text-xs text-slate-600">Usar técnicas de evaluación de riesgo financiero (credit scoring) en colegios.</p>
+                          </div>
+                          <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <h5 className="font-bold text-slate-800 text-sm mb-2">Revertir Enfoque:</h5>
+                            <p className="text-xs text-slate-600">Actuar preventivamente antes de que ocurran las reprobaciones escolares.</p>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
                 </div>
-              </div>
+
+              {/* ── Fase 4: Prototipar ── */}
+              <div className="space-y-12">
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                      <h3 className="font-serif text-2xl font-bold text-slate-900 mb-4">Fase Prototipar — Mockup del Sistema Inteligente (SIA-T)</h3>
+                      <p className="text-slate-600 text-sm leading-relaxed">
+                        Diseño del prototipo de interfaz interactiva para el monitoreo oportuno de alumnos por parte del personal de tutoría académica.
+                      </p>
+                    </div>
+
+                    <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm font-sans">
+                      <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Prototipo Visual — Mockup de la Plataforma SIA-T</h4>
+                      
+                      {/* CONTENEDOR DE LA IMAGEN DEL PROTOTIPO / MOCKUP */}
+                      <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                        <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE TU PROTOTIPO INTERACTIVO */</p>
+                        <div className="relative w-full max-w-5xl h-[450px]">
+                          <Image 
+                            src="/PROTOTIPO.jpeg" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/mockup_sistema.jpg")
+                            alt="Prototipo Visual Mockup del Sistema SIA-T"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-4 text-sm text-slate-700 leading-relaxed mt-6">
+                        <p>
+                          Luego de analizar las necesidades de los usuarios, definir el problema principal y generar alternativas de solución mediante técnicas de ideación, se desarrolló un prototipo visual (mockup) del sistema inteligente de alerta temprana del rendimiento académico estudiantil.
+                        </p>
+                        <p>
+                          El objetivo de este prototipo es representar de forma preliminar la estructura, funcionalidades y experiencia de uso que tendría la solución propuesta antes de su implementación. El diseño se centra principalmente en los docentes y coordinadores académicos, quienes requieren información oportuna para identificar estudiantes con riesgo académico y tomar decisiones preventivas.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                {/* ── Fase 5: Evaluar ── */}
+                <div className="space-y-12 font-sans">
+                      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                        <h3 className="font-serif text-2xl font-bold text-slate-900 mb-4">Fase Evaluar — Customer Journey & Estrella de Mar</h3>
+                        <p className="text-slate-600 text-sm leading-relaxed">
+                          Evaluamos el impacto del sistema sobre la experiencia de usuario (UX) del profesorado y modelamos las prioridades mediante retrospectivas ágiles.
+                        </p>
+                      </div>
+
+                      {/* Customer Journey Map */}
+                      <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                        <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Customer Journey Map del Docente Tutor</h4>
+                        
+                        {/* CONTENEDOR DE LA IMAGEN DEL CUSTOMER JOURNEY MAP */}
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                          <p className="text-xs text-amber-600 font-mono mb-2"></p>
+                          <div className="relative w-full max-w-5xl h-[400px]">
+                            <Image 
+                              src="/Customer Journey Docente.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/customer_journey_map.jpg")
+                              alt="Diagrama Customer Journey Map Docente"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-slate-600 mt-4 leading-relaxed">
+                          Con el propósito de analizar la experiencia del usuario frente al sistema inteligente de alerta temprana académica, se desarrolló un <strong>Customer Journey Map centrado en el docente tutor</strong>, quien representa uno de los principales usuarios encargados del seguimiento y acompañamiento del rendimiento estudiantil.
+                        </p>
+                      </div>
+
+                      {/* Estrella de Mar Feedback */}
+                      <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm">
+                        <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Diagrama Metodología Estrella de Mar</h4>
+                        
+                        {/* CONTENEDOR DE LA IMAGEN DEL DIAGRAMA ESTRELLA DE MAR */}
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
+                          <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE METODOLOGÍA ESTRELLA DE MAR */</p>
+                          <div className="relative w-full max-w-5xl h-[450px]">
+                            <Image 
+                              src="/ESTRELLA DE MAR.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/estrella_de_mar.jpg")
+                              alt="Diagrama Estrella de Mar - Métricas de feedback"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-slate-600 leading-relaxed mt-4">
+                          La retrospectiva Estrella de Mar permitió identificar de manera clara las acciones necesarias para optimizar el proceso de seguimiento académico dentro del Colegio Peruano Francés. Los resultados evidencian que la incorporación de técnicas de Machine Learning y analítica educativa puede transformar un modelo reactivo de gestión académica en un enfoque preventivo.
+                        </p>
+                      </div>
+                    </div>
+
             </div>
           </section>
 
