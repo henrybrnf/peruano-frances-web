@@ -1844,13 +1844,13 @@ export default function Home() {
 
                   {/* CONTENEDOR DE LA IMAGEN DEL MAPA DE EMPATÍA DEL DOCENTE */}
                   <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                    <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE MAPA DE EMPATÍA DEL DOCENTE */</p>
-                    <div className="relative w-full max-w-4xl h-[400px]">
-                      <Image 
-                        src="/Mapa de empatia.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/mapa_empatia_docente.jpg")
+                    <div className="relative w-full max-w-6xl h-[700px]">
+                      <Image
+                        src="/Mapa de empatia.png"
                         alt="Mapa de Empatía del Docente"
                         fill
                         className="object-contain"
+                        priority
                       />
                     </div>
                   </div>
@@ -1874,13 +1874,13 @@ export default function Home() {
 
                   {/* CONTENEDOR DE LA IMAGEN DEL MAPA DE EMPATÍA DE PADRES */}
                   <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                    <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE MAPA DE EMPATÍA DE PADRES */</p>
-                    <div className="relative w-full max-w-4xl h-[400px]">
-                      <Image 
-                        src="/Mapa de Empatia Padres.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/mapa_empatia_familia.jpg")
+                    <div className="relative w-full max-w-6xl h-[700px]">
+                      <Image
+                        src="/Mapa de Empatia Padres.png"
                         alt="Mapa de Empatía del Padre de Familia"
                         fill
                         className="object-contain"
+                        priority
                       />
                     </div>
                   </div>
@@ -1902,14 +1902,14 @@ export default function Home() {
                   </div>
 
                   {/* CONTENEDOR DE LA IMAGEN DEL BUYER PERSONA */}
-                  <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                    <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE BUYER PERSONA */</p>
-                    <div className="relative w-full max-w-2xl h-[500px]">
-                      <Image 
-                        src="/Buyer Persona Principal Docente.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/buyer_persona_docente.jpg")
+                  <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-6 flex justify-center">
+                    <div className="relative w-full max-w-xl h-[900px]">
+                      <Image
+                        src="/Buyer Persona Principal Docente.png"
                         alt="Buyer Persona Principal Luis Ramírez"
                         fill
                         className="object-contain"
+                        priority
                       />
                     </div>
                   </div>
@@ -1959,14 +1959,14 @@ export default function Home() {
                       <h4 className="text-xl font-bold text-slate-800 mb-4">Visualización: Árbol de Problemas</h4>
                       
                       {/* CONTENEDOR DE LA IMAGEN DEL ÁRBOL DE PROBLEMAS */}
-                      <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                        <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE ÁRBOL DE PROBLEMAS */</p>
-                        <div className="relative w-full max-w-4xl h-[450px]">
-                          <Image 
-                            src="/arbol-problemas.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/arbol_de_problemas.jpg")
+                      <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-6 flex justify-center">
+                        <div className="relative w-full max-w-6xl h-[800px]">
+                          <Image
+                            src="/arbol-problemas.png"
                             alt="Árbol de Problemas - Metodología"
                             fill
                             className="object-contain"
+                            priority
                           />
                         </div>
                       </div>
@@ -1994,14 +1994,14 @@ export default function Home() {
                         <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Idear — Brainstorming y Diagrama de Afinidad</h4>
                         
                         {/* CONTENEDOR DE LA IMAGEN DE LLUVIA DE IDEAS / AFINIDAD */}
-                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                          <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE DIAGRAMA DE AFINIDAD */</p>
-                          <div className="relative w-full max-w-4xl h-[450px]">
-                            <Image 
-                              src="/Diagrama de Afinidad.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/diagrama_afinidad.jpg")
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-6 flex justify-center">
+                          <div className="relative w-full max-w-6xl h-[800px]">
+                            <Image
+                              src="/Diagrama de Afinidad.png"
                               alt="Diagrama de Afinidad y Brainstorming"
                               fill
                               className="object-contain"
+                              priority
                             />
                           </div>
                         </div>
@@ -2016,14 +2016,14 @@ export default function Home() {
                         <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Diagrama SCAMPER</h4>
                         
                         {/* CONTENEDOR DE LA IMAGEN DE SCAMPER */}
-                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                          <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE SCAMPER */</p>
-                          <div className="relative w-full max-w-4xl h-[450px]">
-                            <Image 
-                              src="/SCAMPER.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/diagrama_scamper.jpg")
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-6 flex justify-center">
+                          <div className="relative w-full max-w-6xl h-[800px]">
+                            <Image
+                              src="/SCAMPER.png"
                               alt="Mapa Diagrama SCAMPER"
                               fill
                               className="object-contain"
+                              priority
                             />
                           </div>
                         </div>
@@ -2062,18 +2062,17 @@ export default function Home() {
                       <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Prototipo Visual — Mockup de la Plataforma SIA-T</h4>
                       
                       {/* CONTENEDOR DE LA IMAGEN DEL PROTOTIPO / MOCKUP */}
-                      <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                        <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE TU PROTOTIPO INTERACTIVO */</p>
-                        <div className="relative w-full max-w-5xl h-[450px]">
-                          <Image 
-                            src="/PROTOTIPO.jpeg" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/mockup_sistema.jpg")
+                      <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-6 flex justify-center">
+                        <div className="relative w-full max-w-7xl h-[850px]">
+                          <Image
+                            src="/PROTOTIPO.jpeg"
                             alt="Prototipo Visual Mockup del Sistema SIA-T"
                             fill
                             className="object-contain"
+                            priority
                           />
                         </div>
                       </div>
-
                       <div className="space-y-4 text-sm text-slate-700 leading-relaxed mt-6">
                         <p>
                           Luego de analizar las necesidades de los usuarios, definir el problema principal y generar alternativas de solución mediante técnicas de ideación, se desarrolló un prototipo visual (mockup) del sistema inteligente de alerta temprana del rendimiento académico estudiantil.
@@ -2099,14 +2098,14 @@ export default function Home() {
                         <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Customer Journey Map del Docente Tutor</h4>
                         
                         {/* CONTENEDOR DE LA IMAGEN DEL CUSTOMER JOURNEY MAP */}
-                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                          <p className="text-xs text-amber-600 font-mono mb-2"></p>
-                          <div className="relative w-full max-w-5xl h-[400px]">
-                            <Image 
-                              src="/Customer Journey Docente.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/customer_journey_map.jpg")
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-6 flex justify-center">
+                          <div className="relative w-full max-w-7xl h-[800px]">
+                            <Image
+                              src="/Customer Journey Docente.png"
                               alt="Diagrama Customer Journey Map Docente"
                               fill
                               className="object-contain"
+                              priority
                             />
                           </div>
                         </div>
@@ -2121,14 +2120,14 @@ export default function Home() {
                         <h4 className="text-xl font-bold text-slate-800 mb-4 font-serif">Diagrama Metodología Estrella de Mar</h4>
                         
                         {/* CONTENEDOR DE LA IMAGEN DEL DIAGRAMA ESTRELLA DE MAR */}
-                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-4 flex flex-col items-center">
-                          <p className="text-xs text-amber-600 font-mono mb-2">/* REEMPLAZAR AQUÍ CON LA IMAGEN DE METODOLOGÍA ESTRELLA DE MAR */</p>
-                          <div className="relative w-full max-w-5xl h-[450px]">
-                            <Image 
-                              src="/ESTRELLA DE MAR.png" // <-- PON AQUÍ LA DIRECCIÓN DE TU IMAGEN LOCAL (Ej: "/estrella_de_mar.jpg")
+                        <div className="my-6 border border-slate-200 rounded-xl overflow-hidden bg-slate-50 p-6 flex justify-center">
+                          <div className="relative w-full max-w-6xl h-[750px]">
+                            <Image
+                              src="/ESTRELLA DE MAR.png"
                               alt="Diagrama Estrella de Mar - Métricas de feedback"
                               fill
                               className="object-contain"
+                              priority
                             />
                           </div>
                         </div>
