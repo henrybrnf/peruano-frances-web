@@ -462,4 +462,3 @@ export const TOC_CHAPTERS: TocChapter[] = [
 export const TOC_SECTIONS: TocSection[] = TOC_CHAPTERS.flatMap((ch) =>
   ch.groups ? ch.groups.flatMap((g) => g.sections) : (ch.sections ?? [])
 );
-
