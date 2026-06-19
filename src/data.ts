@@ -401,7 +401,6 @@ export const TOC_CHAPTERS: TocChapter[] = [
       { label: "Herramientas y Técnicas", color: "text-amber-600", sections: [
         { label: "Marco Lógico", href: "#p02-herramientas" },
         { label: "Encuesta Docente", href: "#p02-encuesta" },
-        { label: "Design Thinking", href: "#p02-design-thinking" },
       ] },
       { label: "Evidencias", color: "text-purple-600", sections: [
         { label: "Respuestas de Docentes", href: "#p02-evidencias" },
@@ -423,6 +422,37 @@ export const TOC_CHAPTERS: TocChapter[] = [
     ],
   },
   {
+    num: "04",
+    label: "Análisis de Alternativa de Solución",
+    groups: [
+      { label: "Marco y Acciones", color: "text-blue-600", sections: [
+        { label: "Objetivo y Acciones por Medio", href: "#p04-marco" },
+        { label: "Identificación de Acciones", href: "#p04-acciones" },
+      ] },
+      { label: "Soluciones Alternativas", color: "text-amber-600", sections: [
+        { label: "Definición de Soluciones", href: "#p04-alternativas" },
+        { label: "Evaluación de Suficiencia", href: "#p04-evaluacion" },
+      ] },
+      { label: "Fases de Diseño", color: "text-purple-600", sections: [
+        { label: "Design Thinking", href: "#p04-design-thinking" },
+      ] },
+    ],
+  },
+  {
+    num: "05",
+    label: "Línea Base del Alcance del Proyecto",
+    groups: [
+      { label: "Requisitos", color: "text-blue-600", sections: [
+        { label: "Especificaciones del Sistema", href: "#p05-requisitos" },
+        { label: "Planillas de Requisitos", href: "#p05-planillas" },
+      ] },
+      { label: "Estructura EDT", color: "text-amber-600", sections: [
+        { label: "Diagrama del Sistema ML", href: "#p05-diagrama-edt" },
+        { label: "Diccionario de EDT (SIA-T)", href: "#p05-diccionario" },
+      ] },
+    ],
+  },
+  {
     num: "",
     label: "Referencias Bibliográficas",
     sections: [{ label: "Referencias Bibliográficas", href: "#referencias" }],
@@ -432,3 +462,4 @@ export const TOC_CHAPTERS: TocChapter[] = [
 export const TOC_SECTIONS: TocSection[] = TOC_CHAPTERS.flatMap((ch) =>
   ch.groups ? ch.groups.flatMap((g) => g.sections) : (ch.sections ?? [])
 );
+

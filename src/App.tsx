@@ -13,6 +13,8 @@ import Introduccion from "./components/Introduccion";
 import StakeholderAnalysis from "./components/StakeholderAnalysis";
 import ProblemaAnalysis from "./components/ProblemaAnalysis";
 import ObjetivoAnalysis from "./components/ObjetivoAnalysis";
+import AlternativesAnalysis from "./components/AlternativesAnalysis";
+import RequisitosAnalysis from "./components/RequisitosAnalysis";
 import ReferenciasBiblio from "./components/ReferenciasBiblio";
 import { TOC_SECTIONS } from "./data";
 
@@ -192,6 +194,54 @@ export default function App() {
             ]}
           />
           <ObjetivoAnalysis />
+
+          {/* CHAPTER 04 — ANÁLISIS DE ALTERNATIVA DE SOLUCIÓN */}
+          <ChapterIntro
+            num="04"
+            title="Análisis de Alternativa de Solución"
+            subtitle="Agrupamiento de acciones complementarias para definir alternativas tecnológicas integrales viables e implantación del portafolio UX mediante la metodología Design Thinking."
+            subheading="Capítulo 04 · Soluciones Viables"
+            inputs={[
+              "Árbol de Objetivos Fines/Medios (Cap. 03)",
+              "Metodologías ágiles participativas",
+              "Investigación de soluciones tecnológicas homólogas",
+            ]}
+            tools={[
+              "Matriz de mutua exclusión de acciones",
+              "Evaluación cualitativa de suficiencia de la alternativa",
+              "Taller Design Thinking (Fases 1 a 5 relocalizado)",
+            ]}
+            outputs={[
+              "Fórmula teórica ajustada del modelo analítico",
+              "Mockups y Prototipos de bento-grid de experiencia",
+              "Selección de la alternativa idónea recomendada",
+            ]}
+          />
+          <AlternativesAnalysis />
+
+          {/* CHAPTER 05 — LÍNEA BASE DEL ALCANCE DEL PROYECTO */}
+          <ChapterIntro
+            num="05"
+            title="Línea Base del Alcance del Proyecto"
+            subtitle="Planificación del alcance, matriz de trazabilidad RTM de 20 requisitos de software y estructuración jerárquica mediante la EDT y su Diccionario técnico."
+            subheading="Capítulo 05 · Alcance Completo"
+            inputs={[
+              "Alternativa recomendada (Software SIA-T)",
+              "Registros tradicionales de la mesa de asistencia",
+              "Plataforma Cubicol de notas e incidencias",
+            ]}
+            tools={[
+              "Especificación de requisitos de software (IEEE 830)",
+              "Requirements Traceability Matrix (RTM)",
+              "Desglose jerárquico del Proyecto (EDT / WBS)",
+            ]}
+            outputs={[
+              "Matriz interactiva de requisitos (Acceso Google Drive)",
+              "Diagrama interactivo de EDT del Sistema ML",
+              "Diccionario de la EDT completo (18 paquetes de trabajo)",
+            ]}
+          />
+          <RequisitosAnalysis />
 
           {/* SYSTEM BIBLIOGRAPHY */}
           <ReferenciasBiblio />
