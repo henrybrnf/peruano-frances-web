@@ -22,7 +22,13 @@ import {
   HelpCircle,
   TrendingDown,
   LineChart,
-  UserCheck
+  UserCheck,
+  ZoomIn,
+  ZoomOut,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2
 } from "lucide-react";
 import Cite from "./Cite";
 
@@ -45,10 +51,86 @@ interface MedioDirectoItem {
   mediosIndirectos: MedioIndirecto[];
 }
 
+const designThinkingImages = [
+  { src: "/Mapa de empatia.png", alt: "Mapa de Empatía del Docente", phase: "Fase 1: Empatizar - Perfil Docente" },
+  { src: "/Mapa de Empatia Padres.png", alt: "Mapa de Empatía de la Familia", phase: "Fase 1: Empatizar - Perfil Familia" },
+  { src: "/Buyer Persona Principal Docente.png", alt: "Luis Ramírez - Docente Tutor Coordinador", phase: "Fase 2: Definición - Buyer Persona" },
+  { src: "/Diagrama de Afinidad.png", alt: "Diagrama de Afinidad / Brainstorming", phase: "Fase 3: Idear - Mapa de Afinidad" },
+  { src: "/SCAMPER.png", alt: "Matriz de Estimulación SCAMPER", phase: "Fase 3: Idear - SCAMPER Loop" },
+  { src: "/PROTOTIPO.jpeg", alt: "Maqueta Digital del Dashboard SIA-T", phase: "Fase 4: Prototipar - Mockup" },
+  { src: "/Customer Journey Docente.png", alt: "Customer Journey del Docente Tutor", phase: "Fase 5: Evaluar - Customer Journey" },
+  { src: "/ESTRELLA DE MAR.png", alt: "Retrospectiva Estrella de Mar", phase: "Fase 5: Evaluar - Retrospectiva" },
+];
+
 export default function AlternativesAnalysis() {
   const [activeTab, setActiveTab] = useState<"explorer" | "matrix" | "evaluation" | "design-thinking">("explorer");
   const [selectedMD, setSelectedMD] = useState<string>("MD1");
   const [expandedDT, setExpandedDT] = useState<string | null>("empatia");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const [panOffset, setPanOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [dragStart, setDragStart] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
+  // Reset pan offset when lightbox image index changes or zoom resets
+  React.useEffect(() => {
+    setPanOffset({ x: 0, y: 0 });
+    setIsDragging(false);
+  }, [lightboxIndex]);
+
+  React.useEffect(() => {
+    if (zoomLevel <= 1) {
+      setPanOffset({ x: 0, y: 0 });
+      setIsDragging(false);
+    }
+  }, [zoomLevel]);
+
+  // Drag pan handlers
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (zoomLevel <= 1) return;
+    e.preventDefault();
+    setIsDragging(true);
+    setDragStart({
+      x: e.clientX - panOffset.x,
+      y: e.clientY - panOffset.y,
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    setPanOffset({
+      x: e.clientX - dragStart.x,
+      y: e.clientY - dragStart.y,
+    });
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (zoomLevel <= 1) return;
+    if (e.touches.length !== 1) return;
+    setIsDragging(true);
+    setDragStart({
+      x: e.touches[0].clientX - panOffset.x,
+      y: e.touches[0].clientY - panOffset.y,
+    });
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    if (e.touches.length !== 1) return;
+    setPanOffset({
+      x: e.touches[0].clientX - dragStart.x,
+      y: e.touches[0].clientY - dragStart.y,
+    });
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
 
   // Sync active tab with hash changes to fix sidebar navigation buttons
   React.useEffect(() => {
@@ -100,6 +182,26 @@ export default function AlternativesAnalysis() {
       document.removeEventListener("click", handleAnchorClick);
     };
   }, []);
+
+  // Listen for keyboard events for the lightbox
+  React.useEffect(() => {
+    if (lightboxIndex === null) return;
+    
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setLightboxIndex(null);
+      } else if (e.key === "ArrowRight") {
+        setLightboxIndex((prev) => (prev !== null && prev < designThinkingImages.length - 1 ? prev + 1 : 0));
+        setZoomLevel(1);
+      } else if (e.key === "ArrowLeft") {
+        setLightboxIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : designThinkingImages.length - 1));
+        setZoomLevel(1);
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxIndex]);
 
   const goal = "Mejorar la detección temprana del rendimiento académico estudiantil mediante un sistema inteligente basado en Machine Learning.";
 
@@ -711,38 +813,60 @@ export default function AlternativesAnalysis() {
 
                       <div className="grid md:grid-cols-2 gap-6">
                         {/* Mapa de Empatía Docente */}
-                        <div className="bg-white border rounded-2xl p-5 shadow-xxs">
-                          <span className="bg-indigo-100 text-indigo-800 text-[9px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                            Perfil Docente Tutor
-                          </span>
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3 mt-1.5">
-                            Visualización: Mapa de Empatía del Docente
-                          </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-2 flex justify-center">
+                        <div className="bg-white border hover:border-indigo-200 transition-all duration-300 rounded-3xl p-5 shadow-xs flex flex-col justify-between group">
+                          <div>
+                            <span className="bg-indigo-100 text-indigo-800 text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                              Perfil Docente Tutor
+                            </span>
+                            <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-3 mt-2.5 leading-snug">
+                              Visualización: Mapa de Empatía del Docente
+                            </h5>
+                          </div>
+                          <div 
+                            onClick={() => { setLightboxIndex(0); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-2 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/Mapa de empatia.png"
                               alt="Mapa de Empatía Docente"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-80 object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[450px] object-contain transition-all duration-500 group-hover/img:scale-[1.03]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
                         {/* Mapa de Empatía Padres */}
-                        <div className="bg-white border rounded-2xl p-5 shadow-xxs">
-                          <span className="bg-emerald-100 text-emerald-800 text-[9px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                            Perfil Familia (Apoderados)
-                          </span>
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3 mt-1.5">
-                            Visualización: Mapa de Empatía de la Familia
-                          </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-2 flex justify-center">
+                        <div className="bg-white border hover:border-emerald-200 transition-all duration-300 rounded-3xl p-5 shadow-xs flex flex-col justify-between group">
+                          <div>
+                            <span className="bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                              Perfil Familia (Apoderados)
+                            </span>
+                            <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-3 mt-2.5 leading-snug">
+                              Visualización: Mapa de Empatía de la Familia
+                            </h5>
+                          </div>
+                          <div 
+                            onClick={() => { setLightboxIndex(1); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-2 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/Mapa de Empatia Padres.png"
                               alt="Mapa de Empatía Familia"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-80 object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[450px] object-contain transition-all duration-500 group-hover/img:scale-[1.03]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -761,25 +885,34 @@ export default function AlternativesAnalysis() {
 
                   {expandedDT === "definir" && (
                     <div className="mt-4 pt-4 border-t border-slate-200 space-y-4">
-                      <p className="text-slate-650 text-xs sm:text-sm leading-relaxed text-justify">
+                      <p className="text-slate-655 text-xs sm:text-sm leading-relaxed text-justify">
                         Modelado del arquetipo de usuario de nuestra solución escolar, permitiendo definir roles precisos que sustenten luego el desarrollo de nuestra especificación tecnológica del SIA-T.
                       </p>
 
-                      <div className="bg-white border rounded-2xl p-5 shadow-xxs flex justify-center">
-                        <div className="w-full max-w-xl text-center">
-                          <span className="bg-blue-100 text-blue-800 text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase mb-2 inline-block">
+                      <div className="bg-white border rounded-3xl p-5 shadow-xs flex justify-center">
+                        <div className="w-full max-w-2xl text-center">
+                          <span className="bg-blue-100 text-blue-800 text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-2.5 inline-block">
                             Arquetipo Tutor Escolar
                           </span>
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3">
+                          <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-4 leading-snug">
                             Ficha de Personas: Luis Ramírez - Docente Tutor Coordinador
                           </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-3 flex justify-center">
+                          <div 
+                            onClick={() => { setLightboxIndex(2); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-3 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/Buyer Persona Principal Docente.png"
                               alt="Luis Ramírez - Buyer Persona Docente"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-[420px] object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[500px] object-contain transition-all duration-500 group-hover/img:scale-[1.02]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -798,36 +931,54 @@ export default function AlternativesAnalysis() {
 
                   {expandedDT === "idear" && (
                     <div className="mt-4 pt-4 border-t border-slate-200 space-y-4">
-                      <p className="text-slate-650 text-xs sm:text-sm leading-relaxed text-justify">
+                      <p className="text-slate-655 text-xs sm:text-sm leading-relaxed text-justify">
                         Dinámicas grupales creativas basadas en mapas de afinidad y diagramación del método SCAMPER para depurar las mejores propuestas y definir los límites del producto final (SIA-T).
                       </p>
 
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-white border rounded-2xl p-4 shadow-xxs">
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3">
+                        <div className="bg-white border hover:border-slate-300 transition-all duration-300 rounded-3xl p-5 shadow-xs flex flex-col justify-between group">
+                          <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-3 leading-snug">
                             Diagrama de Afinidad / Brainstorming Cruzado
                           </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-2 flex justify-center">
+                          <div 
+                            onClick={() => { setLightboxIndex(3); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-2 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/Diagrama de Afinidad.png"
                               alt="Brainstorming de Afinidad"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-72 object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[400px] object-contain transition-all duration-500 group-hover/img:scale-[1.03]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
-                        <div className="bg-white border rounded-2xl p-4 shadow-xxs">
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3">
+                        <div className="bg-white border hover:border-slate-300 transition-all duration-300 rounded-3xl p-5 shadow-xs flex flex-col justify-between group">
+                          <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-3 leading-snug">
                             Matriz Creativa de Estimulación SCAMPER
                           </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-2 flex justify-center">
+                          <div 
+                            onClick={() => { setLightboxIndex(4); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-2 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/SCAMPER.png"
                               alt="SCAMPER Loop"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-72 object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[400px] object-contain transition-all duration-500 group-hover/img:scale-[1.03]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -850,21 +1001,30 @@ export default function AlternativesAnalysis() {
                         Mockups y diagramas de bento-grid interactivos orientados a la adopción docente rápida y visualización de semáforos de riesgo del promedio de asistencia escolar por grado.
                       </p>
 
-                      <div className="bg-white border rounded-2xl p-5 shadow-xxs flex justify-center">
-                        <div className="w-full max-w-2xl text-center">
-                          <span className="bg-[#e8f5f5] text-[#0d7377] text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase mb-2 inline-block">
+                      <div className="bg-white border rounded-3xl p-5 shadow-xs flex justify-center">
+                        <div className="w-full max-w-3xl text-center">
+                          <span className="bg-[#e8f5f5] text-[#0d7377] text-[10px] font-mono font-bold px-2.5 py-1 rounded-full uppercase tracking-wider mb-2.5 inline-block">
                             Dashboard UI Mockup
                           </span>
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3">
+                          <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-4 leading-snug">
                             Maqueta Digital de Interfaz para Monitoreo de Alertas Críticas
                           </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-3 flex justify-center">
+                          <div 
+                            onClick={() => { setLightboxIndex(5); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-3 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/PROTOTIPO.jpeg"
                               alt="Mockup de Interfaz SIA-T"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-96 object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[500px] object-contain transition-all duration-500 group-hover/img:scale-[1.02]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -888,31 +1048,49 @@ export default function AlternativesAnalysis() {
                       </p>
 
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-white border rounded-2xl p-4 shadow-xxs">
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3">
+                        <div className="bg-white border hover:border-slate-300 transition-all duration-300 rounded-3xl p-5 shadow-xs flex flex-col justify-between group">
+                          <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-3 leading-snug">
                             Customer Journey Map del Docente Tutor
                           </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-2 flex justify-center">
+                          <div 
+                            onClick={() => { setLightboxIndex(6); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-2 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/Customer Journey Docente.png"
                               alt="Customer Journey del docente escolar"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-72 object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[400px] object-contain transition-all duration-500 group-hover/img:scale-[1.03]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
-                        <div className="bg-white border rounded-2xl p-4 shadow-xxs">
-                          <h5 className="font-serif font-bold text-slate-900 text-xs sm:text-sm mb-3">
+                        <div className="bg-white border hover:border-slate-300 transition-all duration-300 rounded-3xl p-5 shadow-xs flex flex-col justify-between group">
+                          <h5 className="font-serif font-bold text-slate-900 text-sm sm:text-base mb-3 leading-snug">
                             Taller de Diagnóstico Retrospectivo Estrella de Mar
                           </h5>
-                          <div className="relative w-full bg-slate-50 rounded-xl overflow-hidden border p-2 flex justify-center">
+                          <div 
+                            onClick={() => { setLightboxIndex(7); setZoomLevel(1); }}
+                            className="relative w-full bg-slate-50 rounded-2xl overflow-hidden border p-2 flex justify-center cursor-zoom-in group/img shadow-xxs hover:shadow-sm transition-all duration-300"
+                          >
                             <img
                               src="/ESTRELLA DE MAR.png"
                               alt="Diagrama Estrella de Mar"
                               referrerPolicy="no-referrer"
-                              className="w-full max-h-72 object-contain"
+                              className="w-full h-80 sm:h-96 md:h-[400px] object-contain transition-all duration-500 group-hover/img:scale-[1.03]"
                             />
+                            <div className="absolute inset-0 bg-slate-950/0 group-hover/img:bg-slate-950/5 transition-all duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover/img:opacity-100 bg-slate-900/80 text-white text-[11px] font-medium px-3.5 py-2 rounded-full backdrop-blur-xs flex items-center gap-1.5 shadow-md transform translate-y-2 group-hover/img:translate-y-0 transition-all duration-300">
+                                <Maximize2 className="w-3.5 h-3.5" />
+                                <span>Ver en Pantalla Completa</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -924,6 +1102,128 @@ export default function AlternativesAnalysis() {
           )}
         </div>
       </section>
+
+      {/* LIGHTBOX / VISUALIZADOR INTERACTIVO PREMIUM */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-50 flex flex-col justify-between bg-slate-950/95 backdrop-blur-md p-4 text-white select-none transition-all duration-300"
+          onClick={() => setLightboxIndex(null)}
+        >
+          {/* Header Controls */}
+          <div className="flex justify-between items-center w-full max-w-7xl mx-auto py-2 z-10" onClick={(e) => e.stopPropagation()}>
+            <div className="flex flex-col pr-4">
+              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-semibold">
+                {designThinkingImages[lightboxIndex].phase}
+              </span>
+              <h3 className="text-xs sm:text-base font-serif font-bold text-white tracking-wide">
+                {designThinkingImages[lightboxIndex].alt}
+              </h3>
+            </div>
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              {/* Zoom controls */}
+              <button 
+                onClick={() => setZoomLevel(prev => Math.min(prev + 0.25, 3.5))}
+                className="p-2 sm:p-2.5 bg-slate-850 hover:bg-slate-700 active:bg-slate-600 rounded-full transition-all duration-200 border border-slate-700 flex items-center justify-center cursor-pointer text-slate-200"
+                title="Acercar (+)"
+              >
+                <ZoomIn className="w-4 h-4" />
+              </button>
+              <button 
+                onClick={() => setZoomLevel(prev => Math.max(prev - 0.25, 0.5))}
+                className="p-2 sm:p-2.5 bg-slate-800 hover:bg-slate-700 active:bg-slate-600 rounded-full transition-all duration-200 border border-slate-700 flex items-center justify-center cursor-pointer text-slate-200"
+                title="Alejar (-)"
+              >
+                <ZoomOut className="w-4 h-4" />
+              </button>
+              <button 
+                onClick={() => setZoomLevel(1)}
+                className="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 active:bg-slate-600 rounded-full text-[10px] font-mono font-bold transition-all duration-200 border border-slate-700 flex items-center justify-center cursor-pointer text-slate-200"
+                title="Restablecer Escala"
+              >
+                1:1
+              </button>
+              <button 
+                onClick={() => setLightboxIndex(null)}
+                className="p-2 sm:p-2.5 bg-rose-950/60 hover:bg-rose-900/85 active:bg-rose-800 rounded-full transition-all duration-200 border border-rose-800 flex items-center justify-center cursor-pointer text-rose-200 sm:ml-2"
+                title="Cerrar (Esc)"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Main Container */}
+          <div className="relative flex-1 flex items-center justify-center max-w-7xl mx-auto w-full group overflow-hidden">
+            {/* Navigation - Prev */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : designThinkingImages.length - 1));
+                setZoomLevel(1);
+              }}
+              className="absolute left-2 sm:left-4 z-10 p-3 sm:p-4 bg-slate-900/70 hover:bg-slate-800 border border-slate-700/80 hover:scale-105 active:scale-95 rounded-full text-slate-200 transition-all duration-200 flex items-center justify-center cursor-pointer shadow-lg"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
+            {/* Styled Image wrap */}
+            <div 
+              className={`relative max-h-[75vh] max-w-[90vw] overflow-hidden flex items-center justify-center p-2 select-none ${
+                zoomLevel > 1 ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : 'cursor-default'
+              }`}
+              onClick={(e) => e.stopPropagation()}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUpOrLeave}
+              onMouseLeave={handleMouseUpOrLeave}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <img 
+                src={designThinkingImages[lightboxIndex].src}
+                alt={designThinkingImages[lightboxIndex].alt}
+                referrerPolicy="no-referrer"
+                style={{ 
+                  transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomLevel})` 
+                }}
+                className={`max-h-[72vh] max-w-full object-contain shadow-2xl rounded-lg border border-slate-800 origin-center select-none ${
+                  isDragging ? '' : 'transition-transform duration-200'
+                }`}
+              />
+            </div>
+
+            {/* Navigation - Next */}
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((prev) => (prev !== null && prev < designThinkingImages.length - 1 ? prev + 1 : 0));
+                setZoomLevel(1);
+              }}
+              className="absolute right-2 sm:right-4 z-10 p-3 sm:p-4 bg-slate-900/70 hover:bg-slate-800 border border-slate-700/80 hover:scale-105 active:scale-95 rounded-full text-slate-200 transition-all duration-200 flex items-center justify-center cursor-pointer shadow-lg"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </div>
+
+          {/* Footer Navigation and Count Indicator */}
+          <div className="flex flex-col items-center gap-2 w-full py-2 z-10 bg-slate-950/60 border-t border-slate-900" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center gap-1.5">
+              {designThinkingImages.map((_, idx) => (
+                <button 
+                  key={idx}
+                  onClick={() => { setLightboxIndex(idx); setZoomLevel(1); }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${lightboxIndex === idx ? 'bg-blue-500 w-5' : 'bg-slate-700 hover:bg-slate-500'}`}
+                />
+              ))}
+            </div>
+            <p className="text-[10px] sm:text-xs font-mono text-slate-500 mt-0.5">
+              Imagen <span className="text-slate-300 font-bold">{lightboxIndex + 1}</span> de <span className="text-slate-400 font-bold">{designThinkingImages.length}</span> · Use flechas del teclado <span className="text-slate-400 font-mono">← / →</span> para navegar
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
